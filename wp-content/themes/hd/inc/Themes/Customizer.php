@@ -572,7 +572,8 @@ if ( ! class_exists( 'Customizer' ) ) {
 				]
 			);
 
-			// -------------------------------------------------------------
+            // -------------------------------------------------------------
+            // -------------------------------------------------------------
 
 			// Other
 			$wp_customize->add_section(
@@ -625,6 +626,26 @@ if ( ! class_exists( 'Customizer' ) ) {
 					]
 				)
 			);
+
+            // Hide menu
+            $wp_customize->add_setting(
+                'remove_menu_setting',
+                [
+                    'sanitize_callback' => 'sanitize_textarea_field',
+                    'transport'         => 'refresh'
+                ]
+            );
+
+            $wp_customize->add_control(
+                'remove_menu_control',
+                [
+                    'label'       => __( 'Remove Menu', 'hd' ),
+                    'section'     => 'other_section',
+                    'settings'    => 'remove_menu_setting',
+                    'description' => __( 'The menu list will be hidden', 'hd' ),
+                    'type'        => 'textarea',
+                ]
+            );
 		}
 	}
 }

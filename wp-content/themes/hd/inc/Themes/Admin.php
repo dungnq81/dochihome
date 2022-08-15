@@ -23,7 +23,7 @@ if ( ! class_exists( 'Admin' ) ) {
 			add_action( 'admin_init', [ &$this, 'admin_init' ], 1 );
 
 			add_filter( 'admin_footer_text', [ &$this, 'admin_footer_text' ] );
-			add_action( 'admin_menu', [ &$this, 'dashboard_meta_box' ] );
+			add_action( 'admin_menu', [ &$this, 'dashboard_meta_box' ], 11 );
 			add_action( 'admin_enqueue_scripts', [ &$this, 'admin_enqueue_scripts' ], 31 );
 
 			$widgets_block_off           = get_theme_mod_ssl( 'use_widgets_block_editor_setting' );
@@ -47,6 +47,14 @@ if ( ! class_exists( 'Admin' ) ) {
 				// Use Classic Editor - Disable Gutenberg Editor
 				add_filter( 'use_block_editor_for_post_type', '__return_false' );
 			}
+
+            // Remove admin bar
+            add_action( 'wp_before_admin_bar_render', function () {
+                global $wp_admin_bar;
+
+                $wp_admin_bar->remove_menu('wp-logo');
+                $wp_admin_bar->remove_menu('wqv_settings');
+            } );
 		}
 
 		/** ---------------------------------------- */
@@ -55,6 +63,19 @@ if ( ! class_exists( 'Admin' ) ) {
 		 * Add admin column
 		 */
 		public function admin_init() {
+
+            //echo dump($GLOBALS[ 'menu' ]);
+
+            // Hide menu
+            $hide_menu = get_theme_mod_ssl('remove_menu_setting');
+            if ($hide_menu) {
+                $array_hide_menu = explode(PHP_EOL, $hide_menu);
+                foreach ($array_hide_menu as $menu) {
+                    if ($menu) {
+                        remove_menu_page($menu);
+                    }
+                }
+            }
 
 			// Add customize column taxonomy
 			// https://wordpress.stackexchange.com/questions/77532/how-to-add-the-category-id-to-admin-page
