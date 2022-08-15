@@ -314,6 +314,20 @@ table.fixed {
     display: none !important;
 }
 
+table.wp-list-table .column-price {
+    min-width: 10ch;
+    width: auto;
+    .from {
+        display: none;
+    }
+    del, ins {
+        white-space: nowrap;
+    }
+    ins {
+        color: #ff0000;
+    }
+}
+
 /** */
 #acf-form-data {
     & ~ h2 {

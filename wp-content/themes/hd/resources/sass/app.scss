@@ -803,9 +803,10 @@
     .menu_list {
         list-style: none;
         margin: 10px 0 30px 0;
-        gap: fs(20);
+        gap: fs(5) fs(20);
         display: flex;
         align-items: center;
+        flex-wrap: wrap;
         li {
             flex: 0 0 auto;
             width: auto;
@@ -814,6 +815,10 @@
                 @include underline($medium-gray);
                 @include hover_color($medium-black, $black);
                 font-weight: 500;
+                @include mobile {
+                    font-size: fs(14);
+                    font-weight: 400;
+                }
             }
         }
     }
@@ -1797,10 +1802,16 @@ article.product {
                         color: #fff;
                     }
                 }
-                &.added::after {
-                    opacity: 0;
-                    font-size: 0;
-                    margin: 0;
+                &.added {
+                    &::before {
+                        opacity: 0;
+                        font-size: 0;
+                    }
+                    &::after {
+                        /*opacity: 0;
+                        font-size: 0;*/
+                        margin: 0;
+                    }
                 }
             }
             &.added_to_cart.wc-forward {
@@ -1838,7 +1849,7 @@ article.product {
             left: 10px;
             & > span {
                 font-weight: 300;
-                font-size: 13px;
+                font-size: fs(13);
                 line-height: normal;
                 padding: 2px 8px;
                 border-radius: 25px;
@@ -1847,6 +1858,9 @@ article.product {
                 backdrop-filter: blur(5px);
                 white-space: nowrap;
                 overflow: hidden;
+                @include mobile {
+                    font-size: fs(12);
+                }
             }
         }
         .onsale {
@@ -2642,20 +2656,28 @@ table.cart td.actions .coupon {
 
 /** */
 .woocommerce form.checkout_coupon {
-    margin-top: 30px;
-    margin-bottom: 30px;
+    margin-top: 15px;
+    margin-bottom: 15px;
     border-radius: 0;
     border: none;
     background-color: #fff;
+    padding: 0;
     & > p {
         color: $medium-black !important;
         margin-bottom: 5px;
+    }
+    input[name="coupon_code"] {
+        height: 37px;
     }
     button[name="apply_coupon"] {
         border: none;
         background-color: $color-red;
         @include _effect2();
         color: #fff;
+        margin-top: 0;
+        height: 37px;
+        display: flex;
+        align-items: center;
     }
 }
 
@@ -2675,6 +2697,15 @@ table.cart td.actions .coupon {
     }
     table.woocommerce-checkout-review-order-table {
         color: $medium-black;
+        background-color: #fff;
+        tr {
+            td:first-child, th:first-child {
+                border-right: 1px solid rgba(0,0,0,.1);
+            }
+        }
+        tfoot {
+            background-color: #fff;
+        }
         .cart_item {
             .product-name {
                 h6 {
@@ -2972,7 +3003,7 @@ body.woocommerce-order-received {
     position: absolute;
     top: 105%;
     right: 0;
-    width: 270px;
+    width: 280px;
     background-color: transparent;
     text-align: left;
     z-index: 1499;
@@ -3012,9 +3043,9 @@ body.woocommerce-order-received {
         border-bottom: none;
     }
     .site-header-cart .widget_shopping_cart .product_list_widget li .item-image-holder {
-        flex: 0 0 25%;
-        max-width: 25%;
-        margin-right: 10px;
+        flex: 0 0 24%;
+        max-width: 24%;
+        margin-right: 5px;
     }
     .site-header-cart .widget_shopping_cart .product_list_widget li .item-image-holder a {
         outline: none;
@@ -3049,6 +3080,8 @@ body.woocommerce-order-received {
         padding-top: 5px;
         display: flex;
         flex-wrap: wrap;
+        border-left: 1px solid rgba(0, 0, 0, 0.05);
+        padding-left: 10px;
     }
     .site-header-cart .widget_shopping_cart .product_list_widget li .item-info-holder .variation dt {
         margin-bottom: 0;
@@ -3151,6 +3184,35 @@ body.woocommerce-order-received {
         margin: 0 10px;
         width: auto;
         float: none;
+    }
+
+    .site-header-cart {
+        .widget_shopping_cart {
+            .widget_shopping_cart_content {
+                padding: 5px 10px 11px 10px;
+                ul.product_list_widget {
+                    li {
+                        .item-image-holder {}
+                        .item-info-holder {
+                            .product-title {}
+                            dl.variation {
+                                dt {
+                                    display: flex;
+                                    align-items: center;
+                                    font-weight: 300;
+                                    font-size: 12px;
+                                    letter-spacing: -0.5px;
+                                    line-height: normal;
+                                }
+                                dd {
+                                    p {}
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
     }
 }
 
@@ -3795,8 +3857,33 @@ body.woocommerce-order-received {
     margin: 0 0 25px 0;
     width: 100%;
     border-radius: 0;
+    border-spacing: 0;
     tbody th {
         font-weight: 500;
+    }
+    tbody tr:nth-child(even) {
+        background: none;
+    }
+    tbody tr {
+        &.cart_item {
+            .product-name {}
+            dl.variation {
+                margin-bottom: 0;
+                display: flex;
+                flex-wrap: wrap;
+                dt {
+                    font-weight: 300;
+                    flex: 0 0 40%;
+                    max-width: 40%;
+                    margin-right: 5px;
+                }
+                dd {
+                    flex: 0 0 calc(60% - 5px);
+                    max-width: calc(60% - 5px);
+                    p {}
+                }
+            }
+        }
     }
 }
 
@@ -3913,6 +4000,7 @@ body.woocommerce-order-received {
     .quantity {}
     .single_add_to_cart_button {
         @include flex-center;
+        margin-top: 15px;
     }
 }
 
