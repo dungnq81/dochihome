@@ -21,7 +21,7 @@ use Webhd\Widgets\ProductCatCarousel_Widget;
 use Webhd\Widgets\Products_Widget;
 use Webhd\Widgets\ProductsCarousel_Widget;
 use Webhd\Widgets\Search_Widget;
-use Webhd\Widgets\Swatches_Widget_Layered_Nav;
+use Webhd\Widgets\WC_Widget_Layered_Nav_Ex;
 
 \defined('\WPINC') || die;
 
@@ -58,7 +58,7 @@ if (!function_exists('__register_widgets')) {
             if ( wc_string_to_bool( woo_variation_swatches()->get_option( 'show_swatches_on_filter_widget', 'yes' ) ) ) {
                 //unregister_widget( 'WC_Widget_Layered_Nav' );
                 unregister_widget( 'Woo_Variation_Swatches_Pro_Widget_Layered_Nav' );
-                register_widget(new Swatches_Widget_Layered_Nav);
+                register_widget(new WC_Widget_Layered_Nav_Ex);
             }
         }
     }

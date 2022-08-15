@@ -2,8 +2,8 @@
 
 namespace Webhd\Widgets;
 
-if ( ! class_exists( 'Swatches_Widget_Layered_Nav' ) ) {
-    class Swatches_Widget_Layered_Nav extends \WC_Widget_Layered_Nav {
+if ( ! class_exists( 'WC_Widget_Layered_Nav_Ex' ) ) {
+    class WC_Widget_Layered_Nav_Ex extends \WC_Widget_Layered_Nav {
         /**
          * @param $terms
          * @param $taxonomy
