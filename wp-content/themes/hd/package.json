@@ -1,0 +1,55 @@
+{
+  "name": "webhd",
+  "version": "0.22.07",
+  "author": "The Webhd Teams",
+  "license": "MIT",
+  "devDependencies": {
+    "@fullhuman/postcss-purgecss": "^4.1.3",
+    "cross-env": "^7.0.3",
+    "css-loader": "^6.7.1",
+    "laravel-mix": "^6.0.49",
+    "postcss": "^8.4.14",
+    "sass": "^1.54.2",
+    "sass-loader": "^13.0.2",
+    "webpack": "^5.74.0",
+    "webpack-cli": "^4.10.0"
+  },
+  "dependencies": {
+    "@babel/core": "^7.18.10",
+    "@babel/plugin-proposal-object-rest-spread": "^7.18.9",
+    "@babel/plugin-syntax-dynamic-import": "^7.8.3",
+    "@babel/plugin-transform-runtime": "^7.18.10",
+    "@babel/preset-env": "^7.18.10",
+    "@fancyapps/ui": "^4.0.31",
+    "@formkit/auto-animate": "^1.0.0-beta.1",
+    "@nobleclem/jquery-multiselect": "^2.4.21",
+    "@popperjs/core": "^2.11.5",
+    "@wordpress/browserslist-config": "^4.1.2",
+    "aos": "^2.3.4",
+    "autoprefixer": "^10.4.8",
+    "axios": "^0.27.2",
+    "current-device": "^0.10.2",
+    "foundation-sites": "6.7.5",
+    "jquery": "^3.6.0",
+    "jquery.marquee": "^1.6.0",
+    "lodash": "^4.17.21",
+    "motion-ui": "^2.0.4",
+    "nanoid": "^3.3.4",
+    "perfect-scrollbar": "^1.5.5",
+    "sanitize-html": "^2.7.1",
+    "swiper": "^8.3.2",
+    "video.js": "^7.20.1",
+    "what-input": "^5.2.12"
+  },
+  "browserslist": [
+    "extends @wordpress/browserslist-config"
+  ],
+  "scripts": {
+    "dev": "mix",
+    "watch": "mix watch",
+    "watch-poll": "mix watch -- --watch-options-poll=1000",
+    "hot": "mix watch --hot",
+    "prod": "mix --production"
+  },
+  "private": true
+}
