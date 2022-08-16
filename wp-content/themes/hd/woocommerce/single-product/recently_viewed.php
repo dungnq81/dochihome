@@ -31,13 +31,13 @@ if ( $r->have_posts() ) :
     <?php endif;
 
     $_data = [];
+
     $_data['desktop'] = 5;
     $_data['tablet'] = 4;
     $_data['mobile'] = 2;
     $_data['navigation'] = true;
     $_data['pagination'] = "dynamic";
     $_data['autoplay'] = true;
-    //$_data['loop'] = true;
     $_data['smallgap'] = 20;
 
     $_data = json_encode($_data, JSON_FORCE_OBJECT|JSON_UNESCAPED_UNICODE);

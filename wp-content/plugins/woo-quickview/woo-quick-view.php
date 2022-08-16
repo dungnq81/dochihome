@@ -267,7 +267,7 @@ if ( ! class_exists( 'SP_Woo_Quick_View' ) && ! class_exists( 'SP_Woo_Quick_View
 			if ( $woocommerce->version >= '3.0' ) {
 				$product_id = $product->get_id();
 			} else {
-				$product_id = $product->id;
+				//$product_id = $product->id ?? null;
 			}
 			$wqv_plugin_settings = get_option( '_sp_wqv_options' );
 			$enable_quick_view   = isset( $wqv_plugin_settings['wqvpro_enable_quick_view'] ) ? $wqv_plugin_settings['wqvpro_enable_quick_view'] : true;
@@ -294,7 +294,7 @@ if ( ! class_exists( 'SP_Woo_Quick_View' ) && ! class_exists( 'SP_Woo_Quick_View
 				if ( $woocommerce->version >= '3.0' ) {
 					$product_id = $product->get_id();
 				} else {
-					$product_id = $product->id;
+					//$product_id = $product->id;
 				}
 			}
 			$settings               = get_option( '_sp_wqv_options' );

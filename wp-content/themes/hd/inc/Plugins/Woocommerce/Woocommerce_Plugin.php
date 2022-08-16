@@ -233,7 +233,7 @@ if ( ! class_exists( 'Woocommerce_Plugin' ) ) {
 
 			// Enabling WooCommerce product gallery features (are off by default since WC 3.0.0).
 			// Add support for WC features.
-			add_theme_support( 'wc-product-gallery-zoom' );
+			//add_theme_support( 'wc-product-gallery-zoom' );
 			add_theme_support( 'wc-product-gallery-lightbox' );
 			add_theme_support( 'wc-product-gallery-slider' );
 
