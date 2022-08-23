@@ -120,6 +120,54 @@
 }
 
 /** */
+@mixin media-widget($d: 100, $t: false, $m: false) {
+    @if (is-int($d) or $d == 0) {
+        width: fs($d);
+    }
+    @if (is-int($t) or $t == 0) {
+        @include not-desktop {
+            width: fs($t);
+        }
+    }
+    @if (is-int($m) or $m == 0) {
+        @include mobile {
+            width: fs($m);
+        }
+    }
+}
+
+@mixin media-height($d: 100, $t: false, $m: false) {
+    @if (is-int($d) or $d == 0) {
+        height: fs($d);
+    }
+    @if (is-int($t) or $t == 0) {
+        @include not-desktop {
+            height: fs($t);
+        }
+    }
+    @if (is-int($m) or $m == 0) {
+        @include mobile {
+            height: fs($m);
+        }
+    }
+}
+
+@mixin media-gap($d: 30, $t: false, $m: false) {
+    @if (is-int($d) or $d == 0) {
+        gap: fs($d);
+    }
+    @if (is-int($t) or $t == 0) {
+        @include not-desktop {
+            gap: fs($t);
+        }
+    }
+    @if (is-int($m) or $m == 0) {
+        @include mobile {
+            gap: fs($m);
+        }
+    }
+}
+
 @mixin media-padding($d: 30, $t: false, $m: false) {
     @include media-pt($d, $t, $m);
     @include media-pb($d, $t, $m);
@@ -128,6 +176,38 @@
 @mixin media-margin($d: 30, $t: false, $m: false) {
     @include media-mt($d, $t, $m);
     @include media-mb($d, $t, $m);
+}
+
+@mixin media-margin2($d: 30, $t: false, $m: false) {
+    @if (is-int($d) or $d == 0) {
+        margin: fs($d);
+    }
+    @if (is-int($t) or $t == 0) {
+        @include not-desktop {
+            margin: fs($t);
+        }
+    }
+    @if (is-int($m) or $m == 0) {
+        @include mobile {
+            margin: fs($m);
+        }
+    }
+}
+
+@mixin media-padding2($d: 30, $t: false, $m: false) {
+    @if (is-int($d) or $d == 0) {
+        padding: fs($d);
+    }
+    @if (is-int($t) or $t == 0) {
+        @include not-desktop {
+            padding: fs($t);
+        }
+    }
+    @if (is-int($m) or $m == 0) {
+        @include mobile {
+            padding: fs($m);
+        }
+    }
 }
 
 @mixin media-pt($d: 30, $t: false, $m: false) {
@@ -234,11 +314,11 @@
 /** */
 @mixin responsive-bg-ratio($image-width: 204, $image-height: 81) {
     background-size: cover;
+    background-position: center;
+    //aspect-ratio: list.slash($image-width, $image-height);;
+    display: block;
     height: 0;
     padding-bottom: percentage(math.div($image-height, $image-width));
-    display: block;
-    object-fit: cover;
-    object-position: center;
 }
 
 @mixin responsive-wrapper($width: 100%) {
@@ -249,17 +329,18 @@
     width: $width;
     & > img {
         display: block;
-        @include centering-elements;
         height: 100% !important;
+        width: auto;
+        min-width: 100%;
+        max-width: unset;
         object-fit: cover;
         object-position: center;
-        max-width: unset;
-        min-width: 100%;
+        @include centering-elements;
     }
 }
 
 @mixin responsive-scale($scale: 1.06, $opacity: 0.9) {
-    transform: scale(1.001);
+    transform: scale(1.0001);
     will-change: transform;
     transition: transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94), opacity 0.3s;
     &:hover {
@@ -272,7 +353,6 @@
     height: auto !important;
     width: auto !important;
     object-fit: contain;
-    object-position: center;
     max-width: 100%;
     max-height: 100%;
     min-width: 80%;
@@ -280,10 +360,9 @@
 }
 
 @mixin responsive-ratio($ratio-width: 3, $ratio-height: 2, $width: 100%) {
+    //aspect-ratio: list.slash($ratio-width, $ratio-height);
     height: 0;
     padding-bottom: #{math.div($width * $ratio-height, $ratio-width)};
-    aspect-ratio: auto list.slash($ratio-width, $ratio-height);
-    object-fit: scale-down;
 }
 
 /** */
@@ -334,8 +413,13 @@
     }
 }
 
-@mixin centering-elements($horizontal: true, $vertical: true) {
-    position: absolute;
+@mixin centering-elements($horizontal: true, $vertical: true, $position_absolute: true) {
+    @if ($position_absolute == true) {
+        position: absolute;
+    } @else {
+        position: relative;
+    }
+
     @if $horizontal and $vertical {
         top: 50%;
         left: 50%;

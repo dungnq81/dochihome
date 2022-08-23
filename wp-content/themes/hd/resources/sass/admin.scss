@@ -334,3 +334,8 @@ table.wp-list-table .column-price {
         display: none;
     }
 }
+
+.acf-postbox > .hndle:hover .acf-hndle-cog,
+.acf-postbox > .postbox-header:hover .acf-hndle-cog {
+    display: none !important;
+}

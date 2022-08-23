@@ -22,17 +22,9 @@ global $post;
 $heading = apply_filters( 'woocommerce_product_description_heading', __( 'Description', 'hd' ) );
 
 ?>
-<div class="product-desc-inner" id="desc-inner">
+<div class="product-description-inner">
     <?php if ( $heading ) : ?>
-	<h2 class="hide"><?php echo esc_html( $heading ); ?></h2>
+        <h3 class="tab-heading-title"><?php echo esc_html( $heading ); ?></h3>
     <?php endif; ?>
     <?php the_content(); ?>
-    <?php
-
-    // Product Descriptions Sidebar
-    if (is_active_sidebar('w-product-desc-sidebar')) :
-        echo '<div class="product-desc-after">';
-            dynamic_sidebar('w-product-desc-sidebar');
-        echo '</div>';
-    endif; ?>
 </div>

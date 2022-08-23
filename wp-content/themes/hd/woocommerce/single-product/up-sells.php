@@ -28,7 +28,7 @@ if ( $upsells ) :
     $heading = apply_filters( 'woocommerce_product_upsells_products_heading', __( 'You may also like&hellip;', 'woocommerce' ) );
     if ( $heading ) :
     ?>
-    <h2 class="heading-title h3"><?php echo esc_html( $heading ); ?></h2>
+        <h2 class="heading-title h3"><span><?php echo esc_html( $heading ); ?></span></h2>
     <?php endif;
 
     $_data = [];

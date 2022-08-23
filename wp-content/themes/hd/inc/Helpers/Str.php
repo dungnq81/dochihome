@@ -261,7 +261,7 @@ class Str
      *
      * @return array|string|string[]|null
      */
-    public static function stripSpace($string)
+    public static function stripSpace($string, $strip_tags = false)
     {
         $string = preg_replace(
             '/(\v|\s){1,}/u',
@@ -271,6 +271,11 @@ class Str
 
         $string = preg_replace('/\s+/', '', $string);
         $string = preg_replace('~\x{00a0}~', '', $string);
+
+        if (true === $strip_tags) {
+            $string = strip_tags($string);
+        }
+
         return $string;
     }
 }

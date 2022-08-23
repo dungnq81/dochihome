@@ -1,5 +1,7 @@
 <?php
 
+use Webhd\Helpers\Cast;
+
 if ( have_posts() ) :
 ?>
 <div class="swiper-section carousel-posts">
@@ -22,7 +24,7 @@ if ( have_posts() ) :
 		    // Load slides loop.
 		    while ( have_posts() && $i < 2) : the_post();
                 echo '<div class="swiper-slide">';
-                get_template_part( 'template-parts/posts/loop' );
+                get_template_part('template-parts/posts/loop', null, [ 'thumbnail_size' => 'large', 'ratio' => '16v9', 'no_scale' => true ]);
 			    echo '</div>';
 			    ++ $i;
 		    endwhile;

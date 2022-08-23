@@ -173,6 +173,9 @@ function __header()
                 </div>
                 <?php endif; ?>
             </div>
+            <div class="grid-container width-extra inline-search">
+                <?php echo do_shortcode('[inline-search class="hide-for-large"]'); ?>
+            </div>
         </div>
         <div data-sticky-container>
             <div class="site-navigation" data-sticky data-options="marginTop:0;" data-top-anchor="inner-header:bottom">

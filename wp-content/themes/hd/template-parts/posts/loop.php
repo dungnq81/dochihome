@@ -18,7 +18,10 @@ if ('default' == $ratio or !$ratio) {
 
 global $post;
 
-$post_thumbnail = get_the_post_thumbnail($post, 'medium');
+$thumbnail_size = $args['thumbnail_size'] ?? 'medium';
+$ratio_class = $args['ratio'] ?? $ratio_class;
+$scale = isset($args['no_scale']) ? '' : ' scale';
+$post_thumbnail = get_the_post_thumbnail($post, $thumbnail_size);
 
 $hide_thumb = false;
 $hide_meta = false;
@@ -35,7 +38,7 @@ if (isset($args['hide_view_detail']) && true === $args['hide_view_detail'] ) $hi
     <?php if (!$hide_thumb && $post_thumbnail) : ?>
 	<a class="d-block" href="<?= get_permalink(); ?>" aria-label="<?php echo esc_attr($post_name); ?>" tabindex="0">
 		<div class="cover">
-			<span class="after-overlay res scale ratio-<?= $ratio_class ?>"><?php echo $post_thumbnail; ?></span>
+			<span class="after-overlay res<?=$scale?> ratio-<?= $ratio_class ?>"><?php echo $post_thumbnail; ?></span>
 		</div>
 	</a>
     <?php endif; ?>

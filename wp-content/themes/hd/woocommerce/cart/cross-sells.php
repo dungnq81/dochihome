@@ -28,7 +28,7 @@ if ( $cross_sells ) :
     $heading = apply_filters( 'woocommerce_product_cross_sells_products_heading', __( 'You may be interested in&hellip;', 'woocommerce' ) );
     if ( $heading ) :
     ?>
-    <h2 class="heading-title h3"><?php echo esc_html( $heading ); ?></h2>
+        <h2 class="heading-title h3"><span><?php echo esc_html( $heading ); ?></span></h2>
     <?php endif; ?>
     <div class="products columns-<?php echo esc_attr( wc_get_loop_prop( 'columns' ) ); ?>">
         <?php foreach ( $cross_sells as $cross_sell ) : ?>

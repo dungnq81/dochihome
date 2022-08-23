@@ -71,10 +71,50 @@ if ( ! class_exists( 'Woocommerce_Plugin' ) ) {
 
             // ---------------------------------------------------------------
 
+            // Update WooCommerce Flexslider options
+            add_filter( 'woocommerce_single_product_carousel_options', function ($options) {
+
+                //$options['rtl'] = is_rtl();
+                $options['animation'] = 'slide';
+                $options['smoothHeight'] = true;
+                $options['directionNav'] = false;
+                $options['controlNav'] = 'thumbnails';
+                $options['slideshow'] = true;
+                //$options['animationSpeed'] = 500;
+                //$options['animationLoop'] = false; // Breaks photoswipe pagination if true.
+                //$options['allowOneSlide'] = false;
+
+                return $options;
+            } );
+
+            // ---------------------------------------------------------------
+
             add_action('wp', [&$this, 'visited_product_cookie']);
+
+            //...
+            add_action( 'woocommerce_product_video', [ &$this, 'acf_product_video'], 21 );
+            //add_action( 'woocommerce_product_thumbnails', [ &$this, 'acf_product_video'], 99 );
 		}
 
 		/** ---------------------------------------- */
+		/** ---------------------------------------- */
+
+        /**
+         * @return void
+         */
+        public function acf_product_video()
+        {
+            global $product;
+
+            $video_link = get_product_video( $product->get_id(), 'video_link');
+            if ($video_link) {
+                echo '<div class="product-vid">';
+                echo '<a href="' . $video_link . '" data-glyph="" class="_blank fcy-video"></a>';
+                echo '</div>';
+            }
+        }
+
+        /** ---------------------------------------- */
 		/** ---------------------------------------- */
 
         /**
@@ -234,8 +274,8 @@ if ( ! class_exists( 'Woocommerce_Plugin' ) ) {
 			// Enabling WooCommerce product gallery features (are off by default since WC 3.0.0).
 			// Add support for WC features.
 			//add_theme_support( 'wc-product-gallery-zoom' );
-			add_theme_support( 'wc-product-gallery-lightbox' );
-			add_theme_support( 'wc-product-gallery-slider' );
+			//add_theme_support( 'wc-product-gallery-lightbox' );
+			//add_theme_support( 'wc-product-gallery-slider' );
 
 			// Remove default WooCommerce wrappers.
 			remove_action( 'woocommerce_before_main_content', 'woocommerce_output_content_wrapper' );

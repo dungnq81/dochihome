@@ -28,7 +28,7 @@ if ( $related_products ) :
     $heading = apply_filters( 'woocommerce_product_related_products_heading', __( 'Related products', 'woocommerce' ) );
     if ( $heading ) :
     ?>
-    <h2 class="heading-title h3"><?php echo esc_html( $heading ); ?></h2>
+        <h2 class="heading-title h3"><span><?php echo esc_html( $heading ); ?></span></h2>
     <?php endif;
 
     $_data = [];

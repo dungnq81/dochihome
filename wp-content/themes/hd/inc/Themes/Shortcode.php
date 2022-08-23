@@ -2,6 +2,8 @@
 
 namespace Webhd\Themes;
 
+use Webhd\Helpers\Url;
+
 \defined( '\WPINC' ) || die;
 
 if ( ! class_exists( 'Shortcode' ) ) {
@@ -22,7 +24,46 @@ if ( ! class_exists( 'Shortcode' ) ) {
 			add_shortcode( 'term_menu', [ &$this, 'term_menu_shortcode' ], 11 );
 
 			add_shortcode( 'page_title_theme', [ &$this, 'page_title_theme_shortcode' ], 11 );
+
+			add_shortcode( 'inline-search', [ &$this, 'inline_search_shortcode' ], 11 );
 		}
+
+		// ------------------------------------------------------
+
+        /**
+         * @param $atts
+         * @return void
+         */
+        public function inline_search_shortcode( $atts = [] )
+        {
+            // override default attributes
+            $a = shortcode_atts(
+                [
+                    'class' => 'inline-search',
+                ],
+                array_change_key_case( (array)$atts, CASE_LOWER )
+            );
+
+            $_unique_id = esc_attr(uniqid('search-form-'));
+            $title = __('Search', 'hd' );
+            $title_for = __('Search for', 'hd' );
+            $placeholder_title = esc_attr(__('Search ...', 'hd' ));
+
+            ?>
+            <div class="inside-search <?php echo $a['class']; ?>">
+                <form role="search" action="<?php echo Url::home(); ?>" class="frm-search" method="get" accept-charset="UTF-8" data-abide novalidate>
+                    <label for="<?php echo $_unique_id; ?>" class="screen-reader-text"><?php echo $title_for; ?></label>
+                    <input id="<?php echo $_unique_id; ?>" required pattern="^(.*\S+.*)$" type="search" autocomplete="off" name="s" value="<?php echo get_search_query(); ?>" placeholder="<?php echo $placeholder_title; ?>">
+                    <button type="submit" data-glyph="">
+                        <span><?php echo $title; ?></span>
+                    </button>
+                    <?php if (class_exists( '\WooCommerce' )) : ?>
+                    <input type="hidden" name="post_type" value="product">
+                    <?php endif; ?>
+                </form>
+            </div>
+        <?php
+        }
 
 		// ------------------------------------------------------
 
@@ -46,8 +87,8 @@ if ( ! class_exists( 'Shortcode' ) ) {
 		/**
 		 * @param array $atts
 		 *
-		 * @return bool|string|void
-		 */
+		 * @return bool|string
+         */
 		public function social_menu_shortcode( $atts = [] ) {
 			// override default attributes
 			$a = shortcode_atts(
@@ -66,8 +107,8 @@ if ( ! class_exists( 'Shortcode' ) ) {
 		/**
 		 * @param array $atts
 		 *
-		 * @return bool|string|void
-		 */
+		 * @return bool|string
+         */
 		public function mobile_menu_shortcode( $atts = [] ) {
 			// override default attributes
 			$a = shortcode_atts(
@@ -87,8 +128,8 @@ if ( ! class_exists( 'Shortcode' ) ) {
 		/**
 		 * @param array $atts
 		 *
-		 * @return bool|string|void
-		 */
+		 * @return bool|string
+         */
 		public function term_menu_shortcode( $atts = [] ) {
 			// override default attributes
 			$a = shortcode_atts(
@@ -107,8 +148,8 @@ if ( ! class_exists( 'Shortcode' ) ) {
 		/**
 		 * @param array $atts
 		 *
-		 * @return bool|string|void
-		 */
+		 * @return bool|string
+         */
 		public function main_menu_shortcode( $atts = [] ) {
 			// override default attributes
 			$a = shortcode_atts(
@@ -128,8 +169,8 @@ if ( ! class_exists( 'Shortcode' ) ) {
 		/**
 		 * @param array $atts
 		 *
-		 * @return bool|string|void
-		 */
+		 * @return bool|string
+         */
 		public function vertical_menu_shortcode( $atts = [] ) {
 			// override default attributes
 			$a = shortcode_atts(
@@ -156,8 +197,8 @@ if ( ! class_exists( 'Shortcode' ) ) {
 		/**
 		 * @param array $atts
 		 *
-		 * @return bool|string|void
-		 */
+		 * @return bool|string
+         */
 		public function horizontal_menu_shortcode( $atts = [] ) {
 
 			// override default attributes

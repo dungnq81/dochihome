@@ -1160,9 +1160,15 @@ if ( ! function_exists( 'the_comment_html' ) ) {
 	 * @param mixed $id The ID, to load a single record;
 	 */
 	function the_comment_html( $id = null ) {
-		if ( is_null( $id ) ) {
-			$id = get_post()->ID;
-		}
+
+        if (get_post_type() === 'product') {
+            global $product;
+            $id = $product->get_id();
+        }
+
+        if ( is_null( $id ) ) {
+            $id = get_post()->ID;
+        }
 
 		/*
 		 * If the current post is protected by a password and
@@ -1175,7 +1181,8 @@ if ( ! function_exists( 'the_comment_html' ) ) {
 
         $wrapper_open = '<section id="comments-section" class="section comments-section comments-wrapper">';
         $wrapper_close = '</section>';
-        $post_type = get_post_type($id);
+
+        //...
         $facebook_comment = false;
         $zalo_comment = false;
 
@@ -1184,12 +1191,12 @@ if ( ! function_exists( 'the_comment_html' ) ) {
             $zalo_comment = get_field('zalo_comment', $id);
 		}
 
-		if ( comment_enable() || true === $facebook_comment || true === $zalo_comment ) {
+		if ( comments_open() || true === $facebook_comment || true === $zalo_comment ) {
 			echo $wrapper_open;
-			if ( comment_enable() ) {
-				if ( ( class_exists( '\WooCommerce' ) && 'product' != $post_type ) || ! class_exists( '\WooCommerce' ) ) {
+			if ( comments_open() ) {
+				//if ( ( class_exists( '\WooCommerce' ) && 'product' != $post_type ) || ! class_exists( '\WooCommerce' ) ) {
 					comments_template();
-				}
+				//}
 			}
 			if ( true === $facebook_comment ) {
 				get_template_part( 'template-parts/comment/facebook' );

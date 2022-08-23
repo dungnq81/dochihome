@@ -27,7 +27,7 @@ if ( $r->have_posts() ) :
     $heading = apply_filters( 'woocommerce_product_recently_viewed_products_heading', __( 'Recently viewed products', 'hd' ) );
     if ( $heading ) :
     ?>
-    <h2 class="heading-title h3"><?php echo esc_html( $heading ); ?></h2>
+    <h2 class="heading-title h3"><span><?php echo esc_html( $heading ); ?></span></h2>
     <?php endif;
 
     $_data = [];

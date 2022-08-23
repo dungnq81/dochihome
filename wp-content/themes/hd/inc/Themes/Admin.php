@@ -58,24 +58,33 @@ if ( ! class_exists( 'Admin' ) ) {
 		}
 
 		/** ---------------------------------------- */
-
-		/**
-		 * Add admin column
-		 */
-		public function admin_init() {
+        /**
+         * @return void
+         */
+        private function remove_menu() {
 
             //echo dump($GLOBALS[ 'menu' ]);
 
             // Hide menu
             $hide_menu = get_theme_mod_ssl('remove_menu_setting');
             if ($hide_menu) {
-                $array_hide_menu = explode(PHP_EOL, $hide_menu);
+                $array_hide_menu = explode("\n", $hide_menu);
                 foreach ($array_hide_menu as $menu) {
                     if ($menu) {
                         remove_menu_page($menu);
                     }
                 }
             }
+        }
+
+		/** ---------------------------------------- */
+
+		/**
+		 * Add admin column
+		 */
+		public function admin_init() {
+
+            $this->remove_menu();
 
 			// Add customize column taxonomy
 			// https://wordpress.stackexchange.com/questions/77532/how-to-add-the-category-id-to-admin-page
@@ -295,6 +304,8 @@ if ( ! class_exists( 'Admin' ) ) {
 		 * @return void
 		 */
 		public function dashboard_meta_box() {
+
+            //$this->remove_menu();
 
 			/*Incoming Links Widget*/
 			//remove_meta_box('dashboard_incoming_links', 'dashboard', 'normal');

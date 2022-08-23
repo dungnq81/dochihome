@@ -91,7 +91,7 @@ if ( ! class_exists( 'Hook' ) ) {
 			echo apply_filters( // phpcs:ignore
 				'back_to_top_output',
 				sprintf(
-					'<a title="%1$s" aria-label="%1$s" rel="nofollow" href="#" class="w-back-to-top toTop" style="opacity:0;visibility:hidden;" data-scroll-speed="%2$s" data-start-scroll="%3$s" data-glyph=""></a>',
+					'<a title="%1$s" aria-label="%1$s" rel="nofollow" href="#" class="w-back-to-top toTop o_draggable" style="opacity:0;visibility:hidden;" data-scroll-speed="%2$s" data-start-scroll="%3$s" data-glyph=""></a>',
 					esc_attr__( 'Scroll back to top', 'hd' ),
 					absint( apply_filters( 'back_to_top_scroll_speed', 400 ) ),
 					absint( apply_filters( 'back_to_top_start_scroll', 300 ) ),
@@ -108,7 +108,7 @@ if ( ! class_exists( 'Hook' ) ) {
 			$_hotline = get_theme_mod_ssl( 'hotline_setting' );
 			$_tel     = Str::stripSpace( $_hotline );
 			if ( $_tel ) {
-				echo '<div class="hotline-mobile draggable">';
+				echo '<div class="hotline-mobile o_draggable">';
 				echo '<a title="' . esc_attr( $_hotline ) . '" href="tel:' . $_tel . '">';
 				echo '<div class="hl-circle"></div><div class="hl-circle-fill"></div><div class="hl-circle-icon" data-glyph=""></div>';
 				echo '</a>';
