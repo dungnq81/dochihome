@@ -32,6 +32,8 @@ jQuery(document).ready(function (jQuery) {
             preloader: data_wqv.preloader,
             tLoading: data_wqv.preloader_label,
             autoFocusLast: false,
+			fixedContentPos: true,
+			fixedBgPos: true,
             ajax: {
                 settings: {
                     type: 'GET',

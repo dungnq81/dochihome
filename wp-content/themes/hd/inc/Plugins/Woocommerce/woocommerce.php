@@ -33,6 +33,18 @@ if ( ! function_exists( 'woocommerce_product_components_tab' ) ) {
 
 // ----------------------------------------
 
+if ( ! function_exists( 'woocommerce_product_after_sales_tab' ) ) {
+
+    /**
+     * @return void
+     */
+    function woocommerce_product_after_sales_tab() {
+        wc_get_template( 'single-product/tabs/after-sales-policy.php' );
+    }
+}
+
+// ----------------------------------------
+
 /**
  * Add default product tabs to product pages.
  *
@@ -84,11 +96,32 @@ function woocommerce_default_product_tabs( $tabs = array() ) {
         }
     }
 
+    // After-Sales Policies
+    if ( $product && function_exists('get_field')) {
+        $after_sales = get_field('after_sales', $product->get_id());
+        if (Str::stripSpace($after_sales)) {
+            $tabs['after_sales'] = [
+                'title'    => __( 'Chính sách hậu mãi', 'hd' ),
+                'priority' => 30,
+                'callback' => 'woocommerce_product_after_sales_tab',
+            ];
+        }
+    }
+
     // Reviews tab - shows comments.
-    if ( comments_open() ) {
+    $facebook_comment = false;
+    $zalo_comment = false;
+    if ( class_exists( '\ACF' ) ) {
+        $facebook_comment = get_field('facebook_comment', $product->get_id());
+        $zalo_comment = get_field('zalo_comment', $product->get_id());
+    }
+
+    if ( comments_open() || true === $facebook_comment || true === $zalo_comment ) {
+    //if ( comments_open() ) {
         $tabs['reviews'] = array(
             /* translators: %s: reviews count */
-            'title'    => sprintf( __( 'Reviews (%d)', 'woocommerce' ), $product->get_review_count() ),
+            //'title'    => sprintf( __( 'Reviews (%d)', 'woocommerce' ), $product->get_review_count() ),
+            'title'    => __( 'Đánh giá', 'hd' ),
             'priority' => 40,
             //'callback' => 'comments_template',
             'callback' => 'the_comment_html',

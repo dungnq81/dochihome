@@ -21,8 +21,13 @@ if ( ! class_exists( 'Woocommerce_Plugin' ) ) {
 			add_action( 'woocommerce_share', [ &$this, 'woocommerce_share' ], 10 );
 			add_action( 'wp_enqueue_scripts', [ &$this, 'enqueue_scripts' ], 100 );
 
-			add_action('woocommerce_before_shop_loop', [&$this, 'begin_wrapper'], 7);
-			add_action('woocommerce_before_shop_loop', [&$this, 'end_wrapper'], 31);
+			add_action('woocommerce_before_shop_loop', function () {
+                echo '<div class="woocommerce-sorting">';
+            }, 7);
+			add_action('woocommerce_before_shop_loop', function () {
+                echo '</div>';
+            }, 31);
+
 			add_action('woocommerce_email', [&$this, 'woocommerce_email_hooks'], 100, 1);
 
 			// Show only lowest prices in WooCommerce variable products
@@ -161,19 +166,6 @@ if ( ! class_exists( 'Woocommerce_Plugin' ) ) {
 				$mailer->emails['WC_Email_Customer_On_Hold_Order'],
 				'trigger'
 			));
-		}
-
-		/** ---------------------------------------- */
-		/** ---------------------------------------- */
-
-		public function begin_wrapper()
-		{
-			echo '<div class="woocommerce-sorting">';
-		}
-
-		public function end_wrapper()
-		{
-			echo '</div>';
 		}
 
 		/** ---------------------------------------- */

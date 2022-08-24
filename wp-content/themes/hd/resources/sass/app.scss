@@ -174,11 +174,11 @@
     }
     .txt-logo {
         font-weight: 400;
-        @include font-size-heading(h4);
+        @include fs-heading(h4);
         line-height: normal;
         color: $color2;
         @include mobile {
-            @include font-size-heading(h5);
+            @include fs-heading(h5);
         }
     }
     a, img {
@@ -369,12 +369,9 @@
         color: $color2;
         text-transform: uppercase;
         font-style: normal;
-        margin-bottom: 10px;
         font-weight: 500;
         font-size: $medium-font-size;
-        @include mobile {
-            margin-bottom: 5px;
-        }
+        @include media-mb(10, false, 5);
     }
     & > .heading-title {
         color: $color1;
@@ -401,12 +398,8 @@
         @include flex-align-center;
         flex-wrap: wrap;
         .top-header-inner {
-            padding-top: 15px;
-            padding-bottom: 13px;
-            @include wp-mobile {
-                padding-top: 10px;
-                padding-bottom: 10px;
-            }
+            @include media-pt(15, false, 10);
+            @include media-pb(13, false, 10);
             &.left {
                 @include flex-align-center;
                 flex-wrap: wrap;
@@ -483,9 +476,6 @@
 /** */
 .inside-header {
     background: none;
-    /*@include mobile {
-        height: 50px;
-    }*/
     &::after {
         @include absolute-full;
         box-shadow: 0 0 6px 1px rgb(0 0 0 / 10%);
@@ -495,38 +485,30 @@
         content: "";
     }
     .inner-header {
-        padding-top: 10px;
-        padding-bottom: 10px;
-        background-color: $color2;
+        background-color: transparentize($color2, 0.05);
+        backdrop-filter: blur(5px);
         position: relative;
         z-index: 1000;
+        @include media-pt(10, false, 5);
+        @include media-pb(10, false, 5);
         @include mobile {
             /*position: fixed;*/
             left: 0;
             width: 100%;
             top: 0;
             z-index: 999;
-            background-color: transparentize($color2, 0.2);
-            backdrop-filter: blur(10px);
-            padding-top: 5px;
-            padding-bottom: 5px;
         }
         .grid-container {
             display: flex;
             align-items: center;
             gap: 10%;
-            @include not-desktop {
-                gap: 20px;
-            }
-            @include mobile {
-                gap: 10px;
-            }
+            @include media-gap(false, 20, 10);
         }
     }
     .site-logo {
         flex: 0 0 auto;
         width: auto;
-        padding: 10px 30px;
+        padding: 8px 30px;
         background-color: #fff;
         border-radius: 30px;
         @include not-desktop {
@@ -538,7 +520,7 @@
         .logo {}
         .custom-logo-link {}
         .custom-logo {
-            @include media-height(32, 30, 24);
+            @include media-height(36, 30, 24);
         }
     }
     .site-navigation {
@@ -546,7 +528,7 @@
         z-index: 9;
         left: 0;
         width: 100%;
-        background-color: rgb(255 255 255 / 80%);
+        background-color: rgb(255 255 255 / 90%);
         backdrop-filter: blur(5px);
         &.sticky.is-stuck {
             position: fixed;
@@ -625,14 +607,11 @@
             justify-content: flex-end;
             .widget-group-inner {
                 background-color: #fff;
-                padding: 10px 20px;
-                gap: 30px;
+                padding: 8px 20px;
                 border-radius: 40px;
+                @include media-gap(30, false, 15);
                 @include not-desktop {
                     padding: 5px 15px;
-                }
-                @include mobile {
-                    gap: 15px;
                 }
                 & > * {
                     position: relative;
@@ -643,11 +622,12 @@
                             right: -15px;
                             height: 80%;
                             width: 1px;
-                            background-color: $medium-black;
+                            background-color: $color2;
                             top: 10%;
-                            opacity: 0.3;
+                            opacity: 0.2;
                             @include mobile {
                                 width: 0;
+                                height: 0;
                             }
                         }
                     }
@@ -665,22 +645,16 @@
                 & > a {
                     transition: 0.3s;
                     @include flex-align-center;
-                    gap: 10px;
-                    @include mobile {
-                        gap: 5px;
-                    }
+                    @include media-gap(10, false, 5);
                     &::before {
                         font-weight: 300;
                         line-height: normal;
                         @include flex-center;
                         background-color: $color2;
                         color: $color1;
-                        @include box(36);
                         border-radius: 50%;
                         font-size: fs(18);
-                        @include mobile {
-                            @include box(30);
-                        }
+                        @include media-box(36, false, 30);
                     }
                     & > div {
                         display: flex;
@@ -693,11 +667,8 @@
                             line-height: normal;
                             font-weight: 300;
                             text-transform: uppercase;
-                            font-size: fs(12);
                             opacity: 0.9;
-                            @include mobile {
-                                font-size: fs(11);
-                            }
+                            @include media-fs(12, false, 11);
                         }
                         p {
                             font-weight: 600;
@@ -1373,17 +1344,13 @@
 
 /** */
 .section.archive-posts {
-    padding-bottom: 60px;
-    padding-top: 50px;
     position: relative;
     /*background-image: url("../img/news_bg.jpg");*/
     background-size: 100% auto;
     background-position: left bottom;
     background-repeat: no-repeat;
-    @include not-desktop {
-        padding-top: 30px;
-        padding-bottom: 40px;
-    }
+    @include media-pt(50, 30);
+    @include media-pt(60, 40);
     .feature-posts {
         @include right-fullwidth(15, 10, false);
         @include media-mb(40, 30, 20);
@@ -1905,6 +1872,7 @@ article.product {
             }
         }
         .onsale {
+            opacity: 0;
             position: absolute;
             top: -32px;
             margin: 0;
@@ -2077,11 +2045,11 @@ article.product {
 
     /** */
     .product-detail-inner {
+        overflow: hidden;
         display: flex;
         flex-flow: row wrap;
         gap: 30px;
         position: relative;
-       /* align-items: flex-start;*/
         padding-bottom: 30px;
         @include media-gap(30, 20);
         @include media-pb(30, 20);
@@ -2089,6 +2057,7 @@ article.product {
             flex-direction: column;
         }
         .onsale {
+            opacity: 0;
             position: absolute;
             top: 10px;
             margin: 5px 0 0 5px;
@@ -2126,14 +2095,12 @@ article.product {
             @include grid-self(2, 1, 30);
             display: flex;
             flex-direction: column;
-            gap: 15px;
             width: unset;
-           /* overflow: hidden;*/
+            @include media-gap(15, 10, false);
             @include not-desktop {
                 @include grid-self(2, 1, 20);
                 flex: 0 0 50%;
                 max-width: 50%;
-                gap: 10px;
             }
             @include wp-mobile {
                 flex: 0 0 100%;
@@ -2151,8 +2118,8 @@ article.product {
                 }
             }
             .flex-control-thumbs {
+                @include media-gap(10, false, 5);
                 display: flex;
-                gap: 10px;
                 list-style: none;
                 margin: 0;
                 overflow-x: auto;
@@ -2162,9 +2129,6 @@ article.product {
                 align-items: flex-start;
                 @include _webkit-scrollbar(0, 0);
                 overscroll-behavior-inline: contain;
-                @include mobile {
-                    gap: 5px;
-                }
                 li {
                     @include grid-column2(6, 5, 4, 10, 5);
                     scroll-snap-align: start;
@@ -2329,7 +2293,7 @@ article.product {
         a.button.wc-forward {
             background: none;
             padding: 4px 0 0;
-            font-weight: 400;
+            font-weight: 300;
             font-size: $small-font-size;
             color: $color-red !important;
             margin-top: 0;
@@ -2520,17 +2484,68 @@ article.product {
         }
     }
     .woocommerce-product-details__short-description {
-        color: $medium-black;
-        font-size: $small-font-size;
-        font-weight: 300;
-        /*margin-bottom: 15px;*/
-        padding: 10px;
-        /*border: 1px dashed red;*/
-        margin-top: 15px;
-        background-color: #fafafa;
-        p {
-            color: currentColor;
-            line-height: 1.6;
+        .woocommerce-description {
+            /*box-shadow: inset 0 0 0 1px rgb(0 0 0 / 2%);*/
+            box-shadow: inset 0 0 0 1px transparentize($color3, 0.9);
+            color: $medium-black;
+            font-size: $small-font-size;
+            font-weight: 300;
+            padding: 10px;
+            margin-top: 15px;
+            p {
+                color: currentColor;
+                line-height: 1.6;
+            }
+            ul:last-child {
+                margin-bottom: 0;
+            }
+        }
+        .woocommerce-excerpt {
+            margin-top: 15px;
+            padding: 15px;
+            box-shadow: inset 0 0 0 1px transparentize($color2, 0.6);
+            background-color: #fafafa;
+            .listbox {
+                list-style: none;
+                margin: 0;
+                gap: 5px;
+                display: flex;
+                flex-direction: column;
+                li {
+                    .linkbox-inner {
+                        gap: 10px;
+                        display: flex;
+                        align-items: center;
+                        &::before {
+                            border-radius: 50%;
+                            border: 1px solid transparentize($color2, 0.5);
+                            color: $color2;
+                            font-weight: 900;
+                            @include flex-center;
+                            flex: 0 0 24px;
+                            max-width: 24px;
+                            height: 24px;
+                            font-size: 12px;
+                        }
+                        & > div {
+                            display: flex;
+                            flex-flow: row wrap;
+                            align-items: baseline;
+                            .title {
+                                font-weight: 300;
+                                color: $medium-black;
+                                margin-right: 5px;
+                                line-height: normal;
+                            }
+                            .desc {
+                                letter-spacing: 0.5px;
+                                font-weight: 500;
+                                /*@include fs-heading(h6);*/
+                            }
+                        }
+                    }
+                }
+            }
         }
     }
 
@@ -2660,18 +2675,17 @@ article.product {
     padding: 0;
     margin: 0 auto 30px auto;
     position: sticky;
-    top: 60px;
+    top: 125px;
     z-index: 98;
     overflow: visible;
-    gap: 8px;
+    gap: 5px;
     background: none;
     flex-wrap: wrap;
     @include not-desktop {
-        top: 8px;
+        top: 120px;
     }
     @include mobile {
         justify-content: flex-start;
-        /*top: 60px;*/
     }
     &::before, &::after {
         display: none;
@@ -2690,14 +2704,14 @@ article.product {
         a {
             color: $medium-black;
             font-weight: 400;
-            padding: 0 15px;
+            padding: 0 10px;
             text-transform: uppercase;
             font-size: $small-font-size;
             display: flex;
             align-items: center;
-            height: 38px;
-            @include mobile {
-                height: 30px;
+            @include media-height(38, false, 30);
+            @include not-desktop {
+                font-size: fs(13);
                 text-transform: unset;
                 font-weight: 300;
             }
@@ -4150,11 +4164,34 @@ body.woocommerce-order-received {
 .wqv-product-info form.cart {
     display: flex;
     flex-direction: column;
-    /*gap: 15px;*/
+    gap: 10px;
     .quantity {}
-    .single_add_to_cart_button {
+    .single_add_to_cart_button, .quick_buy_button {
         @include flex-center;
-        margin-top: 15px;
+        max-width: 90%;
+        line-height: normal;
+        height: 44px;
+        &:hover {
+            color: #ffffff;
+            background: #ff0000;
+        }
+    }
+    .quick_buy_button {
+        color: #ffffff;
+        line-height: normal;
+        height: 44px;
+        text-align: center;
+        text-transform: capitalize;
+        font-weight: 600;
+        border-radius: 3px;
+        transition: all 0.3s ease;
+        margin-top: 0;
+        background: #fdbc0e;
+        padding: 0 16px;
+        &:hover {
+            color: #ffffff;
+            background: #ff0000;
+        }
     }
 }
 
@@ -4162,8 +4199,8 @@ body.woocommerce-order-received {
     .woocommerce-variation-add-to-cart {
         margin-bottom: 15px;
         display: flex;
-        align-items: center;
         gap: 15px;
+        flex-direction: column;
         .button.single_add_to_cart_button {
             margin: 0;
             background-color: $color2;
@@ -4289,6 +4326,12 @@ body.woocommerce-order-received {
 /** */
 .woocommerce div.product form.cart div.quantity {
     /*display: none !important;*/
+    @include mobile {
+        float: none;
+        margin-right: 0;
+        flex: 0 0 100%;
+        max-width: 100%;
+    }
 }
 .woocommerce div.product .product_meta {
     .posted_in, .sku_wrapper {
@@ -4446,6 +4489,59 @@ body.woocommerce-order-received {
         }
         .slick-slide {
             background-color: #fff;
+        }
+    }
+}
+
+/** */
+.wqv-product-info {
+    .wqv-product-content {
+        .woocommerce-product-rating {
+            margin-bottom: 0;
+        }
+        .woocommerce-product-details__short-description {
+            .woocommerce-description {}
+            .woocommerce-excerpt {
+                .listbox {
+                    list-style: none;
+                    margin-left: 0;
+                    display: flex;
+                    gap: 10px;
+                    flex-direction: column;
+                    .linkbox-inner {
+                        gap: 10px;
+                        display: flex;
+                        align-items: center;
+                        &::before {
+                            border-radius: 50%;
+                            border: 1px solid transparentize($color2, 0.5);
+                            color: $color2;
+                            font-weight: 900;
+                            @include flex-center;
+                            flex: 0 0 24px;
+                            max-width: 24px;
+                            height: 24px;
+                            font-size: 12px;
+                        }
+                        & > div {
+                            display: flex;
+                            flex-flow: row wrap;
+                            align-items: baseline;
+                            .title {
+                                font-weight: 300;
+                                color: $medium-black;
+                                margin-right: 5px;
+                                line-height: normal;
+                            }
+                            .desc {
+                                letter-spacing: 0.5px;
+                                font-weight: 500;
+                                /*@include fs-heading(h6);*/
+                            }
+                        }
+                    }
+                }
+            }
         }
     }
 }

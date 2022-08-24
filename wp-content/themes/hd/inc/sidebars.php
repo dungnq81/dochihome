@@ -122,12 +122,26 @@ if ( ! function_exists( '__register_sidebars' ) ) {
             ]
         );
 
-        // Product Descriptions Sidebar
+        // Product Infomations Sidebar
         register_sidebar(
             [
                 'container'     => false,
                 'id'            => 'w-product-desc-sidebar',
-                'name'        => __('Product Descriptions', 'hd'),
+                'name'        => __('Products Infomation', 'hd'),
+                'description' => __('Widgets added here will appear in products infomation sidebar.', 'hd'),
+                'before_widget' => '<div class="%2$s">',
+                'after_widget'  => '</div>',
+                'before_title'  => '<span>',
+                'after_title'   => '</span>',
+            ]
+        );
+
+        // Product Desc Sidebar
+        register_sidebar(
+            [
+                'container'     => false,
+                'id'            => 'w-product-excerpt-sidebar',
+                'name'        => __('Products Description', 'hd'),
                 'description' => __('Widgets added here will appear in products description sidebar.', 'hd'),
                 'before_widget' => '<div class="%2$s">',
                 'after_widget'  => '</div>',

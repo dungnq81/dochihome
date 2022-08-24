@@ -8,6 +8,7 @@ import toString from "lodash/toString";
 /** current-device*/
 import device from "current-device";
 const is_mobile = () => device.mobile();
+const is_tablet = () => device.tablet();
 
 /** Fancybox*/
 import { Fancybox } from "@fancyapps/ui";
@@ -370,6 +371,10 @@ spg_swiper.forEach((el, index) => {
             },
         }
 
+        if ( is_mobile() || is_tablet() ) {
+            thumbs_options.cssMode = !0;
+        }
+
         swiper_thumbs = new Swiper('.thumbs-' + _rand, thumbs_options);
     }
 
@@ -398,6 +403,10 @@ spg_swiper.forEach((el, index) => {
             images_options.thumbs = {
                 swiper: swiper_thumbs,
             }
+        }
+
+        if ( is_mobile() || is_tablet() ) {
+            images_options.cssMode = !0;
         }
 
         swiper_images = new Swiper('.images-' + _rand, images_options);
@@ -774,7 +783,7 @@ w_swiper.forEach((el, index) => {
         && !("centered" in _obj_options)
         && !("freemode" in _obj_options)
         && !("progressbar" in _obj_options)
-        && is_mobile()
+        && ( is_mobile() || is_tablet() )
         && !el.classList.contains('sync-swiper')) {
         _result_options.cssMode = !0; /* API CSS Scroll Snap */
     }

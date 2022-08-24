@@ -136,49 +136,49 @@ function __header()
     $header_right_sidebar = is_active_sidebar('w-header-right-sidebar');
 
     ?>
-    <div class="inside-header" id="inside-header">
-        <div class="inner-header" id="inner-header">
-            <div class="grid-container width-extra">
-                <?php if ($header_left_sidebar) : ?>
-                    <div class="widget-group left">
+    <div data-sticky-container class="p-relative">
+        <div class="inside-header" id="inside-header" data-sticky data-options="marginTop:0;">
+            <div class="inner-header" id="inner-header">
+                <div class="grid-container width-extra">
+                    <?php if ($header_left_sidebar) : ?>
+                        <div class="widget-group left">
+                            <div class="widget-group-inner">
+                                <?php dynamic_sidebar('w-header-left-sidebar'); ?>
+                            </div>
+                        </div>
+                    <?php endif; ?>
+                    <div class="site-logo">
+                        <?php
+                        site_title_or_logo();
+                        $logo_title = get_theme_mod_ssl('logo_title_setting');
+                        if (Str::stripSpace($logo_title)) :
+                            echo '<div class="logo-title">';
+                            echo $logo_title ? '<a title href="' . Url::home() . '" rel="home"><span class="txt-logo">' . $logo_title . '</span></a>' : null;
+                            echo '</div>';
+                        endif;
+                        ?>
+                    </div>
+                    <?php if ($header_right_sidebar) : ?>
+                    <div class="widget-group right">
                         <div class="widget-group-inner">
-                            <?php dynamic_sidebar('w-header-left-sidebar'); ?>
+                            <?php dynamic_sidebar('w-header-right-sidebar'); ?>
+                        </div>
+                        <div class="reveal-wrapper">
+                            <div class="reveal-inner">
+                                <?php //echo do_shortcode('[elementor-template id="1242"]'); ?>
+                                <button class="close-button" type="button">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
                         </div>
                     </div>
-                <?php endif; ?>
-                <div class="site-logo">
-                    <?php
-                    site_title_or_logo();
-                    $logo_title = get_theme_mod_ssl('logo_title_setting');
-                    if (Str::stripSpace($logo_title)) :
-                        echo '<div class="logo-title">';
-                        echo $logo_title ? '<a title href="' . Url::home() . '" rel="home"><span class="txt-logo">' . $logo_title . '</span></a>' : null;
-                        echo '</div>';
-                    endif;
-                    ?>
+                    <?php endif; ?>
                 </div>
-                <?php if ($header_right_sidebar) : ?>
-                <div class="widget-group right">
-                    <div class="widget-group-inner">
-                        <?php dynamic_sidebar('w-header-right-sidebar'); ?>
-                    </div>
-                    <div class="reveal-wrapper">
-                        <div class="reveal-inner">
-                            <?php //echo do_shortcode('[elementor-template id="1242"]'); ?>
-                            <button class="close-button" type="button">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                        </div>
-                    </div>
+                <div class="grid-container width-extra inline-search">
+                    <?php echo do_shortcode('[inline-search class="hide-for-large"]'); ?>
                 </div>
-                <?php endif; ?>
             </div>
-            <div class="grid-container width-extra inline-search">
-                <?php echo do_shortcode('[inline-search class="hide-for-large"]'); ?>
-            </div>
-        </div>
-        <div data-sticky-container>
-            <div class="site-navigation" data-sticky data-options="marginTop:0;" data-top-anchor="inner-header:bottom">
+            <div class="site-navigation">
                 <div class="grid-container width-extra">
                     <?php get_template_part('template-parts/header/primary-menu'); ?>
                     <?php //get_template_part('template-parts/header/second-menu'); ?>

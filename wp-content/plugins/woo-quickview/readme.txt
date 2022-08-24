@@ -3,7 +3,7 @@ Contributors: shapedplugin, rubel_miah, shamimmiashuhagh, khalilu
 Tags: woocommerce quick view, woocommerce lightbox, best woocommerce quick view, product quick view, product popup, quick view, free quick view, woo quick view, quickview, product lightbox, product modal, woocommerce, woocommerce extension
 Requires at least: 4.8
 Tested up to: 6.0.1
-Stable tag: 2.0.6
+Stable tag: 2.0.7
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
@@ -198,6 +198,12 @@ The WordPress codex contains <a href="https://codex.wordpress.org/Managing_Plugi
 
 
 == Changelog ==
+
+= 2.0.7 - Aug 23, 2022 =
+* Fix: Compatibility issue with Extra product options For WooCommerce plugin.
+* Fix: In mobile view, Quick view is not in a fixed layout, it scrolls in the body scrollbar.
+* Fix: JS warning in the plugin admin page.
+* Tested: WordPress 6.8.2 compatibility.
 
 = 2.0.6 - Jul 14, 2022 =
 * Tested: WordPress 6.7.0 compatibility.

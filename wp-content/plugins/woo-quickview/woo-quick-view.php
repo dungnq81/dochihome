@@ -3,13 +3,13 @@
  * Plugin Name:   Quick View for WooCommerce
  * Plugin URI:    https://shapedplugin.com/plugin/woocommerce-quick-view-pro/?ref=1
  * Description:   <strong>Quick View for WooCommerce</strong> allows you to add a quick view button in product loop so that visitors to quickly view product information (using AJAX) in a nice modal without opening the product page.
- * Version:       2.0.6
+ * Version:       2.0.7
  * Author:        ShapedPlugin
  * Author URI:    https://shapedplugin.com/
  * Text Domain:   woo-quickview
  * Domain Path:   /languages
  * WC requires at least: 4.0
- * WC tested up to: 6.7.0
+ * WC tested up to: 6.8.2
  *
  * @package Woo_Quick_View
  */
@@ -48,7 +48,7 @@ if ( ! class_exists( 'SP_Woo_Quick_View' ) && ! class_exists( 'SP_Woo_Quick_View
 		 *
 		 * @var string
 		 */
-		public $version = '2.0.6';
+		public $version = '2.0.7';
 
 		/**
 		 * Router
@@ -159,6 +159,9 @@ if ( ! class_exists( 'SP_Woo_Quick_View' ) && ! class_exists( 'SP_Woo_Quick_View
 		 */
 		public function init_filters() {
 			add_filter( 'plugin_action_links', array( $this, 'add_plugin_action_links' ), 10, 2 );
+			if ( ( class_exists( 'WEPOF_Extra_Product_Options' ) ) ) {
+				add_filter( 'thwepof_hook_names_before_single_product', array( $this, 'woo_extra_product_addons' ), 80, 2 );
+			}
 		}
 
 		/**
@@ -167,6 +170,17 @@ if ( ! class_exists( 'SP_Woo_Quick_View' ) && ! class_exists( 'SP_Woo_Quick_View
 		public function load_text_domain() {
 			load_textdomain( 'woo-quickview', WP_LANG_DIR . '/woo-quickview/languages/woo-quick-view-' . apply_filters( 'plugin_locale', get_locale(), 'woo-quickview' ) . '.mo' );
 			load_plugin_textdomain( 'woo-quickview', false, dirname( plugin_basename( __FILE__ ) ) . '/languages/' );
+		}
+
+		/**
+		 * Support fields of Woocommerce Custom Product Addons.
+		 *
+		 * @param  array $value quick view button action hook.
+		 * @return array
+		 */
+		public function woo_extra_product_addons( $value ) {
+			$value = array( 'wqv_product_content' );
+			return $value;
 		}
 
 		/**
@@ -267,7 +281,7 @@ if ( ! class_exists( 'SP_Woo_Quick_View' ) && ! class_exists( 'SP_Woo_Quick_View
 			if ( $woocommerce->version >= '3.0' ) {
 				$product_id = $product->get_id();
 			} else {
-				//$product_id = $product->id ?? null;
+				$product_id = $product->id;
 			}
 			$wqv_plugin_settings = get_option( '_sp_wqv_options' );
 			$enable_quick_view   = isset( $wqv_plugin_settings['wqvpro_enable_quick_view'] ) ? $wqv_plugin_settings['wqvpro_enable_quick_view'] : true;
@@ -294,7 +308,7 @@ if ( ! class_exists( 'SP_Woo_Quick_View' ) && ! class_exists( 'SP_Woo_Quick_View
 				if ( $woocommerce->version >= '3.0' ) {
 					$product_id = $product->get_id();
 				} else {
-					//$product_id = $product->id;
+					$product_id = $product->id;
 				}
 			}
 			$settings               = get_option( '_sp_wqv_options' );

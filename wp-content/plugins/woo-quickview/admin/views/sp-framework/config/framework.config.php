@@ -791,7 +791,7 @@ SP_WQV_Framework::createSection(
 				'title'    => __( 'Custom JS', 'woo-quickview' ),
 				'settings' => array(
 					'theme' => 'dracula',
-					'mode'  => 'js',
+					'mode'  => 'javascript',
 				),
 			),
 		),

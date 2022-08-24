@@ -178,10 +178,9 @@
 }
 
 /* ====== Fade effect ====== */
-.mfp-fade {
-	/* start state */
-	/* animate in */
-	/* animate out */
+.mfp-bg.mfp-wqv,
+.mfp-wrap.mfp-wqv{
+	z-index: 99999;
 }
 
 .mfp-fade.mfp-bg {
@@ -215,11 +214,6 @@
 }
 
 /* ====== Zoom in effect ====== */
-.mfp-zoom-in {
-	/* start state */
-	/* animate in */
-	/* animate out */
-}
 
 .mfp-zoom-in .mfp-with-anim {
 	opacity: 0;
@@ -251,11 +245,6 @@
 }
 
 /* ====== Newspaper effect ====== */
-.mfp-newspaper {
-	/* start state */
-	/* animate in */
-	/* animate out */
-}
 
 .mfp-newspaper .mfp-with-anim {
 	opacity: 0;
@@ -288,11 +277,6 @@
 }
 
 /* ====== Move-horizontal effect ====== */
-.mfp-move-horizontal {
-	/* start state */
-	/* animate in */
-	/* animate out */
-}
 
 .mfp-move-horizontal .mfp-with-anim {
 	opacity: 0;
@@ -324,11 +308,6 @@
 }
 
 /* ====== Move-from-top effect ====== */
-.mfp-move-from-top {
-	/* start state */
-	/* animate in */
-	/* animate out */
-}
 
 .mfp-move-from-top .mfp-content {
 	vertical-align: middle;
@@ -364,12 +343,6 @@
 }
 
 /* ====== 3d unfold ====== */
-.mfp-3d-unfold {
-	/* start state */
-	/* animate in */
-	/* animate out */
-}
-
 .mfp-3d-unfold .mfp-content {
 	perspective: 2000px;
 }
@@ -405,11 +378,6 @@
 }
 
 /* ====== Zoom-out effect ====== */
-.mfp-zoom-out {
-	/* start state */
-	/* animate in */
-	/* animate out */
-}
 
 .mfp-zoom-out .mfp-with-anim {
 	opacity: 0;
@@ -441,11 +409,6 @@
 }
 
 /* ====== Slide bottom effect ====== */
-.mfp-slide-bottom {
-	/* start state */
-	/* animate in */
-	/* animate out */
-}
 
 .mfp-slide-bottom .mfp-with-anim {
 	opacity: 0;

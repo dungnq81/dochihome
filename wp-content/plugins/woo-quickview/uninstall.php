@@ -45,7 +45,7 @@ function wqv_delete_plugin_data() {
 // Load WPTP file.
 require plugin_dir_path( __FILE__ ) . '/woo-quick-view.php';
 $wqv_plugin_settings = get_option( '_sp_wqv_options' );
-$wqv_data_delete     = $wqv_plugin_settings['wqvpro_data_remove'];
+$wqv_data_delete     = isset( $wqv_plugin_settings['wqvpro_data_remove'] ) ? $wqv_plugin_settings['wqvpro_data_remove'] : false;
 
 if ( $wqv_data_delete ) {
 	wqv_delete_plugin_data();

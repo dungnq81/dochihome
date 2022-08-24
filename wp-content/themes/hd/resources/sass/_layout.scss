@@ -1053,20 +1053,20 @@ figure.wp-caption, figure.caption {
         border-radius: 100%;
         @include flex-center;
         backface-visibility: hidden;
-        @include mobile {
+        /*@include mobile {
             @include box(46);
             top: 22px;
             left: 22px;
-        }
+        }*/
         i, svg {
             color: $white;
             font-size: 24px;
             fill: $white;
             @include box(24);
-            @include mobile {
+            /*@include mobile {
                 font-size: 24px;
                 @include box(24);
-            }
+            }*/
         }
         &::before {
             font-weight: 900;
@@ -1466,13 +1466,6 @@ figure.wp-caption, figure.caption {
         }
     }
 }
-.off-canvas-content {
-    /*margin-left: 70px !important;
-    margin-right: 15px;*/
-    @include desktop {
-        /*display: none;*/
-    }
-}
 
 /** */
 .dropdown.menu li {
@@ -1525,16 +1518,13 @@ figure.wp-caption, figure.caption {
             transform: translateX(-50%);
             bottom: 0;
             .swiper-pagination-bullet {
-                @include box(5);
                 border-radius: 2px;
                 opacity: 0.6;
                 margin: 5px;
                 transition: 0.3s;
                 background-color: darken($color2, 5);
                 box-shadow: 0 0 0 2px darken($color2, 5);
-                @include mobile {
-                    @include box(4);
-                }
+                @include media-box(5, false, 4);
                 &:focus {
                     outline: none;
                 }
@@ -1633,6 +1623,7 @@ figure.wp-caption, figure.caption {
     .swiper-slide {
         height: auto;
         overflow: unset;
+        opacity: 0;
         .item {
             position: relative;
             height: 100%;
@@ -1640,6 +1631,9 @@ figure.wp-caption, figure.caption {
     }
     &.swiper-initialized {
         z-index: 3;
+        .swiper-slide {
+            opacity: 1;
+        }
         & ~ .swiper-controls {
             .swiper-button {
                 transform: translateY(-50%);
@@ -1726,11 +1720,10 @@ figure.wp-caption, figure.caption {
                     position: relative;
                     & > a {
                         background: none;
-                        color: $black;
                         position: relative;
+                        @include hover_color($black, $color1);
                         &:hover {
                             background: none;
-                            color: $color1;
                             /*backdrop-filter: blur(10px);*/
                         }
                     }
@@ -2330,14 +2323,6 @@ figure.wp-caption, figure.caption {
 }
 
 /** */
-ul.menu li img {
-    /*display: none;*/
-}
-.pswp {
-    z-index: 99999;
-}
-
-/** */
 .menu-fallback {
     display: flex;
     flex-wrap: wrap;
@@ -2371,11 +2356,8 @@ ul.menu li img {
 .contact-form {
     background-color: transparentize($color1, 0.2);
     backdrop-filter: blur(4px);
-    padding: 40px;
     border-radius: 15px;
-    @include not-desktop {
-        padding: 20px;
-    }
+    @include media-padding2(40, 20);
     .wpcf7-form-control-wrap {
         position: relative;
         input {
@@ -2386,10 +2368,7 @@ ul.menu li img {
             height: 42px;
             line-height: normal;
             border-radius: 21px;
-            margin-bottom: 30px;
-            @include not-desktop {
-                margin-bottom: 15px;
-            }
+            @include media-mb(30, 15);
         }
         textarea {
             border-radius: 21px;
@@ -2398,10 +2377,7 @@ ul.menu li img {
             box-shadow: none;
             border: 1px solid rgb(0 0 0 / 30%);
             line-height: normal;
-            margin-bottom: 30px;
-            @include not-desktop {
-                margin-bottom: 15px;
-            }
+            @include media-mb(30, 15);
         }
         .wpcf7-not-valid-tip {
             position: absolute;
@@ -2427,7 +2403,6 @@ ul.menu li img {
         &::after {
             display: none;
         }
-        span {}
     }
 }
 
@@ -2618,10 +2593,7 @@ ul.menu li img {
 
 /** */
 .single-contactpage {
-    padding-top: 60px;
-    @include mobile {
-        padding-top: 40px;
-    }
+    @include media-pt(60, 50, 40);
     .heading-title {
         @include font-size-heading(h4);
         color: $color1;
@@ -2942,7 +2914,6 @@ ul.menu li img {
                 }
             }
             &.wpg__thumbs {
-                /*.product-vid {}*/
                 @include media-gap(10, false, 5);
                 .swiper-thumbs {
                     position: relative;
@@ -2966,13 +2937,13 @@ ul.menu li img {
                         }
                         &.swiper-slide-active {
                             .woocommerce-product-gallery__image {
-                                border-color: transparentize($color2, 0.5);
+                                border-color: transparentize($color2, 0.8);
                             }
                         }
                         &.swiper-slide-thumb-active {
                             .woocommerce-product-gallery__image {
                                 filter: brightness(1);
-                                border-color: transparentize($color3, 0.2);
+                                border-color: transparentize($color2, 0.1);
                             }
                         }
                     }
@@ -3001,10 +2972,10 @@ ul.menu li img {
                             .swiper-button {
                                 opacity: 1;
                                 &:hover {
-                                    border-color: transparentize($color3, 0.2);
+                                    border-color: transparentize($color2, 0.1);
                                     opacity: 1;
                                     &::before {
-                                        color: transparentize($color3, 0.2);
+                                        color: transparentize($color2, 0.1);
                                     }
                                 }
                             }
@@ -3168,10 +3139,7 @@ ul.menu li img {
 
     /** */
     .woocommerce-tabs-panel {
-        margin-bottom: 40px;
-        @include mobile {
-            margin-bottom: 20px;
-        }
+        @include media-mb(40, false, 20);
     }
     .tab-heading-title {
         position: relative;
@@ -3266,11 +3234,8 @@ ul.menu li img {
     .product-attributes-inner {
         display: flex;
         align-items: flex-start;
-        gap: 20px;
         flex-flow: row wrap;
-        @include mobile {
-            gap: 10px;
-        }
+        @include media-gap(20, false, 10);
         .woocommerce {
             flex: 1 1 0;
             &.widget_layered_nav_filters {

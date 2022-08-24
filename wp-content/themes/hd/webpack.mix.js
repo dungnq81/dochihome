@@ -1,5 +1,8 @@
 /** */
 let mix = require('laravel-mix');
+//const purgeCss = require('@fullhuman/postcss-purgecss');
+//const path = require('path');
+
 mix.webpackConfig({
     resolve: {
         // options for resolving module requests
@@ -15,7 +18,7 @@ mix.webpackConfig({
         //  on the global var jQuery
         jquery: 'jQuery'
     },
-    devtool: 'source-map'
+    //devtool: 'source-map'
 });
 
 /** */
@@ -38,16 +41,16 @@ mix.disableNotifications()
 
 /** */
 mix.setPublicPath('assets')
-    .sourceMaps()
+    //.sourceMaps()
+
+    //.sass('resources/sass/fonts.scss', 'css')
+    .sass('resources/sass/admin.scss', 'css')
+    //.sass('resources/sass/editor-style.scss', 'css')
+    .sass('resources/sass/plugins.scss', 'css')
+    .sass('resources/sass/app.scss', 'css')
 
     //.js('resources/js/login.js', 'js')
     //.js('resources/js/admin.js', 'js')
     //.js('resources/js/draggable.js', 'js/plugins')
     //.js('resources/js/parallax-scroll.js', 'js/plugins')
-    .js('resources/js/app.js', 'js')
-
-    //.sass('resources/sass/fonts.scss', 'css')
-    //.sass('resources/sass/admin.scss', 'css')
-    //.sass('resources/sass/editor-style.scss', 'css')
-    //.sass('resources/sass/plugins.scss', 'css')
-    .sass('resources/sass/app.scss', 'css');
+    .js('resources/js/app.js', 'js');

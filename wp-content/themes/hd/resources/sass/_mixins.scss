@@ -120,7 +120,23 @@
 }
 
 /** */
-@mixin media-widget($d: 100, $t: false, $m: false) {
+@mixin media-fs($d: 16, $t: false, $m: false) {
+    @if (is-int($d) or $d == 0) {
+        font-size: fs($d);
+    }
+    @if (is-int($t) or $t == 0) {
+        @include not-desktop {
+            font-size: fs($t);
+        }
+    }
+    @if (is-int($m) or $m == 0) {
+        @include mobile {
+            font-size: fs($m);
+        }
+    }
+}
+
+@mixin media-width($d: 100, $t: false, $m: false) {
     @if (is-int($d) or $d == 0) {
         width: fs($d);
     }
@@ -148,6 +164,22 @@
     @if (is-int($m) or $m == 0) {
         @include mobile {
             height: fs($m);
+        }
+    }
+}
+
+@mixin media-box($d: 30, $t: false, $m: false) {
+    @if (is-int($d) or $d == 0) {
+        @include box($d);
+    }
+    @if (is-int($t) or $t == 0) {
+        @include not-desktop {
+            @include box($t);
+        }
+    }
+    @if (is-int($m) or $m == 0) {
+        @include mobile {
+            @include box($d);
         }
     }
 }
