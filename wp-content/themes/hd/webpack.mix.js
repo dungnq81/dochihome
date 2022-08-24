@@ -18,7 +18,7 @@ mix.webpackConfig({
         //  on the global var jQuery
         jquery: 'jQuery'
     },
-    //devtool: 'source-map'
+    devtool: 'source-map'
 });
 
 /** */
@@ -41,12 +41,12 @@ mix.disableNotifications()
 
 /** */
 mix.setPublicPath('assets')
-    //.sourceMaps()
+    .sourceMaps()
 
     //.sass('resources/sass/fonts.scss', 'css')
-    .sass('resources/sass/admin.scss', 'css')
+    //.sass('resources/sass/admin.scss', 'css')
     //.sass('resources/sass/editor-style.scss', 'css')
-    .sass('resources/sass/plugins.scss', 'css')
+    //.sass('resources/sass/plugins.scss', 'css')
     .sass('resources/sass/app.scss', 'css')
 
     //.js('resources/js/login.js', 'js')
