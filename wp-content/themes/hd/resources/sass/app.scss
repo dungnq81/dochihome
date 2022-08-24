@@ -2053,9 +2053,6 @@ article.product {
         padding-bottom: 30px;
         @include media-gap(30, 20);
         @include media-pb(30, 20);
-        @include wp-mobile {
-            flex-direction: column;
-        }
         .onsale {
             opacity: 0;
             position: absolute;
