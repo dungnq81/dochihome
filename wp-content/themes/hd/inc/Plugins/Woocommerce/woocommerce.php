@@ -458,7 +458,7 @@ if (!function_exists('hd_get_gallery_image_html')) {
             return '<div data-thumb="' . esc_url($thumbnail_src[0]) . '" data-thumb-alt="' . esc_attr($alt_text) . '" class="wpg__image cover"><a class="res' . $auto . ' ratio-' . $ratio_class . '" href="' . esc_url($full_src[0]) . '">' . $image . '</a>' . $popup_image . '</div>';
         }
 
-        return '<div data-thumb="' . esc_url($thumbnail_src[0]) . '" data-thumb-alt="' . esc_attr($alt_text) . '" class="woocommerce-product-gallery__image cover"><a class="res' . $auto . ' ratio-' . $ratio_class . '" href="' . esc_url($full_src[0]) . '">' . $image . '</a></div>';
+        return '<div data-thumb="' . esc_url($thumbnail_src[0]) . '" data-thumb-alt="' . esc_attr($alt_text) . '" class="woocommerce-product-gallery__image wpg__thumb cover"><a class="res' . $auto . ' ratio-' . $ratio_class . '" href="' . esc_url($full_src[0]) . '">' . $image . '</a></div>';
     }
 }
 

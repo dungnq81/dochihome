@@ -150,6 +150,12 @@ $(() => {
         $(this).next('.image-popup').trigger('click');
     });
 
+    /** */
+    const wpg__thumb = $('.wpg__thumb');
+    wpg__thumb.on('click', function (e) {
+        e.preventDefault();
+    });
+
     //...
     const _qty_controls = () => {
 
