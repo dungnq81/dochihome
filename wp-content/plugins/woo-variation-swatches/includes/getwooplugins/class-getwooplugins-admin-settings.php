@@ -62,7 +62,7 @@ if ( ! class_exists( 'GetWooPlugins_Admin_Settings', false ) ) :
 			do_action( 'getwooplugins_update_options', $current_tab );
 			do_action( 'getwooplugins_update_options' );
 
-			self::add_message( esc_html__( 'Your settings have been saved.', 'woo-variation-swatches' ) );
+			self::add_message( esc_html__( 'Your settings have been saved.', 'woo-variation-gallery' ) );
 
 			do_action( 'getwooplugins_settings_saved' );
 		}
@@ -192,37 +192,14 @@ if ( ! class_exists( 'GetWooPlugins_Admin_Settings', false ) ) :
             return  str_ireplace(array('[', ']'),array('_', ''),$id);
         }
         
-        /**
-        * Escape JSON for use on HTML or attribute text nodes.
-        *
-        * @param string $json JSON to escape.
-        * @param bool   $html True if escaping for HTML text node, false for attributes. Determines how quotes are handled.
-        *
-        * @return string Escaped JSON.
-        */
-        public static function esc_json( $json, $html = false ) {
-            return _wp_specialchars(
-                $json,
-                $html ? ENT_NOQUOTES : ENT_QUOTES, // Escape quotes in attribute nodes only.
-                'UTF-8',                           // json_encode() outputs UTF-8 (really just ASCII), not the blog's charset.
-                true                               // Double escape entities: `&amp;` -> `&amp;amp;`.
-            );
-        }
-        
         public static function popup_template_links($value){
             
             if( $value['is_pro'] ){
-                return sprintf('<a data-template="%s" data-tip="%s" class="getwooplugins-help-tip pro-modal" href="#"></a>', esc_attr(self::normalize_id( $value['id'] )), esc_html__('Check how this feature works', 'woo-variation-swatches'));
+                return sprintf('<a data-template="%s" class="pro-modal" href="#"></a>', esc_attr(self::normalize_id( $value['id'] )));
             }
             
             if($value['help_preview'] ){
-                return sprintf('<a data-template="%s" data-tip="%s" class="getwooplugins-help-tip help-modal" href="#"></a>', esc_attr(self::normalize_id( $value['id'] )), esc_html__('See how this feature works', 'woo-variation-swatches'));
-            }
-        }
-        
-        public static function dependency_attribute($value){
-            if($value && isset( $value['require'] )){
-                   return sprintf('data-gwp_dependency="%s"', self::esc_json(wp_json_encode( $value['require'] )));
+                return sprintf('<a data-template="%s" class="help-modal" href="#"></a>', esc_attr(self::normalize_id( $value['id'] )));
             }
         }
         
@@ -299,6 +276,9 @@ if ( ! class_exists( 'GetWooPlugins_Admin_Settings', false ) ) :
 				$description       = $field_description['description'];
 				$tooltip_html      = $field_description['tooltip_html'];
                 
+                // Dependent field
+                $require = isset( $value['require'] ) ? "data-dependency='" . wc_esc_json(wp_json_encode( $value['require'] )) . "'" : '';
+
                 $classes = array();
                 
                 if( $value['is_pro'] ){
@@ -367,9 +347,9 @@ if ( ! class_exists( 'GetWooPlugins_Admin_Settings', false ) ) :
 					case 'tel':
 						$option_value = $value['value'];
 
-						?><tr class="<?php echo esc_attr($class) ?>" <?php echo self::dependency_attribute($value); ?>>
+						?><tr class="<?php echo esc_attr($class) ?>" <?php echo $require; // WPCS: XSS ok. ?>>
 							<th scope="row" class="titledesc">
-								<label for="<?php echo esc_attr( self::normalize_id( $value['id'] ) ); ?>"><?php echo esc_html( $value['title'] ); ?> <?php echo wp_kses_post( $tooltip_html); ?></label>
+								<label for="<?php echo esc_attr( self::normalize_id( $value['id'] ) ); ?>"><?php echo esc_html( $value['title'] ); ?> <?php echo $tooltip_html; // WPCS: XSS ok. ?></label>
 							    <?php echo self::popup_template_links($value); // WPCS: XSS ok. ?>
 							</th>
 							<td class="forminp forminp-<?php echo esc_attr( sanitize_title( $value['type'] ) ); ?>">
@@ -402,7 +382,7 @@ if ( ! class_exists( 'GetWooPlugins_Admin_Settings', false ) ) :
 									<?php echo esc_html( $value['suffix'] ); ?>
 									</span>
 </div>
-									<?php echo wp_kses_post( $description); ?>
+									<?php echo $description; // WPCS: XSS ok. ?>
 							</td>
 						</tr>
 						<?php
@@ -412,9 +392,9 @@ if ( ! class_exists( 'GetWooPlugins_Admin_Settings', false ) ) :
 					case 'color':
 						$option_value = $value['value'];
 						?>
-						<tr class="<?php echo esc_attr($class) ?>" <?php echo self::dependency_attribute($value); ?>>
+						<tr class="<?php echo esc_attr($class) ?>" <?php echo $require; // WPCS: XSS ok. ?>>
 							<th scope="row" class="titledesc">
-								<label for="<?php echo esc_attr( self::normalize_id( $value['id'] )  ); ?>"><?php echo esc_html( $value['title'] ); ?> <?php echo wp_kses_post($tooltip_html); ?></label>
+								<label for="<?php echo esc_attr( self::normalize_id( $value['id'] )  ); ?>"><?php echo esc_html( $value['title'] ); ?> <?php echo $tooltip_html; // WPCS: XSS ok. ?></label>
                                 <?php echo self::popup_template_links($value); // WPCS: XSS ok. ?>
                             </th>
 							<td class="forminp forminp-<?php echo esc_attr( sanitize_title( $value['type'] ) ); ?>">
@@ -427,7 +407,7 @@ if ( ! class_exists( 'GetWooPlugins_Admin_Settings', false ) ) :
 									value="<?php echo esc_attr( $option_value ); ?>"
 									class="color-picker-alpha <?php echo esc_attr( $value['class'] ); ?>"
 									placeholder="<?php echo esc_attr( $value['placeholder'] ); ?>"
-									<?php echo implode( ' ', $custom_attributes ); // WPCS: XSS ok. ?>/>&lrm; <?php echo wp_kses_post( $description); ?></td></tr>
+									<?php echo implode( ' ', $custom_attributes ); // WPCS: XSS ok. ?>/>&lrm; <?php echo $description; // WPCS: XSS ok. ?></td></tr>
 						<?php
 						break;
 
@@ -436,9 +416,9 @@ if ( ! class_exists( 'GetWooPlugins_Admin_Settings', false ) ) :
 						$option_value = $value['value'];
 
 						?>
-						<tr class="<?php echo esc_attr($class) ?>" <?php echo self::dependency_attribute($value); ?>>
+						<tr class="<?php echo esc_attr($class) ?>" <?php echo $require; // WPCS: XSS ok. ?>>
 							<th scope="row" class="titledesc">
-								<label for="<?php echo esc_attr( self::normalize_id( $value['id'] )  ); ?>"><?php echo esc_html( $value['title'] ); ?> <?php echo wp_kses_post($tooltip_html); ?></label>
+								<label for="<?php echo esc_attr( self::normalize_id( $value['id'] )  ); ?>"><?php echo esc_html( $value['title'] ); ?> <?php echo $tooltip_html; // WPCS: XSS ok. ?></label>
  							    <?php echo self::popup_template_links($value); // WPCS: XSS ok. ?>
 							</th>
 							<td class="forminp forminp-<?php echo esc_attr( sanitize_title( $value['type'] ) ); ?>">
@@ -453,7 +433,7 @@ if ( ! class_exists( 'GetWooPlugins_Admin_Settings', false ) ) :
 									<?php echo implode( ' ', $custom_attributes ); // WPCS: XSS ok. ?>
 									><?php echo esc_textarea( $option_value ); // WPCS: XSS ok. ?></textarea>
 									
-									<?php echo wp_kses_post($description); ?>
+									<?php echo $description; // WPCS: XSS ok. ?>
 							</td>
 						</tr>
 						<?php
@@ -464,9 +444,9 @@ if ( ! class_exists( 'GetWooPlugins_Admin_Settings', false ) ) :
 					case 'multiselect':
 						$option_value = $value['value'];
 						?>
-						<tr class="<?php echo esc_attr($class) ?>" <?php echo self::dependency_attribute($value); ?>>
+						<tr class="<?php echo esc_attr($class) ?>" <?php echo $require; // WPCS: XSS ok. ?>>
 							<th scope="row" class="titledesc">
-								<label for="<?php echo esc_attr( self::normalize_id( $value['id'] )  ); ?>"><?php echo esc_html( $value['title'] ); ?> <?php echo wp_kses_post($tooltip_html); // WPCS: XSS ok. ?></label>
+								<label for="<?php echo esc_attr( self::normalize_id( $value['id'] )  ); ?>"><?php echo esc_html( $value['title'] ); ?> <?php echo $tooltip_html; // WPCS: XSS ok. ?></label>
 							    <?php echo self::popup_template_links($value); // WPCS: XSS ok. ?>
 							</th>
 							<td class="forminp forminp-<?php echo esc_attr( sanitize_title( $value['type'] ) ); ?>">
@@ -490,7 +470,7 @@ if ( ! class_exists( 'GetWooPlugins_Admin_Settings', false ) ) :
 											?>
 										><?php echo esc_html( $val ); ?></option>
 									<?php } ?>
-								</select> <?php echo wp_kses_post( $description); // WPCS: XSS ok. ?>
+								</select> <?php echo $description; // WPCS: XSS ok. ?>
 							</td>
 						</tr>
 						<?php
@@ -500,9 +480,9 @@ if ( ! class_exists( 'GetWooPlugins_Admin_Settings', false ) ) :
 					case 'radio':
 						$option_value = $value['value'];
 						?>
-						<tr class="<?php echo esc_attr($class) ?>" <?php echo self::dependency_attribute($value); ?>>
+						<tr class="<?php echo esc_attr($class) ?>" <?php echo $require; // WPCS: XSS ok. ?>>
 							<th scope="row" class="titledesc">
-								<label for="<?php echo esc_attr( self::normalize_id( $value['id'] )  ); ?>"><?php echo esc_html( $value['title'] ); ?> <?php echo wp_kses_post($tooltip_html); // WPCS: XSS ok. ?></label>
+								<label for="<?php echo esc_attr( self::normalize_id( $value['id'] )  ); ?>"><?php echo esc_html( $value['title'] ); ?> <?php echo $tooltip_html; // WPCS: XSS ok. ?></label>
 								<?php echo self::popup_template_links($value); // WPCS: XSS ok. ?>
 							</th>
 							<td class="forminp forminp-<?php echo esc_attr( sanitize_title( $value['type'] ) ); ?>">
@@ -528,7 +508,7 @@ if ( ! class_exists( 'GetWooPlugins_Admin_Settings', false ) ) :
 									?>
 									</ul>
 									
-									<?php echo wp_kses_post($description); ?>
+									<?php echo $description; // WPCS: XSS ok. ?>
 								</fieldset>
 							</td>
 						</tr>
@@ -538,7 +518,7 @@ if ( ! class_exists( 'GetWooPlugins_Admin_Settings', false ) ) :
 					// Checkbox input.
 					case 'checkbox':
 						$option_value     = $value['value'];
-						$visibility_class = array($class);
+						$visibility_class = array();
 
 						if ( ! isset( $value['hide_if_checked'] ) ) {
 							$value['hide_if_checked'] = false;
@@ -558,9 +538,9 @@ if ( ! class_exists( 'GetWooPlugins_Admin_Settings', false ) ) :
 
 						if ( ! isset( $value['checkboxgroup'] ) || 'start' === $value['checkboxgroup'] ) {
 							?>
-								<tr class="<?php echo esc_attr( implode( ' ', $visibility_class ) ); ?>" <?php echo self::dependency_attribute($value); ?>>
+								<tr class="<?php echo esc_attr($class) ?>" <?php echo $require; // WPCS: XSS ok. ?> class="<?php echo esc_attr( implode( ' ', $visibility_class ) ); ?>">
 									<th scope="row" class="titledesc">
-									<label for="<?php echo esc_attr( self::normalize_id( $value['id'] )  ); ?>"><?php echo esc_html( $value['title'] ); ?><?php echo wp_kses_post( $tooltip_html); ?></label>
+									<label for="<?php echo esc_attr( self::normalize_id( $value['id'] )  ); ?>"><?php echo esc_html( $value['title'] ); ?><?php echo $tooltip_html; // WPCS: XSS ok. ?></label>
 									<?php echo self::popup_template_links($value); // WPCS: XSS ok. ?>
 									</th>
 									<td class="forminp forminp-checkbox">
@@ -588,8 +568,8 @@ if ( ! class_exists( 'GetWooPlugins_Admin_Settings', false ) ) :
 									value="1"
 									<?php checked( $option_value, 'yes' ); ?>
 									<?php echo implode( ' ', $custom_attributes ); // WPCS: XSS ok. ?>
-								/> <?php echo wp_kses_post($description); ?>
-							</label> <?php echo wp_kses_post( $tooltip_html); ?>
+								/> <?php echo $description; // WPCS: XSS ok. ?>
+							</label> <?php echo $tooltip_html; // WPCS: XSS ok. ?>
 						<?php
 
 						if ( ! isset( $value['checkboxgroup'] ) || 'end' === $value['checkboxgroup'] ) {
@@ -624,13 +604,13 @@ if ( ! class_exists( 'GetWooPlugins_Admin_Settings', false ) ) :
 						}
 
 						?>
-						<tr class="<?php echo esc_attr($class) ?> single_select_page" <?php echo self::dependency_attribute($value); ?>>
+						<tr class="<?php echo esc_attr($class) ?> single_select_page" <?php echo $require; // WPCS: XSS ok. ?>>
 							<th scope="row" class="titledesc">
-								<label><?php echo esc_html( $value['title'] ); ?> <?php echo wp_kses_post($tooltip_html); ?></label>
+								<label><?php echo esc_html( $value['title'] ); ?> <?php echo $tooltip_html; // WPCS: XSS ok. ?></label>
 							    <?php echo self::popup_template_links($value); // WPCS: XSS ok. ?>
 							</th>
 							<td class="forminp">
-								<?php echo str_replace( ' id=', " data-placeholder='" . esc_attr__( 'Select a page&hellip;', 'woo-variation-swatches' ) . "' style='" . esc_attr($value['css']) . "' class='" . esc_attr($value['class']) . "' id=", wp_dropdown_pages( $args ) ); // WPCS: XSS ok. ?> <?php echo wp_kses_post($description); ?>
+								<?php echo str_replace( ' id=', " data-placeholder='" . esc_attr__( 'Select a page&hellip;', 'woocommerce' ) . "' style='" . $value['css'] . "' class='" . $value['class'] . "' id=", wp_dropdown_pages( $args ) ); // WPCS: XSS ok. ?> <?php echo $description; // WPCS: XSS ok. ?>
 							</td>
 						</tr>
 						<?php
@@ -644,15 +624,15 @@ if ( ! class_exists( 'GetWooPlugins_Admin_Settings', false ) ) :
 							$page                = get_post( $option_value );
 							$option_display_name = sprintf(
 								/* translators: 1: page name 2: page ID */
-								__( '%1$s (ID: %2$s)', 'woo-variation-swatches' ),
+								__( '%1$s (ID: %2$s)', 'woocommerce' ),
 								$page->post_title,
 								$option_value
 							);
 						}
 						?>
-						<tr class="<?php echo esc_attr($class) ?> single_select_page" <?php echo self::dependency_attribute($value); ?>>
+						<tr class="<?php echo esc_attr($class) ?> single_select_page" <?php echo $require; // WPCS: XSS ok. ?>>
 							<th scope="row" class="titledesc">
-								<label for="<?php echo esc_attr( self::normalize_id( $value['id'] ) ); ?>"><?php echo esc_html( $value['title'] ); ?> <?php echo wp_kses_post($tooltip_html); ?></label>
+								<label for="<?php echo esc_attr( self::normalize_id( $value['id'] ) ); ?>"><?php echo esc_html( $value['title'] ); ?> <?php echo $tooltip_html; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?></label>
 								<?php echo self::popup_template_links($value); // WPCS: XSS ok. ?>
 							</th>
 							<td class="forminp forminp-<?php echo esc_attr( sanitize_title( $value['type'] ) ); ?>">
@@ -662,17 +642,17 @@ if ( ! class_exists( 'GetWooPlugins_Admin_Settings', false ) ) :
 									style="<?php echo esc_attr( $value['css'] ); ?>"
 									class="<?php echo esc_attr( $value['class'] ); ?>"
 									<?php echo implode( ' ', $custom_attributes ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
-									data-placeholder="<?php esc_attr_e( 'Search for a page&hellip;', 'woo-variation-swatches' ); ?>"
+									data-placeholder="<?php esc_attr_e( 'Search for a page&hellip;', 'woocommerce' ); ?>"
 									data-allow_clear="true"
-									data-exclude="<?php echo self::esc_json( wp_json_encode( $value['args']['exclude'] ) ); ?>"
+									data-exclude="<?php echo wc_esc_json( wp_json_encode( $value['args']['exclude'] ) ); ?>"
 									>
 									<option value=""></option>
 									<?php if ( ! is_null( $page ) ) { ?>
 										<option value="<?php echo esc_attr( $option_value ); ?>" selected="selected">
-										<?php echo wp_strip_all_tags( $option_display_name ); ?>
+										<?php echo wp_strip_all_tags( $option_display_name ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
 										</option>
 									<?php } ?>
-								</select> <?php echo wp_kses_post($description); ?>
+								</select> <?php echo $description; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
 							</td>
 						</tr>
 						<?php
@@ -691,14 +671,14 @@ if ( ! class_exists( 'GetWooPlugins_Admin_Settings', false ) ) :
 							$state   = '*';
 						}
 						?>
-						<tr class="<?php echo esc_attr($class) ?>" <?php echo self::dependency_attribute($value); ?>>
+						<tr class="<?php echo esc_attr($class) ?>" <?php echo $require; // WPCS: XSS ok. ?>>
 							<th scope="row" class="titledesc">
-								<label for="<?php echo esc_attr( self::normalize_id( $value['id'] )  ); ?>"><?php echo esc_html( $value['title'] ); ?> <?php echo wp_kses_post($tooltip_html); ?></label>
+								<label for="<?php echo esc_attr( self::normalize_id( $value['id'] )  ); ?>"><?php echo esc_html( $value['title'] ); ?> <?php echo $tooltip_html; // WPCS: XSS ok. ?></label>
 								<?php echo self::popup_template_links($value); // WPCS: XSS ok. ?>
 							</th>
-							<td class="forminp"><select name="<?php echo esc_attr( $value['id'] ); ?>" style="<?php echo esc_attr( $value['css'] ); ?>" data-placeholder="<?php esc_attr_e( 'Choose a country / region&hellip;', 'woo-variation-swatches' ); ?>" aria-label="<?php esc_attr_e( 'Country / Region', 'woo-variation-swatches' ); ?>" class="wc-enhanced-select">
+							<td class="forminp"><select name="<?php echo esc_attr( $value['id'] ); ?>" style="<?php echo esc_attr( $value['css'] ); ?>" data-placeholder="<?php esc_attr_e( 'Choose a country / region&hellip;', 'woocommerce' ); ?>" aria-label="<?php esc_attr_e( 'Country / Region', 'woocommerce' ); ?>" class="wc-enhanced-select">
 								<?php WC()->countries->country_dropdown_options( $country, $state ); ?>
-							</select> <?php echo wp_kses_post($description); ?>
+							</select> <?php echo $description; // WPCS: XSS ok. ?>
 							</td>
 						</tr>
 						<?php
@@ -716,13 +696,13 @@ if ( ! class_exists( 'GetWooPlugins_Admin_Settings', false ) ) :
 
 						asort( $countries );
 						?>
-						<tr class="<?php echo esc_attr($class) ?>" <?php echo self::dependency_attribute($value); ?>>
+						<tr class="<?php echo esc_attr($class) ?>" <?php echo $require; // WPCS: XSS ok. ?>>
 							<th scope="row" class="titledesc">
-								<label for="<?php echo esc_attr( self::normalize_id( $value['id'] )  ); ?>"><?php echo esc_html( $value['title'] ); ?> <?php echo wp_kses_post($tooltip_html); // WPCS: XSS ok. ?></label>
+								<label for="<?php echo esc_attr( self::normalize_id( $value['id'] )  ); ?>"><?php echo esc_html( $value['title'] ); ?> <?php echo $tooltip_html; // WPCS: XSS ok. ?></label>
 								<?php echo self::popup_template_links($value); // WPCS: XSS ok. ?>
 							</th>
 							<td class="forminp">
-								<select multiple="multiple" name="<?php echo esc_attr( $value['id'] ); ?>[]" style="width:350px" data-placeholder="<?php esc_attr_e( 'Choose countries / regions&hellip;', 'woo-variation-swatches' ); ?>" aria-label="<?php esc_attr_e( 'Country / Region', 'woo-variation-swatches' ); ?>" class="wc-enhanced-select">
+								<select multiple="multiple" name="<?php echo esc_attr( $value['id'] ); ?>[]" style="width:350px" data-placeholder="<?php esc_attr_e( 'Choose countries / regions&hellip;', 'woocommerce' ); ?>" aria-label="<?php esc_attr_e( 'Country / Region', 'woocommerce' ); ?>" class="wc-enhanced-select">
 									<?php
 									if ( ! empty( $countries ) ) {
 										foreach ( $countries as $key => $val ) {
@@ -730,7 +710,7 @@ if ( ! class_exists( 'GetWooPlugins_Admin_Settings', false ) ) :
 										}
 									}
 									?>
-								</select> <?php echo wp_kses_post( $description); ?> <br /><a class="select_all button" href="#"><?php esc_html_e( 'Select all', 'woo-variation-swatches' ); ?></a> <a class="select_none button" href="#"><?php esc_html_e( 'Select none', 'woo-variation-swatches' ); ?></a>
+								</select> <?php echo ( $description ) ? $description : ''; // WPCS: XSS ok. ?> <br /><a class="select_all button" href="#"><?php esc_html_e( 'Select all', 'woocommerce' ); ?></a> <a class="select_none button" href="#"><?php esc_html_e( 'Select none', 'woocommerce' ); ?></a>
 							</td>
 						</tr>
 						<?php
@@ -739,16 +719,16 @@ if ( ! class_exists( 'GetWooPlugins_Admin_Settings', false ) ) :
 					// Days/months/years selector.
 					case 'relative_date_selector':
 						$periods      = array(
-							'days'   => __( 'Day(s)', 'woo-variation-swatches' ),
-							'weeks'  => __( 'Week(s)', 'woo-variation-swatches' ),
-							'months' => __( 'Month(s)', 'woo-variation-swatches' ),
-							'years'  => __( 'Year(s)', 'woo-variation-swatches' ),
+							'days'   => __( 'Day(s)', 'woocommerce' ),
+							'weeks'  => __( 'Week(s)', 'woocommerce' ),
+							'months' => __( 'Month(s)', 'woocommerce' ),
+							'years'  => __( 'Year(s)', 'woocommerce' ),
 						);
 						$option_value = wc_parse_relative_date_option( $value['value'] );
 						?>
-						<tr class="<?php echo esc_attr($class) ?>" <?php echo self::dependency_attribute($value); ?>>
+						<tr class="<?php echo esc_attr($class) ?>" <?php echo $require; // WPCS: XSS ok. ?>>
 							<th scope="row" class="titledesc">
-								<label for="<?php echo esc_attr( self::normalize_id( $value['id'] )  ); ?>"><?php echo esc_html( $value['title'] ); ?> <?php echo wp_kses_post($tooltip_html);  ?></label>
+								<label for="<?php echo esc_attr( self::normalize_id( $value['id'] )  ); ?>"><?php echo esc_html( $value['title'] ); ?> <?php echo $tooltip_html; // WPCS: XSS ok. ?></label>
 								<?php echo self::popup_template_links($value); // WPCS: XSS ok. ?>
 							</th>
 							<td class="forminp">
@@ -770,7 +750,7 @@ if ( ! class_exists( 'GetWooPlugins_Admin_Settings', false ) ) :
 										echo '<option value="' . esc_attr( $value ) . '"' . selected( $option_value['unit'], $value, false ) . '>' . esc_html( $label ) . '</option>';
 									}
 									?>
-								</select> <?php echo wp_kses_post( $description ); // WPCS: XSS ok. ?>
+								</select> <?php echo ( $description ) ? $description : ''; // WPCS: XSS ok. ?>
 							</td>
 						</tr>
 						<?php
@@ -817,8 +797,7 @@ if ( ! class_exists( 'GetWooPlugins_Admin_Settings', false ) ) :
 			if ( $tooltip_html && in_array( $value['type'], array( 'checkbox' ), true ) ) {
 				$tooltip_html = '<p class="description">' . $tooltip_html . '</p>';
 			} elseif ( $tooltip_html ) {
-				// $tooltip_html = wc_help_tip( $tooltip_html );
-				$tooltip_html = sprintf('<span class="getwooplugins-help-tip" data-tip="%s"></span>', esc_attr($tooltip_html));
+				$tooltip_html = wc_help_tip( $tooltip_html );
 			}
 
 			return array(
@@ -877,13 +856,13 @@ if ( ! class_exists( 'GetWooPlugins_Admin_Settings', false ) ) :
 						break;
 					case 'multiselect':
 					case 'multi_select_countries':
-						$value = array_filter( array_map( 'sanitize_text_field', (array) $raw_value ) );
+						$value = array_filter( array_map( 'wc_clean', (array) $raw_value ) );
 						break;
 					case 'image_width':
 						$value = array();
 						if ( isset( $raw_value['width'] ) ) {
-							$value['width']  = sanitize_text_field( $raw_value['width'] );
-							$value['height'] = sanitize_text_field( $raw_value['height'] );
+							$value['width']  = wc_clean( $raw_value['width'] );
+							$value['height'] = wc_clean( $raw_value['height'] );
 							$value['crop']   = isset( $raw_value['crop'] ) ? 1 : 0;
 						} else {
 							$value['width']  = $option['default']['width'];
@@ -904,7 +883,7 @@ if ( ! class_exists( 'GetWooPlugins_Admin_Settings', false ) ) :
 						$value = wc_parse_relative_date_option( $raw_value );
 						break;
 					default:
-						$value = sanitize_text_field( $raw_value );
+						$value = wc_clean( $raw_value );
 						break;
 				}
 

@@ -277,7 +277,7 @@ const GWPAdminHelper = (($) => {
 
         $(document.body).on('init_tooltips', function () {
 
-            $('.tips, .help_tip, .woocommerce-help-tip, .getwooplugins-help-tip').tipTip({
+            $('.tips, .help_tip, .woocommerce-help-tip').tipTip({
                 'attribute' : 'data-tip',
                 'fadeIn'    : 50,
                 'fadeOut'   : 50,
@@ -308,7 +308,7 @@ const GWPAdminHelper = (($) => {
 
         try {
             $(document.body).on('init_form_field_dependency', function () {
-                $('[data-gwp_dependency]').GWPFormFieldDependency()
+                $('[data-dependency]').GWPFormFieldDependency()
             }).trigger('init_form_field_dependency')
 
         } catch (err) {

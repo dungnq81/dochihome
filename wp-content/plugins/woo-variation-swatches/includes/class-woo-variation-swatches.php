@@ -44,8 +44,7 @@
                 // Register with hook
                 add_action( 'init', array( $this, 'language' ), 1 );
                 add_action( 'init', array( $this, 'add_image_sizes' ) );
-                // [wvs_show_archive_variation product_id="ID"]
-                add_shortcode( 'wvs_show_archive_variation', array( $this, 'show_archive_variation_shortcode' ) );
+                add_shortcode( 'wvs_show_archive_variation', array( $this, 'show_archive_page_swatches' ) );
             }
             
             public function init() {
@@ -63,14 +62,6 @@
             }
             
             public function show_archive_page_swatches() {
-                return false;
-            }
-            
-            public function show_archive_page_swatches_by_id( $product_id ) {
-                return false;
-            }
-            
-            public function show_archive_variation_shortcode( $raw_attributes = array() ) {
                 return false;
             }
             

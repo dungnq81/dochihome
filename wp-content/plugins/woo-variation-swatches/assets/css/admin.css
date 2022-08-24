@@ -1,22 +1,24 @@
 /*!
- * Variation Swatches for WooCommerce
- *
- * Author: Emran Ahmed ( emran.bd.08@gmail.com )
- * Date: 8/17/2022, 4:28:25 PM
+ * Variation Swatches for WooCommerce 
+ * 
+ * Author: Emran Ahmed ( emran.bd.08@gmail.com ) 
+ * Date: 7/8/2022, 11:04:45 PM
  * Released under the GPLv3 license.
  */
 .button.button-danger {
-  color: var(--wc-primary-text);
-  background-color: var(--wc-red);
-  border-color: var(--wc-red);
+  color: #FFFFFF;
+  background-color: #AF2D2B;
+  border-color: #A62D2B;
+  -webkit-box-shadow: 0 1px 0 #A72D2B;
+          box-shadow: 0 1px 0 #A72D2B;
+  vertical-align: top;
+}
+.button.button-danger:hover, .button.button-danger:focus, .button.button-danger:active, .button.button-danger.active {
+  color: #FFFFFF;
+  background: #C9302C;
 }
 
-.woo_variation_swatches_tab.pro-inactive a {
-  color: var(--wc-primary-text);
-  background-color: var(--wc-blue);
-}
-
-[data-gwp_dependency]:not(.dependency-show) {
+[data-dependency]:not(.dependency-show) {
   display: none !important;
 }
 
@@ -40,7 +42,7 @@
 .wvs-go-pro-action-link > a {
   font-weight: bold;
   text-transform: capitalize;
-  color: var(--wc-primary);
+  color: #9c27b0;
   text-shadow: 1px 1px 1px #eee;
 }
 
@@ -53,6 +55,11 @@
   height: 30px;
   border: rgba(0, 0, 0, 0.2) 1px solid;
   border-radius: 2px;
+}
+
+.woo-variation-swatches-pro_tab.pro-inactive a {
+  background-color: var(--wc-primary);
+  color: var(--wc-content-bg);
 }
 
 #woo-variation-swatches-tutorials-wrapper {
@@ -177,13 +184,13 @@
   border-color: #5D5E61;
 }
 #woo-variation-swatches-tutorials-wrapper .tutorial-description-wrapper .tutorial-buttons .button.button-pro {
-  background-color: var(--wc-blue);
-  color: var(--wc-content-bg);
-  border: 1px solid var(--wc-blue);
+  background-color: #39B54A;
+  color: #FFFFFF;
+  border: 1px solid #39B54A;
 }
 #woo-variation-swatches-tutorials-wrapper .tutorial-description-wrapper .tutorial-buttons .button.button-pro:hover {
-  background: var(--wc-blue);
-  border-color: var(--wc-blue);
+  background: #3FC851;
+  border-color: #3FC851;
 }
 
 .woo-variation-swatches-group-table-list tbody > :nth-child(odd) {
@@ -192,7 +199,7 @@
 
 .woo-variation-swatches-group-section-wrapper .woocommerce-BlankState-message::before {
   font-family: "Dashicons";
-  content: "\f307";
+  content: "\F307";
 }
 
 .woo-variation-swatches-variation-product-options-wrapper {

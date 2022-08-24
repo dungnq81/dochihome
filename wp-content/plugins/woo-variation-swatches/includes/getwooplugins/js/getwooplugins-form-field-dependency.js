@@ -19,11 +19,10 @@
         return class {
 
             DEFAULTS = {
-                attribute : 'data-gwp_dependency',
+                attribute : 'data-dependency',
             }
 
-            constructor(element, options, name) {
-                this.name     = name
+            constructor(element, options = {}) {
                 this.$element = $(element)
                 this.settings = $.extend(true, {}, this.DEFAULTS, options)
                 this.init();
@@ -85,8 +84,7 @@
 
                 let values = []
 
-                if (selector && $(selector).length > 0) {
-
+                if (selector) {
                     let inputType = $(selector).prop('type').toLowerCase()
 
                     let currentSelector = selector;
@@ -369,10 +367,6 @@
                 // $( document.body ).triggerHandler( 'depends-on',[selector, condition, this])
 
             }
-
-            destroy() {
-                this.$element.removeData(this.name)
-            }
         }
 
     })(jQuery)
@@ -388,7 +382,7 @@
                     let data     = $element.data(PluginName)
 
                     if (!data) {
-                        data = new ClassName($element, $.extend({}, options), PluginName)
+                        data = new ClassName($element, $.extend({}, options))
                         $element.data(PluginName, data)
                     }
 

@@ -135,9 +135,17 @@ function __header()
     $header_left_sidebar = is_active_sidebar('w-header-left-sidebar');
     $header_right_sidebar = is_active_sidebar('w-header-right-sidebar');
 
+    $data_top_anchor = '';
+
+    $topheader_left = is_active_sidebar('w-topheader-left-sidebar');
+    $topheader_right = is_active_sidebar('w-topheader-right-sidebar');
+    if ($topheader_left || $topheader_right) {
+        $data_top_anchor = ' data-top-anchor="top-header:bottom"';
+    }
+
     ?>
     <div data-sticky-container class="p-relative">
-        <div class="inside-header" id="inside-header" data-sticky data-options="marginTop:0;">
+        <div class="inside-header" id="inside-header" data-sticky data-options="marginTop:0;"<?=$data_top_anchor?>>
             <div class="inner-header" id="inner-header">
                 <div class="grid-container width-extra">
                     <?php if ($header_left_sidebar) : ?>

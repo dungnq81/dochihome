@@ -46,13 +46,13 @@ $(() => {
     });
 
     /** */
-    let woo_image = $(".woocommerce-product-gallery__image");
-    woo_image.each(function () {
-        $(this).on('click', function (e) {
-            e.preventDefault();
-            $(".woocommerce-product-gallery__trigger").trigger('click');
-        });
-    });
+    // let woo_image = $(".woocommerce-product-gallery__image");
+    // woo_image.each(function () {
+    //     $(this).on('click', function (e) {
+    //         e.preventDefault();
+    //         $(".woocommerce-product-gallery__trigger").trigger('click');
+    //     });
+    // });
 
     /** */
     $('.variations_form').each(function () {
@@ -60,7 +60,7 @@ $(() => {
         // when variation is found, do something
         $(this).on('found_variation', function (event, variation) {
             if (variation.price_html !== '') {
-                $(".product-detail-inner p.price").html(variation.price_html);
+                $(".product-detail-inner p.single-price").html(variation.price_html);
             }
         });
     });
@@ -472,9 +472,7 @@ spg_swiper.forEach((el, index) => {
 
         /** */
         const reset_variations = $( '.reset_variations' );
-        reset_variations.on( 'click', function() {
-            //...
-        });
+        //reset_variations.on( 'click', function() {});
     }
 });
 
