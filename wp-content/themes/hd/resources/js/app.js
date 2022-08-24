@@ -372,8 +372,8 @@ spg_swiper.forEach((el, index) => {
                 },
             },
             navigation: {
-                nextEl: '.prev-thumbs-' + _rand,
-                prevEl: '.next-thumbs-' + _rand,
+                prevEl: '.prev-thumbs-' + _rand,
+                nextEl: '.next-thumbs-' + _rand,
             },
         }
 
@@ -400,8 +400,8 @@ spg_swiper.forEach((el, index) => {
                 }
             },
             navigation: {
-                nextEl: '.prev-images-' + _rand,
-                prevEl: '.next-images-' + _rand,
+                prevEl: '.prev-images-' + _rand,
+                nextEl: '.next-images-' + _rand,
             },
         };
 
