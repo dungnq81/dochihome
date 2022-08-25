@@ -1293,7 +1293,7 @@
                 margin-bottom: 0;
                 padding-top: 10px;
                 a {
-                    color: $medium-black;
+                    @include hover_color($black, $color1);
                 }
             }
             .terms {
