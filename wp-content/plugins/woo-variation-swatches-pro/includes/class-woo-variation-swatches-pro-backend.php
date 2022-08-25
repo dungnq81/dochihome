@@ -66,9 +66,9 @@
                 }
                 
                 $row_meta = apply_filters( 'woo_variation_swatches_pro_row_meta', array(
-                    'docs'    => '<a target="_blank" href="' . esc_url( 'https://getwooplugins.com/documentation/woocommerce-variation-swatches/' ) . '" aria-label="' . esc_attr__( 'View documentation', 'woo-variation-swatches' ) . '">' . esc_html__( 'Documentation', 'woo-variation-swatches' ) . '</a>',
-                    'videos'  => '<a target="_blank" href="' . esc_url( 'https://www.youtube.com/channel/UC6F21JXiLUPO7sm-AYlA3Ig/videos' ) . '" aria-label="' . esc_attr__( 'Video Tutorials', 'woo-variation-swatches' ) . '">' . esc_html__( 'Video Tutorials', 'woo-variation-swatches' ) . '</a>',
-                    'support' => '<a target="_blank" href="' . esc_url( 'https://getwooplugins.com/tickets/' ) . '" aria-label="' . esc_attr__( 'Help & Support', 'woo-variation-swatches' ) . '">' . esc_html__( 'Help & Support', 'woo-variation-swatches' ) . '</a>',
+                    'docs'    => '<a target="_blank" href="' . esc_url( 'https://getwooplugins.com/documentation/woocommerce-variation-swatches/' ) . '" aria-label="' . esc_attr__( 'View documentation', 'woo-variation-swatches-pro' ) . '">' . esc_html__( 'Documentation', 'woo-variation-swatches-pro' ) . '</a>',
+                    'videos'  => '<a target="_blank" href="' . esc_url( 'https://www.youtube.com/channel/UC6F21JXiLUPO7sm-AYlA3Ig/videos' ) . '" aria-label="' . esc_attr__( 'Video Tutorials', 'woo-variation-swatches-pro' ) . '">' . esc_html__( 'Video Tutorials', 'woo-variation-swatches-pro' ) . '</a>',
+                    'support' => '<a target="_blank" href="' . esc_url( 'https://getwooplugins.com/tickets/' ) . '" aria-label="' . esc_attr__( 'Help & Support', 'woo-variation-swatches-pro' ) . '">' . esc_html__( 'Help & Support', 'woo-variation-swatches-pro' ) . '</a>',
                 ) );
                 
                 return array_merge( $links, $row_meta );
@@ -76,12 +76,12 @@
             
             public function pro_plugin_action_links( $links ) {
                 $action_links = array(
-                    'settings' => '<a href="' . esc_url( $this->get_admin_menu()->get_settings_link( 'woo_variation_swatches' ) ) . '" aria-label="' . esc_attr__( 'View Swatches settings', 'woo-variation-swatches' ) . '">' . esc_html__( 'Settings', 'woo-variation-swatches' ) . '</a>',
+                    'settings' => '<a href="' . esc_url( $this->get_admin_menu()->get_settings_link( 'woo_variation_swatches' ) ) . '" aria-label="' . esc_attr__( 'View Swatches settings', 'woo-variation-swatches-pro' ) . '">' . esc_html__( 'Settings', 'woo-variation-swatches-pro' ) . '</a>',
                 );
                 
                 
                 $pro_links = array(
-                    'wvs-go-pro-action-link' => '<a target="_blank" href="https://getwooplugins.com/plugins/woocommerce-variation-swatches/" aria-label="' . esc_attr__( 'Go Pro', 'woo-variation-swatches' ) . '">' . esc_html__( 'Go Pro', 'woo-variation-swatches' ) . '</a>',
+                    'wvs-go-pro-action-link' => '<a target="_blank" href="https://getwooplugins.com/plugins/woocommerce-variation-swatches/" aria-label="' . esc_attr__( 'Go Pro', 'woo-variation-swatches-pro' ) . '">' . esc_html__( 'Go Pro', 'woo-variation-swatches-pro' ) . '</a>',
                 );
                 
                 if ( woo_variation_swatches()->is_pro() ) {
@@ -111,8 +111,8 @@
                 
                 $fields[ 'color' ] = array(
                     array(
-                        'label' => esc_html__( 'Color', 'woo-variation-swatches' ), // <label>
-                        'desc'  => esc_html__( 'Choose a color', 'woo-variation-swatches' ), // description
+                        'label' => esc_html__( 'Color', 'woo-variation-swatches-pro' ), // <label>
+                        'desc'  => esc_html__( 'Choose a color', 'woo-variation-swatches-pro' ), // description
                         'id'    => 'product_attribute_color', // name of field
                         'type'  => 'color'
                     ),
@@ -139,8 +139,8 @@
                 
                 $fields[ 'image' ] = array(
                     array(
-                        'label' => esc_html__( 'Image', 'woo-variation-swatches' ), // <label>
-                        'desc'  => esc_html__( 'Choose an Image', 'woo-variation-swatches' ), // description
+                        'label' => esc_html__( 'Image', 'woo-variation-swatches-pro' ), // <label>
+                        'desc'  => esc_html__( 'Choose an Image', 'woo-variation-swatches-pro' ), // description
                         'id'    => 'product_attribute_image', // name of field
                         'type'  => 'image'
                     ),
@@ -217,7 +217,6 @@
                 }
                 
                 return $fields;
-                
             }
         }
     }

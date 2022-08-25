@@ -29,8 +29,8 @@
             "Webhd\\Widgets\\": "inc/Widgets"
         },
         "exclude-from-classmap": [
-            "**/Plugins/ACF/_Json/**",
-            "**/Widgets/_Json/**"
+            "**/Plugins/ACF/Json/**",
+            "**/Widgets/Json/**"
         ]
     },
     "require": {

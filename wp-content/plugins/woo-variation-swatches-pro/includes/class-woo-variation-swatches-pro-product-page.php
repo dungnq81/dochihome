@@ -319,8 +319,15 @@
                     $variation_product_id = $this->find_matching_product_variation( $product, array( $attribute_name => $slug ) );
                     $variation_product    = wc_get_product( $variation_product_id );
                     
-                    $url = is_object( $variation_product ) ? $variation_product->get_permalink() : add_query_arg( array( $attribute_name => $slug ), $product->get_permalink() );
-                    // $url                           = esc_url( $variation_product->get_permalink() );
+                    // Attribute link type
+                    $link_type = sanitize_text_field( woo_variation_swatches()->get_option( 'linkable_attribute_link_type', 'variation' ) );
+                    
+                    if ( 'variation' === $link_type ) {
+                        $url = is_object( $variation_product ) ? $variation_product->get_permalink() : add_query_arg( array( $attribute_name => $slug ), $product->get_permalink() );
+                    } else {
+                        $url = add_query_arg( array( $attribute_name => $slug ), $product->get_permalink() );
+                    }
+                    
                     $html_attributes[ 'data-url' ] = esc_url( $url );
                 }
                 
@@ -378,7 +385,6 @@
                 }
             }
             
-            
             public function get_image_attribute( $data, $attribute_type, $variation_data = array() ) {
                 if ( 'image' === $attribute_type ) {
                     
@@ -411,7 +417,6 @@
                     return wp_get_attachment_image_src( $attachment_id, $image_size );
                 }
             }
-            
             
             public function image_attribute( $data, $attribute_type, $variation_data = array() ) {
                 
@@ -604,7 +609,7 @@
                 $class            = $args[ 'class' ];
                 $show_option_none = (bool) $args[ 'show_option_none' ];
                 // $show_option_none      = true;
-                $show_option_none_text = $args[ 'show_option_none' ] ? $args[ 'show_option_none' ] : esc_html__( 'Choose an option', 'woocommerce' ); // We'll do our best to hide the placeholder, but we'll need to show something when resetting options.
+                $show_option_none_text = $args[ 'show_option_none' ] ? $args[ 'show_option_none' ] : esc_html__( 'Choose an option', 'woo-variation-swatches-pro' ); // We'll do our best to hide the placeholder, but we'll need to show something when resetting options.
                 
                 if ( empty( $options ) && ! empty( $product ) && ! empty( $attribute ) ) {
                     $attributes = $product->get_variation_attributes();
@@ -770,7 +775,7 @@
                 // End Swatches
                 $html .= $wrapper . $item . $wrapper_end;
                 
-                return $html;
+                return apply_filters( 'woo_variation_swatches_html', $html, $args, $swatches_data, $this );
             }
             
             public function archive_product_dropdown( $html, $args ) {
@@ -787,7 +792,7 @@
                     'name'             => '',
                     'id'               => '',
                     'class'            => '',
-                    'show_option_none' => __( 'Choose an option', 'woocommerce' ),
+                    'show_option_none' => esc_html__( 'Choose an option', 'woo-variation-swatches-pro' ),
                     'is_archive'       => false
                 ) );
                 

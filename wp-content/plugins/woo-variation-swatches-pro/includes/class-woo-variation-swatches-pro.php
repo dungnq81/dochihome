@@ -26,11 +26,11 @@
                 require_once dirname( __FILE__ ) . '/class-woo-variation-swatches-pro-frontend.php';
                 require_once dirname( __FILE__ ) . '/class-woo-variation-swatches-pro-backend.php';
             }
-    
+            
             public function pro_version() {
                 return esc_attr( WOO_VARIATION_SWATCHES_PRO_PLUGIN_VERSION );
             }
-    
+            
             public function get_product_options( $product_id ) {
                 
                 if ( is_object( $product_id ) ) {
@@ -88,7 +88,35 @@
             
             public function show_archive_page_swatches() {
                 global $product;
-                if ( $product ) {
+                
+                if ( is_object( $product ) ) {
+                    woo_variation_swatches()->get_frontend()->get_archive_page()->display_swatches( $product );
+                }
+            }
+            
+            public function show_archive_page_swatches_by_id( $product_id ) {
+                if ( is_object( $product_id ) ) {
+                    $product_id = $product_id->get_id();
+                }
+                
+                $product = wc_get_product( $product_id );
+                if ( is_object( $product ) ) {
+                    woo_variation_swatches()->get_frontend()->get_archive_page()->display_swatches( $product );
+                }
+            }
+            
+            public function show_archive_variation_shortcode( $raw_attributes = array() ) {
+                global $product;
+                
+                // [wvs_show_archive_variation product_id="ID"]
+                
+                $attributes = shortcode_atts( array(
+                                                  'product_id' => 0
+                                              ), $raw_attributes );
+                
+                $current_product = absint( $attributes[ 'product_id' ] ) > 0 ? wc_get_product( $attributes[ 'product_id' ] ) : $product;
+                
+                if ( is_object( $current_product ) ) {
                     woo_variation_swatches()->get_frontend()->get_archive_page()->display_swatches( $product );
                 }
             }

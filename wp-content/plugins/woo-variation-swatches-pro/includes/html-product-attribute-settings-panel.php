@@ -84,7 +84,7 @@
                         $required = woo_variation_swatches()->get_backend()->get_edit_panel()->normalize_required_attribute( array( $required_id => array( 'type' => 'equal', 'value' => array( 'color', 'image', 'button', 'custom', 'mixed' ) ) ) );
                     ?>
 
-                    <div class="form-settings-group" data-dependency="<?php echo wc_esc_json( wp_json_encode( $required ) ) ?>">
+                    <div class="form-settings-group" data-gwp_dependency="<?php echo wc_esc_json( wp_json_encode( $required ) ) ?>">
                         
                         <?php
                             $id      = woo_variation_swatches()->get_backend()->get_edit_panel()->settings_id( $attribute_key, 'style' );

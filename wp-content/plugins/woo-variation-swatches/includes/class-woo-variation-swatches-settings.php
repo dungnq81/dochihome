@@ -95,10 +95,11 @@
                 }
                 
                 $links = array(
-                    'button_url'  => 'https://getwooplugins.com/plugins/woocommerce-variation-swatches/',
-                    'button_text' => esc_html__( 'Buy Now', 'woo-variation-swatches' ),
-                    'link_url'    => 'https://getwooplugins.com/documentation/woocommerce-variation-swatches/',
-                    'link_text'   => esc_html__( 'See Documentation', 'woo-variation-swatches' )
+                    'button_url'   => 'https://getwooplugins.com/plugins/woocommerce-variation-swatches/',
+                    'button_text'  => esc_html__( 'Buy Now', 'woo-variation-swatches' ),
+                    'button_class' => 'button-danger',
+                    'link_url'     => 'https://getwooplugins.com/documentation/woocommerce-variation-swatches/',
+                    'link_text'    => esc_html__( 'See Documentation', 'woo-variation-swatches' )
                 );
                 
                 return $links;
@@ -443,7 +444,7 @@
                         'id'      => 'attribute_image_size',
                         'type'    => 'select',
                         'title'   => esc_html__( 'Attribute image size', 'woo-variation-swatches' ),
-                        'desc'    => has_filter( 'woo_variation_swatches_global_product_attribute_image_size' ) ? __( '<span style="color: red">Attribute image size can be changed by <code>woo_variation_swatches_global_product_attribute_image_size</code> filter hook. So this option will not apply any effect.</span>', 'woo-variation-swatches' ) : __( sprintf( 'Choose attribute image size. <a target="_blank" href="%s">Media Settings</a> or use <strong>Regenerate Thumbnails</strong> plugin', esc_url( admin_url( 'options-media.php' ) ) ), 'woo-variation-swatches' ),
+                        'desc'    => has_filter( 'woo_variation_swatches_global_product_attribute_image_size' ) ? __( '<span style="color: red">Attribute image size can be changed by <code>woo_variation_swatches_global_product_attribute_image_size</code> filter hook. So this option will not apply any effect.</span>', 'woo-variation-swatches' ) : sprintf( __( 'Choose attribute image size. <a target="_blank" href="%s">Media Settings</a> or use <strong>Regenerate Thumbnails</strong> plugin', 'woo-variation-swatches' ), esc_url( admin_url( 'options-media.php' ) ) ),
                         'options' => self::get_all_image_sizes(),
                         'default' => 'variation_swatches_image_size'
                     ),
@@ -460,7 +461,7 @@
             protected function get_settings_for_style_section() {
                 
                 $settings = array(
-    
+                    
                     // Start swatches tick and cross coloring
                     array(
                         'id'    => 'style_icons_options',
@@ -468,7 +469,7 @@
                         'title' => esc_html__( 'Swatches indicator', 'woo-variation-swatches' ),
                         'desc'  => esc_html__( 'Change swatches indicator color', 'woo-variation-swatches' ),
                     ),
-
+                    
                     array(
                         'id'                => 'tick_color',
                         'type'              => 'color',
@@ -476,11 +477,11 @@
                         'desc'              => esc_html__( 'Swatches Selected tick color. Default is: #ffffff', 'woo-variation-swatches' ),
                         'css'               => 'width: 6em;',
                         'default'           => '#ffffff',
-                        'is_new'  => true,
+                        //'is_new'            => true,
                         'custom_attributes' => array(//    'data-alpha-enabled' => 'true'
                         )
                     ),
-
+                    
                     array(
                         'id'                => 'cross_color',
                         'type'              => 'color',
@@ -488,11 +489,11 @@
                         'desc'              => esc_html__( 'Swatches cross color. Default is: #ff0000', 'woo-variation-swatches' ),
                         'css'               => 'width: 6em;',
                         'default'           => '#ff0000',
-                        'is_new'  => true,
+                        //'is_new'            => true,
                         'custom_attributes' => array(//    'data-alpha-enabled' => 'true'
                         )
                     ),
-
+                    
                     array(
                         'type' => 'sectionend',
                         'id'   => 'style_icons_options',
@@ -683,8 +684,8 @@
                         //'is_pro' => true,
                         //'is_new' => true,
                         //'help_preview' => true,
-                        'title'   => esc_html__( 'Show default selected', 'woo-variation-swatches-pro' ),
-                        'desc'    => esc_html__( 'Show default selected attribute swatches on archive / shop page.', 'woo-variation-swatches-pro' ),
+                        'title'   => esc_html__( 'Show default selected', 'woo-variation-swatches' ),
+                        'desc'    => esc_html__( 'Show default selected attribute swatches on archive / shop page.', 'woo-variation-swatches' ),
                         'default' => 'yes',
                         'is_pro'  => true
                     ),

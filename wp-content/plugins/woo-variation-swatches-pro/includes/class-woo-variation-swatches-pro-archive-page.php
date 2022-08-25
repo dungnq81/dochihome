@@ -193,10 +193,6 @@
             
             public function enable_swatches() {
                 
-                if ( is_admin() ) {
-                    return;
-                }
-                
                 $enable   = wc_string_to_bool( woo_variation_swatches()->get_option( 'show_on_archive', 'yes' ) );
                 $position = sanitize_text_field( woo_variation_swatches()->get_option( 'archive_swatches_position', 'after' ) );
                 
@@ -354,9 +350,9 @@
                 return apply_filters( 'woo_variation_swatches_js_params', array(
                     'ajax_url'                         => WC()->ajax_url(),
                     'wc_ajax_url'                      => WC_AJAX::get_endpoint( '%%endpoint%%' ),
-                    'i18n_no_matching_variations_text' => esc_attr__( 'Sorry, no products matched your selection. Please choose a different combination.', 'woocommerce' ),
-                    'i18n_make_a_selection_text'       => esc_attr__( 'Please select some product options before adding this product to your cart.', 'woocommerce' ),
-                    'i18n_unavailable_text'            => esc_attr__( 'Sorry, this product is unavailable. Please choose a different combination.', 'woocommerce' ),
+                    'i18n_no_matching_variations_text' => esc_attr__( 'Sorry, no products matched your selection. Please choose a different combination.', 'woo-variation-swatches-pro' ),
+                    'i18n_make_a_selection_text'       => esc_attr__( 'Please select some product options before adding this product to your cart.', 'woo-variation-swatches-pro' ),
+                    'i18n_unavailable_text'            => esc_attr__( 'Sorry, this product is unavailable. Please choose a different combination.', 'woo-variation-swatches-pro' ),
                 ) );
             }
             
@@ -370,7 +366,7 @@
                     $product = wc_get_product();
                     
                     // Disable Pro
-                    if ( apply_filters( 'disable_woo_variation_swatches_archive_product', false, $product ) ) {
+                    if ( apply_filters( 'disable_woo_variation_swatches_archive_product', false, $product, $this ) ) {
                         return;
                     }
                     
@@ -392,23 +388,24 @@
             
             public function extra_js_options( $options ) {
                 
-                $options[ 'enable_linkable_url' ]                     = wc_string_to_bool( woo_variation_swatches()->get_option( 'enable_linkable_variation_url', 'no' ) );
-                $options[ 'clickable_out_of_stock' ]                  = wc_string_to_bool( woo_variation_swatches()->get_option( 'clickable_out_of_stock_variation', 'no' ) );
-                $options[ 'out_of_stock_tooltip_text' ]               = esc_html__( '(Unavailable)', 'woo-variation-swatches-pro' );
-                $options[ 'archive_product_wrapper' ]                 = sanitize_text_field( woo_variation_swatches()->get_option( 'archive_product_wrapper', '.wvs-archive-product-wrapper' ) );
-                $options[ 'archive_image_selector' ]                  = sanitize_text_field( woo_variation_swatches()->get_option( 'archive_image_selector', '.wvs-archive-product-image' ) );
-                $options[ 'archive_cart_button_selector' ]            = sanitize_text_field( woo_variation_swatches()->get_option( 'archive_cart_button_selector', '.wvs-add-to-cart-button' ) );
-                $options[ 'archive_show_availability' ]               = wc_string_to_bool( woo_variation_swatches()->get_option( 'archive_show_availability', 'no' ) );
-                $options[ 'enable_catalog_mode' ]                     = wc_string_to_bool( woo_variation_swatches()->get_option( 'enable_catalog_mode', 'no' ) );
-                $options[ 'catalog_mode_behaviour' ]                  = sanitize_text_field( woo_variation_swatches()->get_option( 'catalog_mode_behaviour', 'navigate' ) );
-                $options[ 'catalog_mode_trigger' ]                    = sanitize_text_field( woo_variation_swatches()->get_option( 'catalog_mode_trigger', 'click' ) );
-                $options[ 'linkable_attribute' ]                      = wc_string_to_bool( woo_variation_swatches()->get_option( 'linkable_attribute', 'no' ) );
-                $options[ 'enable_single_variation_preview' ]         = wc_string_to_bool( woo_variation_swatches()->get_option( 'enable_single_variation_preview', 'no' ) );
-                $options[ 'enable_single_variation_preview_archive' ] = wc_string_to_bool( woo_variation_swatches()->get_option( 'enable_single_variation_preview_archive', 'no' ) );
-                $options[ 'enable_single_preloader' ]                 = wc_string_to_bool( woo_variation_swatches()->get_option( 'enable_single_preloader', 'yes' ) );
-                $options[ 'enable_archive_preloader' ]                = wc_string_to_bool( woo_variation_swatches()->get_option( 'enable_archive_preloader', 'yes' ) );
-                $options[ 'enable_ajax_add_to_cart' ]                 = get_option( 'woocommerce_enable_ajax_add_to_cart', 'yes' );
-                
+                $options[ 'enable_linkable_url' ]                      = wc_string_to_bool( woo_variation_swatches()->get_option( 'enable_linkable_variation_url', 'no' ) );
+                $options[ 'clickable_out_of_stock' ]                   = wc_string_to_bool( woo_variation_swatches()->get_option( 'clickable_out_of_stock_variation', 'no' ) );
+                $options[ 'out_of_stock_tooltip_text' ]                = esc_html__( '(Unavailable)', 'woo-variation-swatches-pro' );
+                $options[ 'archive_product_wrapper' ]                  = sanitize_text_field( woo_variation_swatches()->get_option( 'archive_product_wrapper', '.wvs-archive-product-wrapper' ) );
+                $options[ 'archive_image_selector' ]                   = sanitize_text_field( woo_variation_swatches()->get_option( 'archive_image_selector', '.wvs-archive-product-image' ) );
+                $options[ 'archive_cart_button_selector' ]             = sanitize_text_field( woo_variation_swatches()->get_option( 'archive_cart_button_selector', '.wvs-add-to-cart-button' ) );
+                $options[ 'archive_show_availability' ]                = wc_string_to_bool( woo_variation_swatches()->get_option( 'archive_show_availability', 'no' ) );
+                $options[ 'enable_clickable_out_of_stock_archive' ]    = apply_filters( 'woo_variation_swatches_clickable_out_of_stock_archive', wc_string_to_bool( woo_variation_swatches()->get_option( 'enable_catalog_mode', 'no' ) ) );
+                $options[ 'enable_catalog_mode' ]                      = wc_string_to_bool( woo_variation_swatches()->get_option( 'enable_catalog_mode', 'no' ) );
+                $options[ 'disable_catalog_mode_on_single_attribute' ] = wc_string_to_bool( woo_variation_swatches()->get_option( 'disable_catalog_mode_on_single_attribute', 'no' ) );
+                $options[ 'catalog_mode_behaviour' ]                   = sanitize_text_field( woo_variation_swatches()->get_option( 'catalog_mode_behaviour', 'navigate' ) );
+                $options[ 'catalog_mode_trigger' ]                     = sanitize_text_field( woo_variation_swatches()->get_option( 'catalog_mode_trigger', 'click' ) );
+                $options[ 'linkable_attribute' ]                       = wc_string_to_bool( woo_variation_swatches()->get_option( 'linkable_attribute', 'no' ) );
+                $options[ 'enable_single_variation_preview' ]          = wc_string_to_bool( woo_variation_swatches()->get_option( 'enable_single_variation_preview', 'no' ) );
+                $options[ 'enable_single_variation_preview_archive' ]  = wc_string_to_bool( woo_variation_swatches()->get_option( 'enable_single_variation_preview_archive', 'no' ) );
+                $options[ 'enable_single_preloader' ]                  = wc_string_to_bool( woo_variation_swatches()->get_option( 'enable_single_preloader', 'yes' ) );
+                $options[ 'enable_archive_preloader' ]                 = wc_string_to_bool( woo_variation_swatches()->get_option( 'enable_archive_preloader', 'yes' ) );
+                $options[ 'enable_ajax_add_to_cart' ]                  = get_option( 'woocommerce_enable_ajax_add_to_cart', 'yes' );
                 
                 //$options[ 'single_variation_preview_attribute' ]      = sanitize_text_field( woo_variation_swatches()->get_option( 'single_variation_preview_attribute', '' ) );
                 
@@ -435,16 +432,12 @@
             
             public function display_swatches( $product ) {
                 
-                if ( is_admin() ) {
+                // Disable Archive Product
+                if ( apply_filters( 'disable_woo_variation_swatches_archive_product', false, $product, $this ) ) {
                     return;
                 }
                 
                 $enable = wc_string_to_bool( woo_variation_swatches()->get_option( 'show_on_archive', 'yes' ) );
-                
-                // Disable Pro
-                if ( apply_filters( 'disable_woo_variation_swatches_archive_product', false, $product ) ) {
-                    return;
-                }
                 
                 if ( ! is_object( $product ) ) {
                     $product = wc_get_product( $product );
@@ -505,13 +498,13 @@
                     'product_id'              => $product->get_id(),
                     'variation_is_active'     => $variation->variation_is_active(),
                     'variation_is_visible'    => $variation->variation_is_visible(),
-                    'add_to_cart_text'        => $variation->add_to_cart_text(),
+                    'add_to_cart_text'        => apply_filters( 'woo_variation_swatches_archive_add_to_cart_text', $variation->add_to_cart_text(), $variation, $product ),
                     'add_to_cart_url'         => $variation->add_to_cart_url(),
                     'add_to_cart_description' => $variation->add_to_cart_description(),
                     //'add_to_cart_ajax_class'  => $variation->supports( 'ajax_add_to_cart' ) && $variation->is_purchasable() && $variation->is_in_stock() ? 'ajax_add_to_cart' : '',
                 );
                 
-                return apply_filters( 'woo_variation_swatches_get_available_variation', $available_variation, $variation, $product );
+                return apply_filters( 'woo_variation_swatches_get_available_variation', $available_variation, $variation, $product, $this );
             }
             
             public function get_available_preview_variation( $variation, $product ) {
@@ -528,7 +521,7 @@
                     'image_id'   => $variation->get_image_id(),
                 );
                 
-                return apply_filters( 'woo_variation_swatches_get_available_preview_variation', $available_variation, $product, $variation );
+                return apply_filters( 'woo_variation_swatches_get_available_preview_variation', $available_variation, $product, $variation, $this );
             }
             
             public function get_available_variations( $product ) {
@@ -588,7 +581,7 @@
                 $class            = $args[ 'class' ];
                 $show_option_none = (bool) $args[ 'show_option_none' ];
                 // $show_option_none      = true;
-                $show_option_none_text = $args[ 'show_option_none' ] ? $args[ 'show_option_none' ] : esc_html__( 'Choose an option', 'woocommerce' ); // We'll do our best to hide the placeholder, but we'll need to show something when resetting options.
+                $show_option_none_text = $args[ 'show_option_none' ] ? $args[ 'show_option_none' ] : esc_html__( 'Choose an option', 'woo-variation-swatches-pro' ); // We'll do our best to hide the placeholder, but we'll need to show something when resetting options.
                 
                 if ( empty( $options ) && ! empty( $product ) && ! empty( $attribute ) ) {
                     $attributes = $product->get_variation_attributes();
@@ -615,7 +608,6 @@
                 $default_to_button = empty( $product_default_to_button ) ? $global_convert_to_button : $product_default_to_button;
                 $convert_to_image  = empty( $product_convert_to_image ) ? $global_convert_to_image : $product_convert_to_image;
                 $attribute_type    = empty( $product_attribute_type ) ? $global_attribute_type : $product_attribute_type;
-                
                 
                 if ( ! in_array( $attribute_type, $attribute_types ) ) {
                     return $html;
@@ -685,7 +677,6 @@
                 $wrapper     = '';
                 $wrapper_end = '';
                 
-                
                 if ( ! empty( $options ) && ! empty( $swatches_data ) && $product ) {
                     
                     $wrapper     = $this->wrapper_start( $args, $attribute, $product, $attribute_type, $options );
@@ -729,7 +720,7 @@
                 // End Swatches
                 $html .= $wrapper . $item . $wrapper_end;
                 
-                return $html;
+                return apply_filters( 'woo_variation_swatches_html', $html, $args, $swatches_data, $this );
             }
         }
     }

@@ -1,112 +1,25 @@
 /*!
- * Variation Swatches for WooCommerce - PRO 
- * 
- * Author: Emran Ahmed ( emran.bd.08@gmail.com ) 
- * Date: 7/8/2022, 11:04:58 PM
+ * Variation Swatches for WooCommerce - PRO
+ *
+ * Author: Emran Ahmed ( emran.bd.08@gmail.com )
+ * Date: 8/21/2022, 5:53:45 PM
  * Released under the GPLv3 license.
  */
-/******/ (function(modules) { // webpackBootstrap
-/******/ 	// The module cache
-/******/ 	var installedModules = {};
-/******/
-/******/ 	// The require function
-/******/ 	function __webpack_require__(moduleId) {
-/******/
-/******/ 		// Check if module is in cache
-/******/ 		if(installedModules[moduleId]) {
-/******/ 			return installedModules[moduleId].exports;
-/******/ 		}
-/******/ 		// Create a new module (and put it into the cache)
-/******/ 		var module = installedModules[moduleId] = {
-/******/ 			i: moduleId,
-/******/ 			l: false,
-/******/ 			exports: {}
-/******/ 		};
-/******/
-/******/ 		// Execute the module function
-/******/ 		modules[moduleId].call(module.exports, module, module.exports, __webpack_require__);
-/******/
-/******/ 		// Flag the module as loaded
-/******/ 		module.l = true;
-/******/
-/******/ 		// Return the exports of the module
-/******/ 		return module.exports;
-/******/ 	}
-/******/
-/******/
-/******/ 	// expose the modules object (__webpack_modules__)
-/******/ 	__webpack_require__.m = modules;
-/******/
-/******/ 	// expose the module cache
-/******/ 	__webpack_require__.c = installedModules;
-/******/
-/******/ 	// define getter function for harmony exports
-/******/ 	__webpack_require__.d = function(exports, name, getter) {
-/******/ 		if(!__webpack_require__.o(exports, name)) {
-/******/ 			Object.defineProperty(exports, name, { enumerable: true, get: getter });
-/******/ 		}
-/******/ 	};
-/******/
-/******/ 	// define __esModule on exports
-/******/ 	__webpack_require__.r = function(exports) {
-/******/ 		if(typeof Symbol !== 'undefined' && Symbol.toStringTag) {
-/******/ 			Object.defineProperty(exports, Symbol.toStringTag, { value: 'Module' });
-/******/ 		}
-/******/ 		Object.defineProperty(exports, '__esModule', { value: true });
-/******/ 	};
-/******/
-/******/ 	// create a fake namespace object
-/******/ 	// mode & 1: value is a module id, require it
-/******/ 	// mode & 2: merge all properties of value into the ns
-/******/ 	// mode & 4: return value when already ns object
-/******/ 	// mode & 8|1: behave like require
-/******/ 	__webpack_require__.t = function(value, mode) {
-/******/ 		if(mode & 1) value = __webpack_require__(value);
-/******/ 		if(mode & 8) return value;
-/******/ 		if((mode & 4) && typeof value === 'object' && value && value.__esModule) return value;
-/******/ 		var ns = Object.create(null);
-/******/ 		__webpack_require__.r(ns);
-/******/ 		Object.defineProperty(ns, 'default', { enumerable: true, value: value });
-/******/ 		if(mode & 2 && typeof value != 'string') for(var key in value) __webpack_require__.d(ns, key, function(key) { return value[key]; }.bind(null, key));
-/******/ 		return ns;
-/******/ 	};
-/******/
-/******/ 	// getDefaultExport function for compatibility with non-harmony modules
-/******/ 	__webpack_require__.n = function(module) {
-/******/ 		var getter = module && module.__esModule ?
-/******/ 			function getDefault() { return module['default']; } :
-/******/ 			function getModuleExports() { return module; };
-/******/ 		__webpack_require__.d(getter, 'a', getter);
-/******/ 		return getter;
-/******/ 	};
-/******/
-/******/ 	// Object.prototype.hasOwnProperty.call
-/******/ 	__webpack_require__.o = function(object, property) { return Object.prototype.hasOwnProperty.call(object, property); };
-/******/
-/******/ 	// __webpack_public_path__
-/******/ 	__webpack_require__.p = "/";
-/******/
-/******/
-/******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 1);
-/******/ })
-/************************************************************************/
-/******/ ({
+/******/ (function() { // webpackBootstrap
+var __webpack_exports__ = {};
+// This entry need to be wrapped in an IIFE because it need to be isolated against other entry modules.
+!function() {
+function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (obj) { return typeof obj; } : function (obj) { return obj && "function" == typeof Symbol && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }, _typeof(obj); }
 
-/***/ "./src/js/WooVariationSwatchesPro.js":
-/***/ (function(module, exports) {
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); enumerableOnly && (symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; })), keys.push.apply(keys, symbols); } return keys; }
 
-function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
-
-function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) { symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); } keys.push.apply(keys, symbols); } return keys; }
-
-function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = null != arguments[i] ? arguments[i] : {}; i % 2 ? ownKeys(Object(source), !0).forEach(function (key) { _defineProperty(target, key, source[key]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)) : ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } return target; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
 
-function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); Object.defineProperty(Constructor, "prototype", { writable: false }); return Constructor; }
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
@@ -206,6 +119,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         this.threshold_min = parseInt(this.$element.data('threshold_min'), 10);
         this.threshold_max = parseInt(this.$element.data('threshold_max'), 10);
         this.total_children = parseInt(this.$element.data('total_children'), 10);
+        this.total_attribute = parseInt(this.$element.data('total_attribute'), 10);
         this.xhr = false;
         this.previewXhr = false;
         this.loading = true;
@@ -382,6 +296,8 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
             this.xhr = $.ajax({
               global: false,
+              cache: true,
+              // We want to cache it on browser
               url: woo_variation_swatches_pro_params.wc_ajax_url.toString().replace('%%endpoint%%', 'woo_get_variations'),
               method: 'POST',
               data: {
@@ -601,8 +517,12 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
                                 $option_element.addClass('out-of-stock');
                               } // 1 attribute except catalog mode
 
+                              /*if (!woo_variation_swatches_pro_options.enable_catalog_mode && attributes.count === 1 && variation_out_of_stock) {
+                                  $option_element.addClass('out-of-stock')
+                              }*/
 
-                              if (!woo_variation_swatches_pro_options.enable_catalog_mode && attributes.count === 1 && variation_out_of_stock) {
+
+                              if (!woo_variation_swatches_pro_options.enable_clickable_out_of_stock_archive && attributes.count === 1 && variation_out_of_stock) {
                                 $option_element.addClass('out-of-stock');
                               }
 
@@ -1013,6 +933,18 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
             this.updateCartButton(variation);
           } else {
             this.resetCartButton();
+          } // Only One attribute in this product
+
+
+          if (this.total_attribute === 1 && woo_variation_swatches_pro_options.enable_catalog_mode && woo_variation_swatches_pro_options.disable_catalog_mode_on_single_attribute) {
+            this.updateAvailabilityInfo(variation);
+            this.updatePrice(variation);
+
+            if (purchasable) {
+              this.updateCartButton(variation);
+            } else {
+              this.resetCartButton();
+            }
           }
 
           this.$element.trigger('show_variation', [variation, purchasable]);
@@ -1155,11 +1087,11 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
           if (variation && variation.image && variation.image.src && variation.image.src.length > 1) {
             this.$image.attr('src', variation.image.src);
 
-            if (variation.image.srcset.length > 1) {
+            if (variation.image.srcset && variation.image.srcset.length > 1) {
               this.$image.attr('srcset', variation.image.srcset);
             }
 
-            if (variation.image.sizes.length > 1) {
+            if (variation.image.sizes && variation.image.sizes.length > 1) {
               this.$image.attr('sizes', variation.image.sizes);
             }
           }
@@ -1170,11 +1102,11 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
           if (variation && variation.image && variation.image.thumb_src && variation.image.thumb_src.length > 1) {
             this.$image.attr('src', variation.image.thumb_src);
 
-            if (variation.image.srcset.length > 1) {
+            if (variation.image.srcset && variation.image.srcset.length > 1) {
               this.$image.attr('srcset', variation.image.srcset);
             }
 
-            if (variation.image.sizes.length > 1) {
+            if (variation.image.sizes && variation.image.sizes.length > 1) {
               this.$image.attr('sizes', variation.image.sizes);
             }
           }
@@ -1262,12 +1194,9 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
   jQueryPlugin('WooVariationSwatchesPro', Plugin);
 })(window);
-
-/***/ }),
-
-/***/ "./src/js/frontend-pro.js":
-/***/ (function(module, exports) {
-
+}();
+// This entry need to be wrapped in an IIFE because it need to be isolated against other entry modules.
+!function() {
 jQuery(function ($) {
   try {
     $(document).on('woo_variation_swatches_pro_init', function () {
@@ -1284,6 +1213,10 @@ jQuery(function ($) {
   }); // Support for Yith Infinite Scroll
 
   $(document).on('yith_infs_added_elem.wvs', function () {
+    $(document).trigger('woo_variation_swatches_pro_init');
+  }); // Support for Astra Theme Infinite Scroll
+
+  $(document).on('astraInfinitePaginationLoaded.wvs', function () {
     $(document).trigger('woo_variation_swatches_pro_init');
   }); // Try to cover all ajax data complete
 
@@ -1322,16 +1255,6 @@ jQuery(function ($) {
     }, 100);
   });
 });
-
-/***/ }),
-
-/***/ 1:
-/***/ (function(module, exports, __webpack_require__) {
-
-__webpack_require__("./src/js/WooVariationSwatchesPro.js");
-module.exports = __webpack_require__("./src/js/frontend-pro.js");
-
-
-/***/ })
-
-/******/ });
+}();
+/******/ })()
+;

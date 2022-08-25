@@ -21,8 +21,8 @@
         
         <?php if ( empty( $attributes ) ): ?>
             <div class="inline notice woocommerce-message">
-                <p><?php echo wp_kses_post( __( 'Before you can add a variation you need to add some variation attributes on the <strong>Attributes</strong> tab.', 'woocommerce' ) ); ?></p>
-                <p><a target="_blank" class="button-primary" href="<?php echo esc_url( apply_filters( 'woocommerce_docs_url', 'https://docs.woocommerce.com/document/variable-product/', 'product-variations' ) ); ?>"><?php esc_html_e( 'Learn more', 'woocommerce' ); ?></a></p>
+                <p><?php echo wp_kses_post( __( 'Before you can add a variation you need to add some variation attributes on the <strong>Attributes</strong> tab.', 'woo-variation-swatches-pro' ) ); ?></p>
+                <p><a target="_blank" class="button-primary" href="<?php echo esc_url( apply_filters( 'woocommerce_docs_url', 'https://docs.woocommerce.com/document/variable-product/', 'product-variations' ) ); ?>"><?php esc_html_e( 'Learn more', 'woo-variation-swatches-pro' ); ?></a></p>
             </div>
         <?php else: ?>
 

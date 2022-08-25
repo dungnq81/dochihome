@@ -13,7 +13,7 @@
     
     global $product, $woocommerce_loop;
     
-    $initial_loop = absint( $woocommerce_loop[ 'loop' ] <= 3 );
+    // $initial_loop = absint( $woocommerce_loop[ 'loop' ] <= 3 );
     
     $attribute_keys      = array_keys( $attributes );
     $variations_json     = wp_json_encode( $available_variations );
@@ -27,9 +27,12 @@
     
     $catalog_mode_attribute = empty( $local_catalog_mode_attribute ) ? $global_catalog_mode_attribute : $local_catalog_mode_attribute;
     
+    $disable_catalog_mode_on_single_attribute = wc_string_to_bool( woo_variation_swatches()->get_option( 'disable_catalog_mode_on_single_attribute', 'no' ) );
+    
     // wp_enqueue_script( 'wc-add-to-cart-variation' );
     
     do_action( 'woo_variation_swatches_archive_before_add_to_cart_form' );
+    
     
     if ( $enable_catalog_mode ) {
         $have_catalog_attribute = false;
@@ -52,14 +55,16 @@
             return;
         }
     }
+    
+    $total_attribute = count( array_keys( $attributes ) );
 ?>
 
-    <div class="wvs-archive-variations-wrapper" data-threshold_min="<?php echo absint( $variation_threshold_min ) ?>" data-threshold_max="<?php echo absint( $variation_threshold_max ) ?>" data-total_children="<?php echo absint( $total_children ) ?>" data-product_id="<?php echo absint( $product->get_id() ); ?>" data-product_variations="<?php echo $variations_attr; // WPCS: XSS ok. ?>">
+    <div class="wvs-archive-variations-wrapper" data-threshold_min="<?php echo absint( $variation_threshold_min ) ?>" data-total_attribute="<?php echo absint( $total_attribute ) ?>" data-threshold_max="<?php echo absint( $variation_threshold_max ) ?>" data-total_children="<?php echo absint( $total_children ) ?>" data-product_id="<?php echo absint( $product->get_id() ); ?>" data-product_variations="<?php echo $variations_attr; // WPCS: XSS ok. ?>">
         
         <?php do_action( 'woo_variation_swatches_archive_before_variations_form' ); ?>
         
         <?php if ( empty( $available_variations ) && false !== $available_variations ) : ?>
-            <p class="stock out-of-stock"><?php echo esc_html( apply_filters( 'woocommerce_out_of_stock_message', esc_html__( 'This product is currently out of stock and unavailable.', 'woocommerce' ) ) ); ?></p>
+            <p class="stock out-of-stock"><?php echo esc_html( apply_filters( 'woocommerce_out_of_stock_message', esc_html__( 'This product is currently out of stock and unavailable.', 'woo-variation-swatches-pro' ) ) ); ?></p>
         <?php else : ?>
             <ul class="variations">
                 <?php
@@ -88,7 +93,13 @@
                 
                 <?php if ( $clear_on_archive && ! $enable_catalog_mode ): ?>
                     <li class=" wvs_archive_reset_variations">
-                        <a class="wvs_archive_reset_variations_link" href="#"><?php esc_html_e( 'Clear', 'woocommerce' ) ?></a>
+                        <a class="wvs_archive_reset_variations_link" href="#"><?php esc_html_e( 'Clear', 'woo-variation-swatches-pro' ) ?></a>
+                    </li>
+                <?php endif; ?>
+                
+                <?php if ( $disable_catalog_mode_on_single_attribute && $clear_on_archive && $enable_catalog_mode && $total_attribute === 1 ): ?>
+                    <li class=" wvs_archive_reset_variations">
+                        <a class="wvs_archive_reset_variations_link" href="#"><?php esc_html_e( 'Clear', 'woo-variation-swatches-pro' ) ?></a>
                     </li>
                 <?php endif; ?>
             </ul>

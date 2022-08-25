@@ -2,11 +2,11 @@
     defined( 'ABSPATH' ) || exit;
     
     if ( ! class_exists( 'Woo_Variation_Swatches_Pro_Product_Edit_Panel' ) ) :
-        class Woo_Variation_Swatches_Pro_Product_Edit_Panel {
+        class Woo_Variation_Swatches_Pro_Product_Edit_Panel extends Woo_Variation_Swatches_Product_Edit_Panel {
             protected static $_instance = null;
             
             protected function __construct() {
-                $this->hooks();
+                parent::__construct();
             }
             
             public static function instance() {
@@ -18,8 +18,8 @@
             }
             
             protected function hooks() {
-                add_filter( 'woocommerce_product_data_tabs', array( $this, 'product_data_tab' ) );
-                add_filter( 'woocommerce_product_data_panels', array( $this, 'product_data_panel' ) );
+                parent::hooks();
+                
                 add_action( 'wc_ajax_woo_variation_swatches_load_product_terms', array( $this, 'load_product_terms' ) );
                 add_action( 'wc_ajax_woo_variation_swatches_save_product_options', array( $this, 'save_product_options' ) );
                 add_action( 'wc_ajax_woo_variation_swatches_reset_product_options', array( $this, 'reset_product_options' ) );
@@ -62,6 +62,7 @@
                 
                 if ( ! $product_object->is_type( 'variable' ) ) {
                     include dirname( __FILE__ ) . '/html-product-settings-panel-message.php';
+                    
                     return;
                 }
                 

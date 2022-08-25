@@ -1019,7 +1019,7 @@ if ( ! function_exists( 'the_breadcrumbs' ) ) {
 
 		if ( ! is_home() && ! is_front_page() || $wp_query->is_posts_page ) {
 			echo '<ul id="crumbs" class="breadcrumbs" aria-label="breadcrumbs">';
-			echo '<li><a class="home" href="' . Url::home() . '">' . __( 'Home', 'hd' ) . '</a></li>';
+			echo '<li><a class="home" href="' . Url::home() . '">' . __( 'Trang chủ', 'hd' ) . '</a></li>';
 
             //...
             if (function_exists('is_shop') && is_shop()) {

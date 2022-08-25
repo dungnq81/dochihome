@@ -69,8 +69,8 @@
                 <table class="widefat woo-variation-swatches-group-table-list wp-list-table ui-sortable" style="width:100%">
                     <thead>
                     <tr>
-                        <th scope="col"><?php esc_html_e( 'Name', 'woocommerce' ); ?></th>
-                        <th scope="col"><?php esc_html_e( 'Slug', 'woocommerce' ); ?></th>
+                        <th scope="col"><?php esc_html_e( 'Name', 'woo-variation-swatches-pro' ); ?></th>
+                        <th scope="col"><?php esc_html_e( 'Slug', 'woo-variation-swatches-pro' ); ?></th>
                     </tr>
                     </thead>
 
@@ -81,7 +81,7 @@
                         if ( empty( $get_all ) ):
                             ?>
                             <tr>
-                                <td colspan="2"><?php esc_html_e( 'No groups currently exist.', 'woocommerce' ); ?></td>
+                                <td colspan="2"><?php esc_html_e( 'No groups currently exist.', 'woo-variation-swatches-pro' ); ?></td>
                             </tr>
                         
                         <?php else: ?>
@@ -92,8 +92,8 @@
                                     <td>
                                         <strong><?php echo esc_html( $group_name ) ?></strong>
                                         <div class="row-actions">
-                                            <span class="edit"><a href="<?php echo wp_nonce_url( $edit_link . '&amp;slug=' . $slug, 'woo_variation_swatches_group' ) ?>"><?php esc_html_e( 'Edit', 'woocommerce' ); ?></a> | </span>
-                                            <span class="delete"><a class="delete" href="<?php echo wp_nonce_url( $delete_link . '&amp;slug=' . $slug, 'woo_variation_swatches_group' ) ?>"><?php esc_html_e( 'Delete', 'woocommerce' ); ?></a></span></div>
+                                            <span class="edit"><a href="<?php echo wp_nonce_url( $edit_link . '&amp;slug=' . $slug, 'woo_variation_swatches_group' ) ?>"><?php esc_html_e( 'Edit', 'woo-variation-swatches-pro' ); ?></a> | </span>
+                                            <span class="delete"><a class="delete" href="<?php echo wp_nonce_url( $delete_link . '&amp;slug=' . $slug, 'woo_variation_swatches_group' ) ?>"><?php esc_html_e( 'Delete', 'woo-variation-swatches-pro' ); ?></a></span></div>
 
                                     </td>
                                     <td><?php echo esc_html( $slug ) ?></td>

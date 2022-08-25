@@ -179,7 +179,7 @@
     }
     @if (is-int($m) or $m == 0) {
         @include mobile {
-            @include box($d);
+            @include box($m);
         }
     }
 }
@@ -302,6 +302,23 @@
     @if (is-int($m) or $m == 0) {
         @include mobile {
             margin-bottom: fs($m);
+        }
+    }
+}
+
+/** */
+@mixin media-css($css_property: 'font-size', $d: 16, $t: false, $m: false) {
+    @if (is-int($d) or $d == 0) {
+        #{$css_property}: fs($d);
+    }
+    @if (is-int($t) or $t == 0) {
+        @include not-desktop {
+            #{$css_property}: fs($t);
+        }
+    }
+    @if (is-int($m) or $m == 0) {
+        @include mobile {
+            #{$css_property}: fs($m);
         }
     }
 }

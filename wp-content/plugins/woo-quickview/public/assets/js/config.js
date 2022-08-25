@@ -54,12 +54,19 @@ jQuery(document).ready(function (jQuery) {
                         this.st.mainClass = 'mfp-wqv ' + wqv_vars.effect;
 					}
 				},
-                
+
                 ajaxContentAdded: function () {
                     if ( typeof wc_add_to_cart_variation_params !== 'undefined' ) {
                         var form_variation = jQuery('.sp-wqv-content').find('.variations_form');
                         form_variation.each(function () {
                             jQuery(this).wc_variation_form();
+
+                            // when variation is found, do something
+                            jQuery(this).on('found_variation', function (event, variation) {
+                                if (variation.price_html !== '') {
+                                    jQuery(".wqv-product-content p.single-price").html(variation.price_html);
+                                }
+                            });
                         });
                     }
                     if( data_wqv.lightbox ) {
@@ -75,10 +82,10 @@ jQuery(document).ready(function (jQuery) {
                     const ps = new PerfectScrollbar('.wqv-product-content', {});
                 }
             },
-            
+
         }, index );
         e.preventDefault();
-    });    
+    });
 
 });
 

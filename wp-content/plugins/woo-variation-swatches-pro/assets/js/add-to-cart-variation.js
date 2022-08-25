@@ -1,101 +1,12 @@
 /*!
- * Variation Swatches for WooCommerce - PRO 
- * 
- * Author: Emran Ahmed ( emran.bd.08@gmail.com ) 
- * Date: 7/8/2022, 11:04:58 PM
+ * Variation Swatches for WooCommerce - PRO
+ *
+ * Author: Emran Ahmed ( emran.bd.08@gmail.com )
+ * Date: 8/21/2022, 5:53:45 PM
  * Released under the GPLv3 license.
  */
-/******/ (function(modules) { // webpackBootstrap
-/******/ 	// The module cache
-/******/ 	var installedModules = {};
-/******/
-/******/ 	// The require function
-/******/ 	function __webpack_require__(moduleId) {
-/******/
-/******/ 		// Check if module is in cache
-/******/ 		if(installedModules[moduleId]) {
-/******/ 			return installedModules[moduleId].exports;
-/******/ 		}
-/******/ 		// Create a new module (and put it into the cache)
-/******/ 		var module = installedModules[moduleId] = {
-/******/ 			i: moduleId,
-/******/ 			l: false,
-/******/ 			exports: {}
-/******/ 		};
-/******/
-/******/ 		// Execute the module function
-/******/ 		modules[moduleId].call(module.exports, module, module.exports, __webpack_require__);
-/******/
-/******/ 		// Flag the module as loaded
-/******/ 		module.l = true;
-/******/
-/******/ 		// Return the exports of the module
-/******/ 		return module.exports;
-/******/ 	}
-/******/
-/******/
-/******/ 	// expose the modules object (__webpack_modules__)
-/******/ 	__webpack_require__.m = modules;
-/******/
-/******/ 	// expose the module cache
-/******/ 	__webpack_require__.c = installedModules;
-/******/
-/******/ 	// define getter function for harmony exports
-/******/ 	__webpack_require__.d = function(exports, name, getter) {
-/******/ 		if(!__webpack_require__.o(exports, name)) {
-/******/ 			Object.defineProperty(exports, name, { enumerable: true, get: getter });
-/******/ 		}
-/******/ 	};
-/******/
-/******/ 	// define __esModule on exports
-/******/ 	__webpack_require__.r = function(exports) {
-/******/ 		if(typeof Symbol !== 'undefined' && Symbol.toStringTag) {
-/******/ 			Object.defineProperty(exports, Symbol.toStringTag, { value: 'Module' });
-/******/ 		}
-/******/ 		Object.defineProperty(exports, '__esModule', { value: true });
-/******/ 	};
-/******/
-/******/ 	// create a fake namespace object
-/******/ 	// mode & 1: value is a module id, require it
-/******/ 	// mode & 2: merge all properties of value into the ns
-/******/ 	// mode & 4: return value when already ns object
-/******/ 	// mode & 8|1: behave like require
-/******/ 	__webpack_require__.t = function(value, mode) {
-/******/ 		if(mode & 1) value = __webpack_require__(value);
-/******/ 		if(mode & 8) return value;
-/******/ 		if((mode & 4) && typeof value === 'object' && value && value.__esModule) return value;
-/******/ 		var ns = Object.create(null);
-/******/ 		__webpack_require__.r(ns);
-/******/ 		Object.defineProperty(ns, 'default', { enumerable: true, value: value });
-/******/ 		if(mode & 2 && typeof value != 'string') for(var key in value) __webpack_require__.d(ns, key, function(key) { return value[key]; }.bind(null, key));
-/******/ 		return ns;
-/******/ 	};
-/******/
-/******/ 	// getDefaultExport function for compatibility with non-harmony modules
-/******/ 	__webpack_require__.n = function(module) {
-/******/ 		var getter = module && module.__esModule ?
-/******/ 			function getDefault() { return module['default']; } :
-/******/ 			function getModuleExports() { return module; };
-/******/ 		__webpack_require__.d(getter, 'a', getter);
-/******/ 		return getter;
-/******/ 	};
-/******/
-/******/ 	// Object.prototype.hasOwnProperty.call
-/******/ 	__webpack_require__.o = function(object, property) { return Object.prototype.hasOwnProperty.call(object, property); };
-/******/
-/******/ 	// __webpack_public_path__
-/******/ 	__webpack_require__.p = "/";
-/******/
-/******/
-/******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 0);
-/******/ })
-/************************************************************************/
-/******/ ({
-
-/***/ "./src/js/add-to-cart-variation.js":
-/***/ (function(module, exports) {
-
+/******/ (function() { // webpackBootstrap
+var __webpack_exports__ = {};
 /*global wc_add_to_cart_variation_params, woo_variation_swatches_pro_params, woo_variation_swatches_pro_options */
 ;
 
@@ -158,7 +69,7 @@
     $form.on('reset_data.wc-variation-form', {
       variationForm: self
     }, self.onResetDisplayedVariation);
-    $form.on('reset_image', {
+    $form.on('reset_image.wc-variation-form', {
       variationForm: self
     }, self.onResetImage);
     $form.on('change.wc-variation-form', '.variations select', {
@@ -239,6 +150,8 @@
 
       form.xhr = $.ajax({
         global: false,
+        cache: true,
+        // We want to cache it on browser
         url: wc_add_to_cart_variation_params.wc_ajax_url.toString().replace('%%endpoint%%', 'woo_get_all_variations'),
         method: 'POST',
         data: {
@@ -297,6 +210,17 @@
     if (value && attributes.count && attributes.count > attributes.chosenCount) {
       currentAttributes['product_id'] = form.product_id;
       currentAttributes[attribute_name] = value;
+
+      if ($('.woocommerce-product-gallery').length > 0) {
+        $('.woocommerce-product-gallery').block({
+          message: null,
+          overlayCSS: {
+            background: '#FFFFFF',
+            opacity: 0.6
+          }
+        });
+      }
+
       form.previewXhr = $.ajax({
         global: false,
         url: woo_variation_swatches_pro_params.wc_ajax_url.toString().replace('%%endpoint%%', 'woo_get_preview_variation'),
@@ -308,12 +232,23 @@
       });
       form.previewXhr.done(function (variation) {
         // reset off
-        form.$form.off('reset_data.wc-variation-form');
-        form.$form.wc_variations_image_update(variation); //form.$form.trigger('wvs_pro_single_preview_found_variation', [form, variation])
-        //form.$form.trigger('wvs_single_attribute_chosen', [variation, form])
+        // @TODO: Issue clear on reselect with Variation Image Preview
+        //form.$form.off('reset_data.wc-variation-form');
+        form.$form.off('reset_image.wc-variation-form'); // woocommerce-product-gallery
 
-        form.$form.trigger('show_variation', [variation, false]); //form.$form.trigger('update_preview_variation');
+        form.$form.wc_variations_image_update(variation);
+        form.$form.trigger('show_variation', [variation, false]);
+
+        if ($('.woocommerce-product-gallery').length > 0) {
+          $('.woocommerce-product-gallery').unblock();
+        }
       });
+    }
+
+    if (!value && woo_variation_swatches_pro_options.clear_on_reselect) {
+      form.$form.on('reset_image.wc-variation-form', {
+        variationForm: form
+      }, form.onResetImage).trigger('reset_image');
     }
   };
   /**
@@ -1070,15 +1005,5 @@
     };
   };
 })(jQuery, window, document);
-
-/***/ }),
-
-/***/ 0:
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = __webpack_require__("./src/js/add-to-cart-variation.js");
-
-
-/***/ })
-
-/******/ });
+/******/ })()
+;

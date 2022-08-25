@@ -41,7 +41,7 @@
                 <div class="woo-variation-swatches-attribute-term-data-inner">
                     <div class="product-attribute-term-label-settings-group">
 
-                        <div class="form-settings-group" data-dependency="<?php echo wc_esc_json( wp_json_encode( $required_type ) ) ?>">
+                        <div class="form-settings-group" data-gwp_dependency="<?php echo wc_esc_json( wp_json_encode( $required_type ) ) ?>">
                             
                             <?php
                                 $term_type_id = $id = woo_variation_swatches()->get_backend()->get_edit_panel()->settings_id( $attribute_key, 'terms', $term_id, 'type' );
@@ -76,7 +76,7 @@
                             $required = woo_variation_swatches()->get_backend()->get_edit_panel()->normalize_required_attribute( array( $term_type_id => array( 'type' => 'equal', 'value' => 'color' ), $required_id => array( 'type' => 'equal', 'value' => array( 'color', 'mixed' ) ) ) );
                         ?>
 
-                        <div class="form-settings-group" data-dependency="<?php echo wc_esc_json( wp_json_encode( $required ) ) ?>">
+                        <div class="form-settings-group" data-gwp_dependency="<?php echo wc_esc_json( wp_json_encode( $required ) ) ?>">
                             
                             <?php
                                 $id      = woo_variation_swatches()->get_backend()->get_edit_panel()->settings_id( $attribute_key, 'terms', $term_id, 'primary_color' );
@@ -97,7 +97,7 @@
                             </div>
                         </div>
 
-                        <div class="form-settings-group" data-dependency="<?php echo wc_esc_json( wp_json_encode( $required ) ) ?>">
+                        <div class="form-settings-group" data-gwp_dependency="<?php echo wc_esc_json( wp_json_encode( $required ) ) ?>">
                             
                             <?php
                                 $id      = woo_variation_swatches()->get_backend()->get_edit_panel()->settings_id( $attribute_key, 'terms', $term_id, 'is_duel_color' );
@@ -128,7 +128,7 @@
                             $required = woo_variation_swatches()->get_backend()->get_edit_panel()->normalize_required_attribute( array( $term_type_id => array( 'type' => 'equal', 'value' => 'color' ), $id => array( 'type' => 'equal', 'value' => 'yes' ) ) );
                         ?>
 
-                        <div class="form-settings-group" data-dependency="<?php echo wc_esc_json( wp_json_encode( $required ) ) ?>">
+                        <div class="form-settings-group" data-gwp_dependency="<?php echo wc_esc_json( wp_json_encode( $required ) ) ?>">
                             
                             <?php
                                 $id      = woo_variation_swatches()->get_backend()->get_edit_panel()->settings_id( $attribute_key, 'terms', $term_id, 'secondary_color' );
@@ -153,7 +153,7 @@
                             $required = woo_variation_swatches()->get_backend()->get_edit_panel()->normalize_required_attribute( array( $term_type_id => array( 'type' => 'equal', 'value' => 'image' ), $required_id => array( 'type' => 'equal', 'value' => array( 'image', 'mixed' ) ) ) );
                         ?>
 
-                        <div class="form-settings-group" data-dependency="<?php echo wc_esc_json( wp_json_encode( $required ) ) ?>">
+                        <div class="form-settings-group" data-gwp_dependency="<?php echo wc_esc_json( wp_json_encode( $required ) ) ?>">
                             
                             <?php
                                 $id      = woo_variation_swatches()->get_backend()->get_edit_panel()->settings_id( $attribute_key, 'terms', $term_id, 'image_id' );
@@ -181,7 +181,7 @@
                             
                             if ( $global_tooltip_enabled ):
                                 ?>
-                                <div class="form-settings-group" data-dependency="<?php echo wc_esc_json( wp_json_encode( $required ) ) ?>">
+                                <div class="form-settings-group" data-gwp_dependency="<?php echo wc_esc_json( wp_json_encode( $required ) ) ?>">
                                     
                                     <?php
                                         $show_tooltip_type_id = $id = woo_variation_swatches()->get_backend()->get_edit_panel()->settings_id( $attribute_key, 'terms', $term_id, 'show_tooltip' );
@@ -212,7 +212,7 @@
                                 <?php
                                 $required = woo_variation_swatches()->get_backend()->get_edit_panel()->normalize_required_attribute( array( $show_tooltip_type_id => array( 'type' => 'equal', 'value' => 'text' ), $required_id => array( 'type' => 'equal', 'value' => array( 'color', 'image', 'button', 'radio', 'mixed' ) ) ) );
                                 ?>
-                                <div class="form-settings-group" data-dependency="<?php echo wc_esc_json( wp_json_encode( $required ) ) ?>">
+                                <div class="form-settings-group" data-gwp_dependency="<?php echo wc_esc_json( wp_json_encode( $required ) ) ?>">
                                     
                                     <?php
                                         $id                   = woo_variation_swatches()->get_backend()->get_edit_panel()->settings_id( $attribute_key, 'terms', $term_id, 'tooltip_text' );
@@ -238,7 +238,7 @@
                                 $required = woo_variation_swatches()->get_backend()->get_edit_panel()->normalize_required_attribute( array( $show_tooltip_type_id => array( 'type' => 'equal', 'value' => 'image' ), $required_id => array( 'type' => 'equal', 'value' => array( 'color', 'image', 'button', 'radio', 'mixed' ) ) ) );
                                 ?>
 
-                                <div class="form-settings-group" data-dependency="<?php echo wc_esc_json( wp_json_encode( $required ) ) ?>">
+                                <div class="form-settings-group" data-gwp_dependency="<?php echo wc_esc_json( wp_json_encode( $required ) ) ?>">
                                     
                                     <?php
                                         $id      = woo_variation_swatches()->get_backend()->get_edit_panel()->settings_id( $attribute_key, 'terms', $term_id, 'tooltip_image_id' );
