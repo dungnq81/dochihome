@@ -36,8 +36,8 @@ the_page_title_theme();
  */
 do_action('woocommerce_before_main_content');
 
-if (!is_search()) :
-    if (is_shop() && is_active_sidebar('w-shop-sidebar')) :
+if ( !is_search() ) :
+    if ( (is_shop()) && is_active_sidebar('w-shop-sidebar')) :
         wc_get_template_part('shop', 'product');
     endif;
 

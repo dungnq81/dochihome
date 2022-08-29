@@ -15,7 +15,9 @@ if ( ! function_exists( 'elementor_theme_do_location' ) || ! elementor_theme_do_
     <div class="site-footer">
 		<?php do_action( 'footer' ); ?>
     </div>
-<?php endif;
+<?php
+    do_action( 'after_footer' );
+endif;
 wp_footer();
 ?>
 </body>

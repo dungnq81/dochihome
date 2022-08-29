@@ -81,9 +81,10 @@ if (!class_exists('ProductCatCarousel_Widget')) {
                         <ul class="menu_list">
                             <?php foreach ( $ACF->menu_list as $key => $term_id ) :
                                 $term = get_term( $term_id );
+                                if ($term) :
                                 ?>
                                 <li><a href="<?php echo get_term_link($term_id, 'product_cat'); ?>" title="<?php echo esc_attr($term->name); ?>"><?php echo $term->name; ?></a></li>
-                            <?php endforeach; ?>
+                            <?php endif; endforeach; ?>
                         </ul>
                     <?php endif; ?>
                 </div>

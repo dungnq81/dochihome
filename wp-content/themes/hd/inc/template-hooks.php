@@ -145,7 +145,7 @@ function __header()
 
     ?>
     <div data-sticky-container class="p-relative">
-        <div class="inside-header" id="inside-header" data-sticky data-options="marginTop:0;"<?=$data_top_anchor?>>
+        <div class="inside-header" id="inside-header" data-sticky data-options="marginTop:0;stickyOn:small;"<?=$data_top_anchor?>>
             <div class="inner-header" id="inner-header">
                 <div class="grid-container width-extra">
                     <?php if ($header_left_sidebar) : ?>
@@ -182,9 +182,9 @@ function __header()
                     </div>
                     <?php endif; ?>
                 </div>
-                <div class="grid-container width-extra inline-search">
-                    <?php echo do_shortcode('[inline-search class="hide-for-large"]'); ?>
-                </div>
+<!--                <div class="grid-container width-extra inline-search">-->
+<!--                    --><?php ////echo do_shortcode('[inline-search class="hide-for-large"]'); ?>
+<!--                </div>-->
             </div>
             <div class="site-navigation">
                 <div class="grid-container width-extra">
@@ -192,6 +192,11 @@ function __header()
                     <?php //get_template_part('template-parts/header/second-menu'); ?>
                 </div>
             </div>
+        </div>
+    </div>
+    <div class="inline-search-section hide-for-large">
+        <div class="grid-container width-extra inline-search">
+            <?php echo do_shortcode('[inline-search class="hide-for-large"]'); ?>
         </div>
     </div>
 <?php
@@ -291,6 +296,17 @@ function __before_footer_extra()
 {
     if (is_active_sidebar('w-topfooter-sidebar')) {
         dynamic_sidebar('w-topfooter-sidebar');
+    }
+}
+
+// -------------------------------------------------------------
+// after_footer
+// -------------------------------------------------------------
+
+add_action('after_footer', '__after_footer_extra', 31);
+function __after_footer_extra() {
+    if (is_active_sidebar('w-fixed-sidebar')) {
+        dynamic_sidebar('w-fixed-sidebar');
     }
 }
 

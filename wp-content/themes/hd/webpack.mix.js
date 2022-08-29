@@ -46,7 +46,7 @@ mix.setPublicPath('assets')
     //.sass('resources/sass/fonts.scss', 'css')
     //.sass('resources/sass/admin.scss', 'css')
     //.sass('resources/sass/editor-style.scss', 'css')
-    .sass('resources/sass/plugins.scss', 'css')
+    //.sass('resources/sass/plugins.scss', 'css')
     .sass('resources/sass/app.scss', 'css')
 
     //.js('resources/js/login.js', 'js')

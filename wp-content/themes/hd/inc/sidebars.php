@@ -95,18 +95,18 @@ if ( ! function_exists( '__register_sidebars' ) ) {
 		);
 
         // product sidebar
-        register_sidebar(
-            [
-                'container'     => false,
-                'id'            => 'w-product-sidebar',
-                'name'        => __('Product Sidebar', 'hd'),
-                'description' => __('Widgets added here will appear in product sidebar.', 'hd'),
-                'before_widget' => '<aside class="sidebar %2$s">',
-                'after_widget'  => '</aside>',
-                'before_title'  => '<h6 class="sidebar-title">',
-                'after_title'   => '</h6>',
-            ]
-        );
+//        register_sidebar(
+//            [
+//                'container'     => false,
+//                'id'            => 'w-product-sidebar',
+//                'name'        => __('Product Sidebar', 'hd'),
+//                'description' => __('Widgets added here will appear in product sidebar.', 'hd'),
+//                'before_widget' => '<aside class="sidebar %2$s">',
+//                'after_widget'  => '</aside>',
+//                'before_title'  => '<h6 class="sidebar-title">',
+//                'after_title'   => '</h6>',
+//            ]
+//        );
 
         // shop sidebar
         register_sidebar(
@@ -157,6 +157,20 @@ if ( ! function_exists( '__register_sidebars' ) ) {
                 'id'            => 'w-product-attributes-sidebar',
                 'name'        => __('Product Attributes', 'hd'),
                 'description' => __('Widgets added here will appear in product archives sidebar.', 'hd'),
+                'before_widget' => '<div class="%2$s">',
+                'after_widget'  => '</div>',
+                'before_title'  => '<span>',
+                'after_title'   => '</span>',
+            ]
+        );
+
+        // Fixed sidebar
+        register_sidebar(
+            [
+                'container'     => false,
+                'id'            => 'w-fixed-sidebar',
+                'name'        => __('Fixed Sidebar', 'hd'),
+                'description' => __('Widgets added here will appear in fixed sidebar.', 'hd'),
                 'before_widget' => '<div class="%2$s">',
                 'after_widget'  => '</div>',
                 'before_title'  => '<span>',

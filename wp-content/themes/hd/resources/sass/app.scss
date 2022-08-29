@@ -228,10 +228,9 @@
             position: absolute;
             cursor: pointer;
             right: 2px;
-            @include box(38);
+            @include media-box(38, false, 32);
             @include flex-center;
             border-radius: 50%;
-            /*background-color: $color1;*/
             &:hover {
                 background-color: $color2;
                 &::before {
@@ -726,14 +725,25 @@
                     width: 100%;
                     max-width: 100%;
                     border: none;
-                    /*height: 36px;*/
                     padding-top: 0;
                     min-width: 0;
                     background-color: rgb(255 255 255 / 90%);
                     backdrop-filter: blur(5px);
-                    @include media-height(36, false, 30);
+                    @include media-height(40, false, 34);
                 }
             }
+        }
+    }
+}
+
+/** */
+.inline-search-section {
+    background-color: $color2;
+    padding-bottom: 10px;
+    padding-top: 10px;
+    .inline-search {
+        .inside-search {
+            margin-top: 0;
         }
     }
 }
@@ -2672,19 +2682,14 @@ article.product {
     padding: 0;
     margin: 0 auto 30px auto;
     position: sticky;
-    /*top: 125px;*/
     z-index: 98;
     overflow: visible;
     gap: 5px;
     background: none;
     flex-wrap: wrap;
-    @include media-css('top', 125, 120, 5);
-    //@include not-desktop {
-    //    top: 120px;
-    //}
+    @include media-css('top', 125, 120, 100);
     @include mobile {
         justify-content: flex-start;
-        /*top: 5px;*/
     }
     &::before, &::after {
         display: none;
@@ -3414,9 +3419,9 @@ body.woocommerce-order-received {
             h6 {
                 margin-bottom: 0;
                 font-weight: 500;
-                font-size: fs(15);
-                @include mobile {
-                    font-size: fs(14);
+                @include media-fs(15, false, 14);
+                @include wp-mobile {
+                    font-weight: 400;
                 }
             }
         }

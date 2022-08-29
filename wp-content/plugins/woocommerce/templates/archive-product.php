@@ -50,7 +50,7 @@ if ( woocommerce_product_loop() ) {
 	/**
 	 * Hook: woocommerce_before_shop_loop.
 	 *
-	 * @hooked woocommerce_output_all_notices - 10
+	 * @see  woocommerce_output_all_notices - 10
 	 * @hooked woocommerce_result_count - 20
 	 * @hooked woocommerce_catalog_ordering - 30
 	 */
@@ -63,7 +63,7 @@ if ( woocommerce_product_loop() ) {
 			the_post();
 
 			/**
-			 * Hook: woocommerce_shop_loop.
+			 * @@see woocommerce_shop_loop.
 			 */
 			do_action( 'woocommerce_shop_loop' );
 

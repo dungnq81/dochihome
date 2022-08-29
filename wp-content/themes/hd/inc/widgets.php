@@ -5,6 +5,7 @@
  * @author   WEBHD
  */
 
+use Webhd\Widgets\addThis_Widget;
 use Webhd\Widgets\BriefIntroduction_Widget;
 use Webhd\Widgets\Cf7_Widget;
 use Webhd\Widgets\DropdownSearch_Widget;
@@ -49,6 +50,7 @@ if (!function_exists('__register_widgets')) {
         class_exists('\ACF') && class_exists(ProductCatCarousel_Widget::class) && register_widget(new ProductCatCarousel_Widget);
         class_exists('\ACF') && class_exists(Posts_Widget::class) && register_widget(new Posts_Widget);
         class_exists('\ACF') && class_exists(PostsCarousel_Widget::class) && register_widget(new PostsCarousel_Widget);
+        class_exists('\ACF') && class_exists(addThis_Widget::class) && register_widget(new addThis_Widget);
 
         class_exists('\WooCommerce') && class_exists(MiniCart_Widget::class) && register_widget(new MiniCart_Widget);
         class_exists('\WPCF7') && class_exists('\ACF') && class_exists(Cf7_Widget::class) && register_widget(new Cf7_Widget);
