@@ -1360,7 +1360,7 @@
     background-position: left bottom;
     background-repeat: no-repeat;
     @include media-pt(50, 30);
-    @include media-pt(60, 40);
+    @include media-pb(60, 40);
     .feature-posts {
         @include right-fullwidth(15, 10, false);
         @include media-mb(40, 30, 20);

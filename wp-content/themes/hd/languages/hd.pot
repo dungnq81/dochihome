@@ -1,0 +1,1082 @@
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: WebHD Theme\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-08-22 09:01+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: \n"
+"Language: \n"
+"Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Loco https://localise.biz/\n"
+"X-Loco-Version: 2.6.2; wp-6.0.1\n"
+"X-Domain: hd"
+
+#: inc/template-functions.php:984
+#, php-format
+msgid "%1$s at %2$s"
+msgstr ""
+
+#. Time difference between two dates, in days. %s: Number of days
+#: inc/template-functions.php:981
+#, php-format
+msgid "%s day"
+msgid_plural "%s days"
+msgstr[0] ""
+msgstr[1] ""
+
+#: woocommerce/single-product/rating.php:38
+#, php-format
+msgid "%s review"
+msgid_plural "%s reviews"
+msgstr[0] ""
+msgstr[1] ""
+
+#: template-parts/parts/upseo.php:11
+msgid "(no title)"
+msgstr ""
+
+#: comments.php:26
+msgid "1 comment"
+msgstr ""
+
+#: inc/Themes/Customizer.php:149 inc/Themes/Customizer.php:188
+msgid "16:9"
+msgstr ""
+
+#: inc/Themes/Customizer.php:146 inc/Themes/Customizer.php:185
+msgid "1:1"
+msgstr ""
+
+#: inc/Themes/Customizer.php:147 inc/Themes/Customizer.php:186
+msgid "3:2"
+msgstr ""
+
+#: inc/Themes/Customizer.php:148 inc/Themes/Customizer.php:187
+msgid "4:3"
+msgstr ""
+
+#. %s: customize url
+#: inc/template-functions.php:1248
+#, php-format
+msgid "<a class=\"_blank\" href=\"%s\">Customize</a>"
+msgstr ""
+
+#. %s: menu url
+#: inc/template-functions.php:1243
+#, php-format
+msgid "<a class=\"_blank\" href=\"%s\">Menus</a>"
+msgstr ""
+
+#: inc/Plugins/Woocommerce/Woocommerce_Plugin.php:192
+#: inc/Plugins/Woocommerce/Woocommerce_Plugin.php:201
+#, php-format
+msgid "<span class=\"from\">From:</span>%1$s"
+msgstr ""
+
+#: inc/PostTypes/Banner_PostType.php:33
+#: inc/PostTypes/SEOProductCat_PostType.php:30
+msgid "Add New"
+msgstr ""
+
+#: inc/PostTypes/Banner_PostType.php:92
+msgid "Add New Category"
+msgstr ""
+
+#: inc/PostTypes/Banner_PostType.php:32
+#: inc/PostTypes/SEOProductCat_PostType.php:29
+msgid "Add New Item"
+msgstr ""
+
+#: inc/PostTypes/Banner_PostType.php:97
+msgid "Add or remove items"
+msgstr ""
+
+#: woocommerce/single-product/tabs/additional-information.php:22
+msgid "Additional information"
+msgstr ""
+
+#: inc/template-functions.php:952
+msgid "ago"
+msgstr ""
+
+#: inc/PostTypes/Banner_PostType.php:31
+msgid "All Banners"
+msgstr ""
+
+#: inc/PostTypes/Banner_PostType.php:88
+msgid "All Items"
+msgstr ""
+
+#: inc/PostTypes/SEOProductCat_PostType.php:28
+msgid "All SEO Product Cat"
+msgstr ""
+
+#: inc/Themes/Customizer.php:38
+msgid "Alternative Logo"
+msgstr ""
+
+#: inc/Plugins/Woocommerce/Woocommerce_Plugin.php:339
+msgid "Average rating"
+msgstr ""
+
+#: inc/PostTypes/Banner_PostType.php:25
+msgid "Banner"
+msgstr ""
+
+#: inc/PostTypes/Banner_PostType.php:85 inc/PostTypes/Banner_PostType.php:87
+msgid "Banner Categories"
+msgstr ""
+
+#: inc/PostTypes/Banner_PostType.php:86
+msgid "Banner Category"
+msgstr ""
+
+#: inc/PostTypes/Banner_PostType.php:24 inc/PostTypes/Banner_PostType.php:26
+#: inc/PostTypes/Banner_PostType.php:27 inc/PostTypes/Banner_PostType.php:53
+msgid "Banners"
+msgstr ""
+
+#: inc/PostTypes/Banner_PostType.php:54
+msgid "Banners Post Type Description"
+msgstr ""
+
+#: inc/Themes/Customizer.php:503
+msgid "Block Editor"
+msgstr ""
+
+#: inc/Themes/Customizer.php:110
+msgid "Bottom"
+msgstr ""
+
+#: inc/Plugins/Woocommerce/Woocommerce_Plugin.php:360
+msgctxt "breadcrumb"
+msgid "Home"
+msgstr ""
+
+#: inc/Themes/Customizer.php:364
+msgid "Breadcrumb background"
+msgstr ""
+
+#: inc/Themes/Customizer.php:351
+msgid "Breadcrumbs"
+msgstr ""
+
+#: inc/template-hooks.php:256
+msgid "by"
+msgstr ""
+
+#: inc/Plugins/Woocommerce/woocommerce.php:316
+msgid "Cart"
+msgstr ""
+
+#: woocommerce/cart/cart-totals.php:25
+msgid "Cart totals"
+msgstr ""
+
+#: inc/PostTypes/Banner_PostType.php:98
+msgid "Choose from the most used"
+msgstr ""
+
+#: inc/Widgets/DropdownSearch_Widget.php:59
+msgid "Close"
+msgstr ""
+
+#: comments.php:22
+msgid "Comments"
+msgstr ""
+
+#: comments.php:67
+msgid "Comments are closed."
+msgstr ""
+
+#. %s: Comment count number.
+#: comments.php:31
+#, php-format
+msgctxt "Comments title"
+msgid "%s comment"
+msgid_plural "%s comments"
+msgstr[0] ""
+msgstr[1] ""
+
+#: inc/Plugins/Woocommerce/woocommerce.php:80
+#: woocommerce/single-product/tabs/components.php:11
+msgid "Components"
+msgstr ""
+
+#: woocommerce/content-product.php:83
+msgid "Contact"
+msgstr ""
+
+#: inc/Widgets/Cf7_Widget.php:15
+msgid "Contact Form 7 + Custom Fields"
+msgstr ""
+
+#: inc/Themes/Customizer.php:73
+msgid "Controls the add-on menu"
+msgstr ""
+
+#: inc/Widgets/DropdownSearch_Widget.php:26 inc/Widgets/PageTitle_Widget.php:19
+#: inc/Widgets/Search_Widget.php:26
+msgid "Css Class"
+msgstr ""
+
+#: inc/Themes/Customizer.php:111
+msgid "Default (Right)"
+msgstr ""
+
+#: woocommerce/single-product/tabs/description.php:22
+msgid "Description"
+msgstr ""
+
+#: inc/Plugins/Woocommerce/woocommerce.php:48
+msgid "Descriptions"
+msgstr ""
+
+#: inc/Themes/Theme.php:229 template-parts/posts/loop.php:51
+msgid "Detail"
+msgstr ""
+
+#: inc/Themes/Customizer.php:526
+msgid "Disable block widgets"
+msgstr ""
+
+#: inc/Themes/Customizer.php:548
+msgid "Disable Gutenberg widgets"
+msgstr ""
+
+#: inc/Themes/Customizer.php:527
+msgid "Disables the block editor from managing widgets"
+msgstr ""
+
+#: inc/Themes/Customizer.php:549
+msgid "Disables the block editor from managing widgets in the Gutenberg plugin"
+msgstr ""
+
+#: inc/Widgets/BriefIntroduction_Widget.php:16
+msgid "Display brief introduction section"
+msgstr ""
+
+#: inc/Widgets/LinkBox_Widget.php:15
+msgid "Display link box + Custom Fields"
+msgstr ""
+
+#: inc/Widgets/ListBox_Widget.php:16
+msgid "Display linkbox list + Custom Fields"
+msgstr ""
+
+#: inc/Widgets/offCanvas_Widget.php:13
+msgid "Display offCanvas Button"
+msgstr ""
+
+#: inc/Widgets/PageTitle_Widget.php:13
+msgid "Display page title, background and breadcrumbs"
+msgstr ""
+
+#: inc/Widgets/ProductCat_Widget.php:16
+msgid "Display products categories + Custom Fields"
+msgstr ""
+
+#: inc/Widgets/ProductCatCarousel_Widget.php:16
+msgid "Display products categories carousels + Custom Fields"
+msgstr ""
+
+#: inc/Widgets/DropdownSearch_Widget.php:15
+msgid "Display the dropdown search box"
+msgstr ""
+
+#: inc/Widgets/MediaCarousel_Widget.php:15
+msgid "Display the Media Carousels + Custom Fields"
+msgstr ""
+
+#: inc/Widgets/MiniCart_Widget.php:12
+msgid "Display the mini cart"
+msgstr ""
+
+#: inc/Widgets/Search_Widget.php:15
+msgid "Display the search box"
+msgstr ""
+
+#: inc/PostTypes/Banner_PostType.php:35 inc/PostTypes/Banner_PostType.php:93
+#: inc/PostTypes/SEOProductCat_PostType.php:32
+msgid "Edit Item"
+msgstr ""
+
+#: functions.php:25
+msgid "Error locating autoloader. Please run <code>composer install</code>."
+msgstr ""
+
+#: inc/Themes/Customizer.php:212
+msgid "Facebook AppID"
+msgstr ""
+
+#: template-parts/comment/facebook.php:18
+msgid "Facebook comments"
+msgstr ""
+
+#: inc/Themes/Customizer.php:249
+msgid "Facebook Live Chat"
+msgstr ""
+
+#: inc/Themes/Customizer.php:225
+msgid "Facebook PageID"
+msgstr ""
+
+#: inc/PostTypes/Banner_PostType.php:42
+#: inc/PostTypes/SEOProductCat_PostType.php:39
+msgid "Featured Image"
+msgstr ""
+
+#: inc/PostTypes/Banner_PostType.php:50
+#: inc/PostTypes/SEOProductCat_PostType.php:47
+msgid "Filter items list"
+msgstr ""
+
+#: inc/Themes/Customizer.php:428
+msgid "Footer"
+msgstr ""
+
+#: inc/Themes/Customizer.php:441
+msgid "Footer background"
+msgstr ""
+
+#: inc/Themes/Customizer.php:463
+msgid "Footer background Color"
+msgstr ""
+
+#. 1: column number
+#: inc/sidebars.php:165
+#, php-format
+msgid "Footer Column %1$d"
+msgstr ""
+
+#: inc/Themes/Customizer.php:488 inc/Themes/Customizer.php:492
+msgid "Footer columns number"
+msgstr ""
+
+#. 1: row number, 2: column number
+#: inc/sidebars.php:172
+#, php-format
+msgid "Footer Row %1$d - Column %2$d"
+msgstr ""
+
+#: inc/Themes/Customizer.php:475
+msgid "Footer row number"
+msgstr ""
+
+#: inc/Themes/Customizer.php:479
+msgid "Footer rows number"
+msgstr ""
+
+#: inc/Themes/Customizer.php:601
+msgid "GPKD"
+msgstr ""
+
+#: inc/menus.php:20
+msgid "Handheld Menu"
+msgstr ""
+
+#: inc/Themes/Customizer.php:72
+msgid "HD"
+msgstr ""
+
+#: inc/Themes/Customizer.php:379
+msgid "Header"
+msgstr ""
+
+#: inc/Themes/Customizer.php:392
+msgid "Header background"
+msgstr ""
+
+#: inc/Themes/Customizer.php:414
+msgid "Header background Color"
+msgstr ""
+
+#: inc/Widgets/offCanvas_Widget.php:19
+msgid "Hide if desktop devices"
+msgstr ""
+
+#: inc/template-functions.php:1022
+msgid "Home"
+msgstr ""
+
+#: inc/sidebars.php:22
+msgid "Home Page"
+msgstr ""
+
+#: inc/Themes/Customizer.php:308 inc/Themes/Customizer.php:323
+msgid "Hotline"
+msgstr ""
+
+#: inc/Themes/Customizer.php:326
+msgid "Hotline number, support easier interaction on the phone"
+msgstr ""
+
+#: inc/Themes/Customizer.php:229
+msgid ""
+"How do I find my Facebook Page ID? <a href='https://www.facebook."
+"com/help/1503421039731588'>facebook.com/help/1503421039731588</a>"
+msgstr ""
+
+#. URI of the theme
+#. Author URI of the theme
+msgid "https://webhd.vn"
+msgstr ""
+
+#: inc/Themes/Defer.php:277
+msgid "If you need assistance, please leave a message here. Thanks"
+msgstr ""
+
+#: inc/Themes/Customizer.php:141 inc/Themes/Customizer.php:180
+msgid "Image ratio"
+msgstr ""
+
+#: inc/PostTypes/Banner_PostType.php:46
+#: inc/PostTypes/SEOProductCat_PostType.php:43
+msgid "Insert Item"
+msgstr ""
+
+#: inc/PostTypes/Banner_PostType.php:28
+#: inc/PostTypes/SEOProductCat_PostType.php:25
+msgid "Item Archives"
+msgstr ""
+
+#: inc/PostTypes/Banner_PostType.php:29
+#: inc/PostTypes/SEOProductCat_PostType.php:26
+msgid "Item Attributes"
+msgstr ""
+
+#: inc/PostTypes/Banner_PostType.php:48 inc/PostTypes/Banner_PostType.php:103
+#: inc/PostTypes/SEOProductCat_PostType.php:45
+msgid "Items list"
+msgstr ""
+
+#: inc/PostTypes/Banner_PostType.php:49 inc/PostTypes/Banner_PostType.php:104
+#: inc/PostTypes/SEOProductCat_PostType.php:46
+msgid "Items list navigation"
+msgstr ""
+
+#: inc/Plugins/Woocommerce/Woocommerce_Plugin.php:340
+msgid "Latest"
+msgstr ""
+
+#: comments.php:75
+msgid "Leave a comment"
+msgstr ""
+
+#: inc/Themes/Customizer.php:107
+msgid "Left"
+msgstr ""
+
+#: inc/sidebars.php:62
+msgid "Left Header"
+msgstr ""
+
+#. Name of the template
+msgid "Liên hệ"
+msgstr ""
+
+#: inc/Widgets/offCanvas_Widget.php:49
+msgid "Menu"
+msgstr ""
+
+#: inc/PostTypes/Banner_PostType.php:34
+#: inc/PostTypes/SEOProductCat_PostType.php:31
+msgid "New Item"
+msgstr ""
+
+#: inc/PostTypes/Banner_PostType.php:91
+msgid "New Item Name"
+msgstr ""
+
+#: comments.php:60
+msgid "Newer comments"
+msgstr ""
+
+#: inc/Themes/Customizer.php:123
+msgid "News images"
+msgstr ""
+
+#: inc/PostTypes/Banner_PostType.php:102
+msgid "No items"
+msgstr ""
+
+#: template-parts/parts/content-none.php:15
+msgid "No posts were found matching your selection."
+msgstr ""
+
+#: woocommerce/cart/mini-cart.php:107
+msgid "No products in the cart."
+msgstr ""
+
+#: inc/template-functions.php:1131 inc/PostTypes/Banner_PostType.php:101
+msgid "Not Found"
+msgstr ""
+
+#: inc/PostTypes/Banner_PostType.php:40
+#: inc/PostTypes/SEOProductCat_PostType.php:37
+msgid "Not found"
+msgstr ""
+
+#: inc/PostTypes/Banner_PostType.php:41
+#: inc/PostTypes/SEOProductCat_PostType.php:38
+msgid "Not found in Trash"
+msgstr ""
+
+#: inc/Themes/Customizer.php:84
+msgid "offCanvas Menu"
+msgstr ""
+
+#: inc/Themes/Customizer.php:102
+msgid "offCanvas position"
+msgstr ""
+
+#: comments.php:56
+msgid "Older comments"
+msgstr ""
+
+#: inc/Themes/Admin.php:199
+msgid "Order"
+msgstr ""
+
+#: inc/Plugins/Woocommerce/Woocommerce_Plugin.php:337
+msgid "Ordering"
+msgstr ""
+
+#: inc/Themes/Customizer.php:582
+msgid "Other"
+msgstr ""
+
+#: comments.php:51
+msgid "Page"
+msgstr ""
+
+#: inc/template-functions.php:1141
+msgid "page"
+msgstr ""
+
+#: inc/PostTypes/Banner_PostType.php:89
+msgid "Parent Item"
+msgstr ""
+
+#: inc/PostTypes/Banner_PostType.php:30 inc/PostTypes/Banner_PostType.php:90
+#: inc/PostTypes/SEOProductCat_PostType.php:27
+msgid "Parent Item:"
+msgstr ""
+
+#. %1$s: link to menus, %2$s: link to customize.
+#: inc/template-functions.php:1240
+#, php-format
+msgid ""
+"Please assign a menu to the primary menu location under %1$s or %2$s the "
+"design."
+msgstr ""
+
+#: inc/PostTypes/Banner_PostType.php:99
+msgid "Popular Items"
+msgstr ""
+
+#: inc/Plugins/Woocommerce/Woocommerce_Plugin.php:338
+msgid "Popularity"
+msgstr ""
+
+#: inc/Themes/Admin.php:309
+msgid "Powered by"
+msgstr ""
+
+#: inc/Plugins/Woocommerce/Woocommerce_Plugin.php:342
+msgid "Price: high to low"
+msgstr ""
+
+#: inc/Plugins/Woocommerce/Woocommerce_Plugin.php:341
+msgid "Price: low to high"
+msgstr ""
+
+#: inc/menus.php:18
+msgid "Primary Menu"
+msgstr ""
+
+#: template-parts/header/primary-menu.php:17
+msgid "Primary Navigation"
+msgstr ""
+
+#: inc/sidebars.php:144
+msgid "Product Attributes"
+msgstr ""
+
+#: inc/sidebars.php:130
+msgid "Product Descriptions"
+msgstr ""
+
+#: inc/sidebars.php:102
+msgid "Product Sidebar"
+msgstr ""
+
+#: inc/Themes/Customizer.php:162
+msgid "Products images"
+msgstr ""
+
+#: woocommerce/loop/quick-view.php:18 woocommerce/loop/quick-view.php:20
+#: inc/Plugins/Woocommerce/woocommerce.php:549
+msgid "Quick View"
+msgstr ""
+
+#: inc/Themes/Customizer.php:150 inc/Themes/Customizer.php:189
+msgid "Ratio default (16:9)"
+msgstr ""
+
+#: woocommerce/single-product/recently_viewed.php:27
+msgid "Recently viewed products"
+msgstr ""
+
+#: inc/PostTypes/Banner_PostType.php:44
+#: inc/PostTypes/SEOProductCat_PostType.php:41
+msgid "Remove featured image"
+msgstr ""
+
+#: inc/Themes/Customizer.php:642
+msgid "Remove Menu"
+msgstr ""
+
+#: woocommerce/cart/mini-cart.php:70
+msgid "Remove this item"
+msgstr ""
+
+#: inc/Widgets/BriefIntroduction_Widget.php:45 inc/Widgets/Cf7_Widget.php:43
+#: inc/Widgets/LinkBox_Widget.php:48 inc/Widgets/ListBox_Widget.php:49
+#: inc/Widgets/MediaCarousel_Widget.php:44 inc/Widgets/Posts_Widget.php:43
+#: inc/Widgets/PostsCarousel_Widget.php:43 inc/Widgets/ProductCat_Widget.php:45
+#: inc/Widgets/ProductCatCarousel_Widget.php:45
+#: inc/Widgets/Products_Widget.php:42
+#: inc/Widgets/ProductsCarousel_Widget.php:42
+msgid "Required: \"Advanced Custom Fields\" plugin"
+msgstr ""
+
+#: inc/Themes/Customizer.php:108
+msgid "Right"
+msgstr ""
+
+#: inc/sidebars.php:74
+msgid "Right Header"
+msgstr ""
+
+#: inc/Themes/Defer.php:287
+msgid "Rất vui khi được hỗ trợ bạn."
+msgstr ""
+
+#: inc/Themes/Hook.php:95
+msgid "Scroll back to top"
+msgstr ""
+
+#: inc/Themes/Shortcode.php:48 inc/Widgets/DropdownSearch_Widget.php:20
+#: inc/Widgets/Search_Widget.php:20
+msgid "Search"
+msgstr ""
+
+#: inc/Themes/Shortcode.php:50 inc/Widgets/DropdownSearch_Widget.php:58
+#: inc/Widgets/Search_Widget.php:52
+msgid "Search ..."
+msgstr ""
+
+#: inc/Themes/Shortcode.php:49 inc/Widgets/Search_Widget.php:51
+msgid "Search for"
+msgstr ""
+
+#: inc/PostTypes/Banner_PostType.php:39 inc/PostTypes/Banner_PostType.php:100
+#: inc/PostTypes/SEOProductCat_PostType.php:36
+msgid "Search Items"
+msgstr ""
+
+#: inc/template-functions.php:1083 template-parts/archive.php:21
+#: template-parts/parts/page-title.php:28
+#, php-format
+msgid "Search Results for: %s"
+msgstr ""
+
+#: inc/PostTypes/SEOProductCat_PostType.php:21
+#: inc/PostTypes/SEOProductCat_PostType.php:22
+#: inc/PostTypes/SEOProductCat_PostType.php:23
+#: inc/PostTypes/SEOProductCat_PostType.php:24
+#: inc/PostTypes/SEOProductCat_PostType.php:50
+msgid "SEO Product Cat"
+msgstr ""
+
+#: inc/PostTypes/SEOProductCat_PostType.php:51
+msgid "SEO Product Cat Post Type Description"
+msgstr ""
+
+#: inc/PostTypes/Banner_PostType.php:96
+msgid "Separate items with commas"
+msgstr ""
+
+#: inc/PostTypes/Banner_PostType.php:43
+#: inc/PostTypes/SEOProductCat_PostType.php:40
+msgid "Set featured image"
+msgstr ""
+
+#: template-parts/parts/inline-share.php:15 template-parts/parts/sharing.php:7
+msgid "Share"
+msgstr ""
+
+#: woocommerce/cart/cart-totals.php:48 woocommerce/cart/cart-totals.php:49
+msgid "Shipping"
+msgstr ""
+
+#: woocommerce/loop/orderby.php:26
+msgid "Shop order"
+msgstr ""
+
+#: inc/sidebars.php:116
+msgid "Shop Page"
+msgstr ""
+
+#: inc/template-hooks.php:89
+msgid "Skip to main content"
+msgstr ""
+
+#: inc/template-hooks.php:88
+msgid "Skip to navigation"
+msgstr ""
+
+#: woocommerce/single-product/meta.php:26
+#: woocommerce/single-product/meta_sku.php:10
+msgid "SKU:"
+msgstr ""
+
+#: inc/Themes/Customizer.php:201
+msgid "Social"
+msgstr ""
+
+#: inc/menus.php:21
+msgid "Social menu"
+msgstr ""
+
+#: woocommerce/loop/orderby.php:25
+msgid "Sort by:"
+msgstr ""
+
+#: inc/Plugins/Woocommerce/woocommerce.php:68
+#: woocommerce/single-product/tabs/specifications.php:11
+msgid "Specifications"
+msgstr ""
+
+#: woocommerce/cart/cart-totals.php:28 woocommerce/cart/cart-totals.php:29
+msgid "Subtotal"
+msgstr ""
+
+#: inc/template-functions.php:1114
+#, php-format
+msgid "Tag Archives: %s"
+msgstr ""
+
+#. 1: SVG icon. 2: posted in label, only visible to screen readers. 3: list of tags.
+#: inc/template-functions.php:769
+msgid "Tags"
+msgstr ""
+
+#: inc/menus.php:22
+msgid "Terms menu"
+msgstr ""
+
+#: inc/Themes/Customizer.php:645
+msgid "The menu list will be hidden"
+msgstr ""
+
+#: inc/Themes/Customizer.php:623
+msgid "Theme Color"
+msgstr ""
+
+#. %s: WordPress Version.
+#: inc/back-compat.php:39 inc/back-compat.php:56 inc/back-compat.php:80
+#, php-format
+msgid ""
+"This theme requires WordPress 5.3 or newer. You are running version %s. "
+"Please upgrade."
+msgstr ""
+
+#: inc/template-hooks.php:256
+msgid "Thiết kế web"
+msgstr ""
+
+#: inc/Themes/Admin.php:193 inc/Themes/Admin.php:245
+msgid "Thumb"
+msgstr ""
+
+#: inc/Themes/Customizer.php:604
+msgid "Thông tin Giấy phép kinh doanh (nếu có)"
+msgstr ""
+
+#: inc/Widgets/BriefIntroduction_Widget.php:22 inc/Widgets/Cf7_Widget.php:21
+#: inc/Widgets/DropdownSearch_Widget.php:21 inc/Widgets/LinkBox_Widget.php:21
+#: inc/Widgets/ListBox_Widget.php:22 inc/Widgets/MediaCarousel_Widget.php:21
+#: inc/Widgets/MiniCart_Widget.php:18 inc/Widgets/Posts_Widget.php:22
+#: inc/Widgets/PostsCarousel_Widget.php:22 inc/Widgets/ProductCat_Widget.php:22
+#: inc/Widgets/ProductCatCarousel_Widget.php:22
+#: inc/Widgets/Products_Widget.php:21
+#: inc/Widgets/ProductsCarousel_Widget.php:21 inc/Widgets/Search_Widget.php:21
+msgid "Title"
+msgstr ""
+
+#: inc/Themes/Customizer.php:55
+msgid "Tiêu đề logo"
+msgstr ""
+
+#: inc/Themes/Customizer.php:109
+msgid "Top"
+msgstr ""
+
+#: inc/sidebars.php:88
+msgid "Top Footer"
+msgstr ""
+
+#: inc/sidebars.php:36
+msgid "Top-left Header"
+msgstr ""
+
+#: inc/sidebars.php:48
+msgid "Top-right Header"
+msgstr ""
+
+#: woocommerce/cart/cart-totals.php:92 woocommerce/cart/cart-totals.php:93
+msgid "Total"
+msgstr ""
+
+#. Name of the template
+msgid "Trang chủ"
+msgstr ""
+
+#: inc/PostTypes/Banner_PostType.php:36 inc/PostTypes/Banner_PostType.php:94
+#: inc/PostTypes/SEOProductCat_PostType.php:33
+msgid "Update Item"
+msgstr ""
+
+#: inc/PostTypes/Banner_PostType.php:47
+#: inc/PostTypes/SEOProductCat_PostType.php:44
+msgid "Uploaded to this item"
+msgstr ""
+
+#: inc/PostTypes/Banner_PostType.php:45
+#: inc/PostTypes/SEOProductCat_PostType.php:42
+msgid "Use as featured image"
+msgstr ""
+
+#: inc/Themes/Customizer.php:570
+msgid "Use Classic Editor"
+msgstr ""
+
+#: inc/Themes/Customizer.php:571
+msgid "Use Classic Editor - Disable Gutenberg Editor"
+msgstr ""
+
+#: inc/PostTypes/Banner_PostType.php:37 inc/PostTypes/Banner_PostType.php:95
+#: inc/PostTypes/SEOProductCat_PostType.php:34
+msgid "View Item"
+msgstr ""
+
+#: inc/PostTypes/Banner_PostType.php:38
+#: inc/PostTypes/SEOProductCat_PostType.php:35
+msgid "View Items"
+msgstr ""
+
+#: inc/Themes/Theme.php:228
+msgid "View more"
+msgstr ""
+
+#: inc/Plugins/Woocommerce/woocommerce.php:289
+#: inc/Plugins/Woocommerce/woocommerce.php:312
+msgid "View your shopping cart"
+msgstr ""
+
+#: inc/Widgets/BriefIntroduction_Widget.php:17
+msgid "W - Brief Introduction"
+msgstr ""
+
+#: inc/Widgets/Cf7_Widget.php:16
+msgid "W - CF7 Form"
+msgstr ""
+
+#: inc/Widgets/DropdownSearch_Widget.php:16
+msgid "W - Dropdown Search"
+msgstr ""
+
+#: inc/Widgets/LinkBox_Widget.php:16
+msgid "W - LinkBox"
+msgstr ""
+
+#: inc/Widgets/ListBox_Widget.php:17
+msgid "W - LinkBox List"
+msgstr ""
+
+#: inc/Widgets/MediaCarousel_Widget.php:16
+msgid "W - Media Carousels"
+msgstr ""
+
+#: inc/Widgets/MiniCart_Widget.php:13
+msgid "W - Mini Cart"
+msgstr ""
+
+#: inc/Widgets/offCanvas_Widget.php:14
+msgid "W - offCanvas Button"
+msgstr ""
+
+#: inc/Widgets/PageTitle_Widget.php:14
+msgid "W - Page Title"
+msgstr ""
+
+#: inc/Widgets/Posts_Widget.php:17
+msgid "W - Posts"
+msgstr ""
+
+#: inc/Widgets/PostsCarousel_Widget.php:17
+msgid "W - Posts Carousel"
+msgstr ""
+
+#: inc/Widgets/Products_Widget.php:16
+msgid "W - Products"
+msgstr ""
+
+#: inc/Widgets/ProductsCarousel_Widget.php:16
+msgid "W - Products Carousel"
+msgstr ""
+
+#: inc/Widgets/ProductCat_Widget.php:17
+msgid "W - Products Cat"
+msgstr ""
+
+#: inc/Widgets/ProductCatCarousel_Widget.php:17
+msgid "W - Products Cat Carousels"
+msgstr ""
+
+#: inc/Widgets/Search_Widget.php:16
+msgid "W - Search"
+msgstr ""
+
+#: inc/template-hooks.php:256
+msgid "Webhd Agency"
+msgstr ""
+
+#. Author of the theme
+msgid "WEBHD team"
+msgstr ""
+
+#. Name of the theme
+msgid "WebHD Theme"
+msgstr ""
+
+#. Description of the theme
+msgid "WEBHD Wordpress Theme."
+msgstr ""
+
+#. 1: column number, 2: row number
+#: inc/sidebars.php:175
+#, php-format
+msgid "Widgets added here will appear in column %1$d of footer row %2$d."
+msgstr ""
+
+#. 1: column number
+#: inc/sidebars.php:168
+#, php-format
+msgid "Widgets added here will appear in column %1$d of the footer."
+msgstr ""
+
+#: inc/sidebars.php:23
+msgid "Widgets added here will appear in homepage."
+msgstr ""
+
+#: inc/sidebars.php:63
+msgid "Widgets added here will appear in left header."
+msgstr ""
+
+#: inc/sidebars.php:145
+msgid "Widgets added here will appear in product archives sidebar."
+msgstr ""
+
+#: inc/sidebars.php:103
+msgid "Widgets added here will appear in product sidebar."
+msgstr ""
+
+#: inc/sidebars.php:131
+msgid "Widgets added here will appear in products description sidebar."
+msgstr ""
+
+#: inc/sidebars.php:75
+msgid "Widgets added here will appear in right header."
+msgstr ""
+
+#: inc/sidebars.php:117
+msgid "Widgets added here will appear in shop sidebar."
+msgstr ""
+
+#: inc/sidebars.php:89
+msgid "Widgets added here will appear in top footer."
+msgstr ""
+
+#: inc/sidebars.php:37
+msgid "Widgets added here will appear in top-left header."
+msgstr ""
+
+#: inc/sidebars.php:49
+msgid "Widgets added here will appear in top-right header."
+msgstr ""
+
+#: inc/Themes/Customizer.php:216
+msgid ""
+"You can do this at <a href='https://developers.facebook.com/apps/'>"
+"developers.facebook.com/apps</a>"
+msgstr ""
+
+#: inc/Themes/Customizer.php:263
+msgid ""
+"You can do this at <a href='https://developers.zalo.me/docs/'>developers."
+"zalo.me/docs/</a>"
+msgstr ""
+
+#: inc/Themes/Customizer.php:276
+msgid ""
+"You can do this at <a href='https://oa.zalo.me/manage/oa?option=create'>oa."
+"zalo.me/manage/oa?option=create</a>"
+msgstr ""
+
+#: inc/Widgets/Posts_Widget.php:16
+msgid "Your site&#8217;s filter posts by category."
+msgstr ""
+
+#: inc/Widgets/PostsCarousel_Widget.php:16
+msgid "Your site&#8217;s filter posts carousel by category."
+msgstr ""
+
+#: inc/Widgets/Products_Widget.php:15
+msgid "Your site&#8217;s filter products by category."
+msgstr ""
+
+#: inc/Widgets/ProductsCarousel_Widget.php:15
+msgid "Your site&#8217;s filter products carousel by category."
+msgstr ""
+
+#: inc/Themes/Customizer.php:259
+msgid "Zalo AppID"
+msgstr ""
+
+#: template-parts/comment/zalo.php:18
+msgid "Zalo comments"
+msgstr ""
+
+#: inc/Themes/Customizer.php:336
+msgid "Zalo Hotline"
+msgstr ""
+
+#: inc/Themes/Customizer.php:340
+msgid "Zalo Hotline number, support easier interaction on the zalo"
+msgstr ""
+
+#: inc/Themes/Customizer.php:296
+msgid "Zalo Live Chat"
+msgstr ""
+
+#: inc/Themes/Customizer.php:272
+msgid "Zalo OAID"
+msgstr ""
