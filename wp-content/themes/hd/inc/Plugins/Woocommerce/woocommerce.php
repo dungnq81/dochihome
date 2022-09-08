@@ -167,9 +167,9 @@ function woocommerce_taxonomy_archive_description() {
             //if ( $thumbnail_id  || $seo_desc || $term_description) {
             if ( $seo_desc || $term_description) {
                 echo '<div class="woo-description">';
-                if ($thumbnail_id) :
-                    echo '<div class="term-thumb">' . wp_get_attachment_image($thumbnail_id, 'post-thumbnail') . '</div>';
-                endif;
+                //if ($thumbnail_id) :
+                    //echo '<div class="term-thumb">' . wp_get_attachment_image($thumbnail_id, 'post-thumbnail') . '</div>';
+                //endif;
                 if ($term_description) :
                     echo '<div class="term-description">' . wc_format_content( wp_kses_post( $term_description ) ) . '</div>'; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
                 endif;
@@ -249,9 +249,9 @@ function woocommerce_product_archive_description() {
             //if ( $description  || $post_thumbnail) {
             if ( $description) {
                 echo '<div class="woo-description">';
-                if ($post_thumbnail) :
-                    echo '<div class="page-thumb">' . $post_thumbnail . '</div>';
-                endif;
+                //if ($post_thumbnail) :
+                    //echo '<div class="page-thumb">' . $post_thumbnail . '</div>';
+                //endif;
                 if ($description) :
                 echo '<div class="page-description">' . $description . '</div>'; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
                 endif;

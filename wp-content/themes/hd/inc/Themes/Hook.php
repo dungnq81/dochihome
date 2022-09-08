@@ -26,7 +26,7 @@ if ( ! class_exists( 'Hook' ) ) {
 			add_action( 'wp_footer', [ &$this, 'footer_extra_script' ], 99 );
 
 			// wp_print_footer_scripts
-			add_action( 'wp_print_footer_scripts', [ &$this, 'skip_link_focus_fix' ] );
+			add_action( 'wp_print_footer_scripts', [ &$this, 'js_fix' ] );
 
 			// hide admin bar
 			add_action( "user_register", [ &$this, 'user_register' ], 10, 1 );
@@ -54,12 +54,18 @@ if ( ! class_exists( 'Hook' ) ) {
 		 *
 		 * @link https://git.io/vWdr2
 		 */
-		public function skip_link_focus_fix() {
+		public function js_fix() {
 			if ( file_exists( $skip_link = get_template_directory() . '/assets/js/plugins/skip-link-focus-fix.js' ) ) {
 				echo '<script>';
 				include $skip_link;
 				echo '</script>';
 			}
+
+            if ( file_exists( $flex_gap = get_template_directory() . '/assets/js/plugins/flex-gap.js' ) ) {
+                echo '<script>';
+                include $flex_gap;
+                echo '</script>';
+            }
 
 			// The following is minified via `npx terser --compress --mangle -- assets/js/skip-link-focus-fix.js`.
 		}
@@ -67,8 +73,7 @@ if ( ! class_exists( 'Hook' ) ) {
 		// ------------------------------------------------------
 
 		public function footer_extra_script() { ?>
-            <script>document.documentElement.classList.remove("no-js");</script>
-            <script>if (-1 !== navigator.userAgent.indexOf('MSIE') || -1 !== navigator.appVersion.indexOf('Trident/')) {document.documentElement.classList.add('is-IE');}</script>
+            <script>document.documentElement.classList.remove("no-js");if (-1 !== navigator.userAgent.indexOf('MSIE') || -1 !== navigator.appVersion.indexOf('Trident/')) {document.documentElement.classList.add('is-IE');}</script>
 			<?php
 
             //...

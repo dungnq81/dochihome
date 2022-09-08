@@ -506,6 +506,19 @@
 }
 
 /** */
+@mixin grid-flex($d: 1, $t: 0, $m: 0, $gap: 30, $gap_m: 20) {
+    // use @support not (aspect-ratio: 1 / 1 ) (for example - you just need to check if old Safari really doesnt support such css tag )
+    @supports not (aspect-ratio: 1 / 1 ) {
+        $gutter: math.div($gap, 2);
+        $gutter_m: math.div($gap_m, 2);
+        @include grid-gutter2($d, $t, $m, $gutter, $gutter_m, true);
+    }
+
+    @supports (aspect-ratio: 1 / 1 ) {
+        @include grid-gap2($d, $t, $m, $gap, $gap_m);
+    }
+}
+
 /** */
 @mixin grid-gap2($d: 1, $t: 0, $m: 0, $gap: 30, $gap_m: 20) {
     @include grid-gap($gap, $gap_m);
@@ -514,8 +527,8 @@
     }
 }
 
-@mixin grid-gutter2($d: 1, $t: 0, $m: 0, $gap: 15, $gap_m: 10) {
-    @include grid-gutter($gap, $gap_m);
+@mixin grid-gutter2($d: 1, $t: 0, $m: 0, $gap: 15, $gap_m: 10, $top_bottom: false) {
+    @include grid-gutter($gap, $gap_m, $top_bottom);
     & > .cell {
         @if ($d > 0) {
             @include desktop {
@@ -535,6 +548,7 @@
     }
 }
 
+/** */
 @mixin grid-column2($d: 1, $t: 0, $m: 0, $gap: 0, $gap_mobile: 0) {
     @include grid-column($d, $gap);
     @if ($t > 0) {
@@ -553,7 +567,6 @@
     }
 }
 
-/** */
 /** */
 @mixin grid-gap($d: 30, $m: 20) {
     gap: fs($d);
@@ -587,7 +600,22 @@
     }
 }
 
-@mixin grid-self($n: 1, $self_n: 1, $gap: 0) {
+/** */
+@mixin grid-self($n: 1, $self_n: 1, $gap: 0, $margin: false) {
+    @supports (aspect-ratio: 1 / 1 ) {
+        @include grid-inner-self($n, $self_n, $gap);
+    }
+
+    @supports not (aspect-ratio: 1 / 1 ) {
+        @if ($margin == false) {
+            @include grid-inner-self($n, $self_n, 0);
+        } @else {
+            @include grid-inner-self($n, $self_n, $gap);
+        }
+    }
+}
+
+@mixin grid-inner-self($n: 1, $self_n: 1, $gap: 0) {
     @if ($n > 0 and $n == $self_n) {
         flex: 0 0 percentage(1);
         max-width: percentage(1);
@@ -639,10 +667,16 @@
 }
 
 /** */
-@mixin grid-gutter($gap: 15, $gap_m: 10) {
+@mixin grid-gutter($gap: 15, $gap_m: 10, $top_bottom: false) {
     @include mx-gutter($gap, $gap_m);
+    @if ($top_bottom == true) {
+        @include my-gutter($gap, $gap_m);
+    }
     & > .cell {
         @include px-gutter($gap, $gap_m);
+        @if ($top_bottom == true) {
+            @include py-gutter($gap, $gap_m);
+        }
     }
 }
 
@@ -657,6 +691,17 @@
     }
 }
 
+@mixin my-gutter($gap: 15, $mobile_gap: 10) {
+    margin-top: -#{fs($gap)};
+    margin-bottom: -#{fs($gap)};
+    @if ($mobile_gap > 0) {
+        @include mobile {
+            margin-top: -#{fs($mobile_gap)};
+            margin-bottom: -#{fs($mobile_gap)};
+        }
+    }
+}
+
 @mixin px-gutter($gap: 30, $mobile_gap: 20) {
     padding-left: #{fs($gap)};
     padding-right: #{fs($gap)};
@@ -664,6 +709,17 @@
         @include mobile {
             padding-left: #{fs($mobile_gap)};
             padding-right: #{fs($mobile_gap)};
+        }
+    }
+}
+
+@mixin py-gutter($gap: 30, $mobile_gap: 20) {
+    padding-top: #{fs($gap)};
+    padding-bottom: #{fs($gap)};
+    @if ($mobile_gap > 0) {
+        @include mobile {
+            padding-top: #{fs($mobile_gap)};
+            padding-bottom: #{fs($mobile_gap)};
         }
     }
 }

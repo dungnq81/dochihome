@@ -24,7 +24,8 @@ if ( $r->have_posts() ) :
 ?>
 <section class="section carousels-section related recently-viewed products related-products section-padding">
     <?php
-    $heading = apply_filters( 'woocommerce_product_recently_viewed_products_heading', __( 'Recently viewed products', 'hd' ) );
+    //$heading = apply_filters( 'woocommerce_product_recently_viewed_products_heading', __( 'Recently viewed products', 'hd' ) );
+    $heading = apply_filters( 'woocommerce_product_recently_viewed_products_heading', __( 'Sản phẩm đã xem', 'hd' ) );
     if ( $heading ) :
     ?>
     <h2 class="heading-title h3"><span><?php echo esc_html( $heading ); ?></span></h2>
