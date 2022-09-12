@@ -2913,16 +2913,19 @@ figure.wp-caption, figure.caption {
             }
             &.wpg__thumbs {
                 @include media-gap(10, false, 5);
+                flex-wrap: nowrap;
                 .swiper-thumbs {
+                    flex: 1 1 0;
+                    min-width: 0;
                     position: relative;
-                    @include grid-self(7, 6, 10);
+                    //@include grid-self(7, 6, 10);
                     order: 2;
-                    @include not-desktop {
-                        @include grid-self(6, 5, 10);
-                    }
-                    @include mobile {
-                        @include grid-self(5, 4, 5);
-                    }
+                    //@include not-desktop {
+                    //    @include grid-self(6, 5, 10);
+                    //}
+                    //@include mobile {
+                    //    @include grid-self(5, 4, 5);
+                    //}
                     .swiper-slide {
                         .woocommerce-product-gallery__image {
                             overflow: hidden;
@@ -3164,14 +3167,13 @@ figure.wp-caption, figure.caption {
 
 /** */
 .select2-container {
-
     display: block;
     .selection {
         .select2-selection--single {
             height: 38px;
             line-height: normal;
             border: 1px solid rgba(0, 0, 0, 0.1);
-            background-color: #fdbc0e;
+            background-color: #fff;
             border-radius: 0;
             .select2-selection__rendered {
                 justify-content: space-between;
@@ -3238,8 +3240,8 @@ figure.wp-caption, figure.caption {
 
 /** */
 .section.product-attributes {
-    @include media-pt(40, 30, 20);
-    @include media-pb(40, 30, 20);
+    @include media-pt(30, false, 20);
+    @include media-pb(30, false, 20);
     .product-attributes-inner {
         display: flex;
         align-items: flex-start;

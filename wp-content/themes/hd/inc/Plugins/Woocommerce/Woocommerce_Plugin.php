@@ -326,12 +326,12 @@ if ( ! class_exists( 'Woocommerce_Plugin' ) ) {
 			 */
 			add_filter('woocommerce_catalog_orderby', function ($orders) {
 				$orders = array(
-					'menu_order' => __('Ordering', 'hd'),
-					'popularity' => __('Popularity', 'hd'),
-					'rating' => __('Average rating', 'hd'),
-					'date' => __('Latest', 'hd'),
-					'price' => __('Price: low to high', 'hd'),
-					'price-desc' => __('Price: high to low', 'hd'),
+					'menu_order' => __('Thứ tự sắp xếp', 'hd'),
+					'popularity' => __('Phổ biến', 'hd'),
+					'rating' => __('Đánh giá trung bình', 'hd'),
+					'date' => __('Mới nhất', 'hd'),
+					'price' => __('Giá thấp đến cao', 'hd'),
+					'price-desc' => __('Giá cao đến thấp', 'hd'),
 				);
 
 				return $orders;

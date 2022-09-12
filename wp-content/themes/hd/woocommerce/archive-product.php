@@ -159,16 +159,16 @@ endif;
                 ?>
             </div>
         </div>
-        <?php
-        /**
-         * Hook: woocommerce_archive_description.
-         *
-         * @see woocommerce_taxonomy_archive_description - 10
-         * @see woocommerce_product_archive_description - 10
-         */
-        do_action('woocommerce_archive_description');
-        ?>
     </div>
+    <?php
+    /**
+     * Hook: woocommerce_archive_description.
+     *
+     * @see woocommerce_taxonomy_archive_description - 10
+     * @see woocommerce_product_archive_description - 10
+     */
+    do_action('woocommerce_archive_description');
+    ?>
 </section>
 <?php
 

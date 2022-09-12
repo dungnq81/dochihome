@@ -507,19 +507,19 @@
     .site-logo {
         flex: 0 0 auto;
         width: auto;
-        padding: 8px 30px;
+        padding: 5px 25px;
         background-color: #fff;
         border-radius: 30px;
         @include not-desktop {
-            padding: 8px 24px;
+            padding: 5px 20px;
         }
         @include mobile {
-            padding: 8px 16px;
+            padding: 5px 15px;
         }
         .logo {}
         .custom-logo-link {}
         .custom-logo {
-            @include media-height(36, 30, 24);
+            @include media-height(42, 36, 30);
         }
     }
     .site-navigation {
@@ -1581,12 +1581,12 @@
 
 /** */
 .section.section-title {
-    background-color: $color1;
-    padding-top: 130px;
+    /*background-color: $color1;*/
+    padding-top: 100px;
     position: relative;
-    padding-bottom: 50px;
+    padding-bottom: 30px;
     @include mobile {
-        padding-top: 80px;
+        padding-top: 50px;
     }
     .title-bg {
         @include absolute-full;
@@ -1596,7 +1596,7 @@
         background-position: center center;
         &::after {
             content: '';
-            background-color: rgba(0, 0, 0, 0.5);
+            /*background-color: rgba(0, 0, 0, 0.5);*/
             @include absolute-full;
         }
     }
@@ -1606,14 +1606,14 @@
             margin-bottom: 0;
             li {
                 text-transform: unset;
-                color: #ccc;
+                color: #555555;
                 font-size: $small-font-size;
                 font-weight: 300;
                 @include mobile {
                     font-size: fs(13);
                 }
                 a {
-                    @include hover_color(#ccc, #fff);
+                    @include hover_color(#555555, #000);
                 }
                 &:not(:last-child) {
                     &::after {
@@ -1630,7 +1630,7 @@
     .title-inner {
         position: relative;
         .title {
-            color: #fff;
+            color: #000;
             margin-bottom: 10px;
             font-weight: 600;
         }
@@ -1924,7 +1924,11 @@ article.product {
                 a {
                     display: block;
                     @include hover_color($anchor-color, $color1);
-                    @include line-clamp(3);
+                    @include line-clamp(2);
+                    height: fs(45);
+                    @include mobile {
+                        height: fs(42);
+                    }
                 }
             }
             .star-rating {
@@ -2022,8 +2026,12 @@ article.product {
 
 /** */
 .section.single-product {
+    padding-top: 50px;
     /*overflow-x: hidden;
     overflow-y: visible;*/
+    @include not-desktop {
+        padding-top: 0;
+    }
     .sharing_toolbox {
         margin-top: 20px;
         .share-title {
@@ -2205,7 +2213,7 @@ article.product {
             }
         }
         .summary.entry-summary {
-            @include media-padding2(30, 20, 10);
+            @include media-padding2(25, 20, 10);
             /*box-shadow: inset 0 0 0 1px rgb(0 0 0 / 5%);*/
             border: 1px solid rgba(0, 0, 0, 0.05);
             background-color: #fff;
@@ -2220,6 +2228,9 @@ article.product {
             @include mobile {
                 padding-top: 20px;
                 padding-bottom: 20px;
+            }
+            .single-price {
+                margin-bottom: 10px;
             }
         }
     }
@@ -2280,7 +2291,7 @@ article.product {
 /** */
 .woocommerce-notices-wrapper {
     margin-top: 0;
-    @include media-pt(30, 20);
+    padding-top: 15px;
 }
 
 .woocommerce {
@@ -2514,10 +2525,15 @@ article.product {
             padding: 15px;
             box-shadow: inset 0 0 0 1px transparentize($color2, 0.6);
             background-color: #fafafa;
+            .title-section {
+                .html-desc {
+                    margin-bottom: 10px;
+                }
+            }
             .listbox {
                 list-style: none;
                 margin: 0;
-                gap: 5px;
+                gap: 4px;
                 display: flex;
                 flex-direction: column;
                 li {
@@ -2527,7 +2543,7 @@ article.product {
                         align-items: center;
                         &::before {
                             border-radius: 50%;
-                            border: 1px solid transparentize($color2, 0.5);
+                            /*border: 1px solid transparentize($color2, 0.5);*/
                             color: $color2;
                             font-weight: 900;
                             @include flex-center;
@@ -2599,7 +2615,8 @@ article.product {
             gap: 0;
             margin-bottom: 0;
             .woocommerce-variation-add-to-cart {
-                margin-top: 15px;
+                margin-top: 10px;
+                margin-bottom: 10px;
                 @include flex-align-center;
                 gap: 15px;
                 flex-wrap: wrap;
@@ -3999,7 +4016,7 @@ body.woocommerce-order-received {
 
 /** */
 .woo-description {
-    @include grid-container(0, 0);
+    //@include grid-container(0, 0);
     .page-thumb, .term-thumb {
         display: flex;
         justify-content: center;
@@ -4291,7 +4308,7 @@ body.woocommerce-order-received {
                     padding-bottom: 0;
                 }
                 &.woo-variation-items-wrapper {
-                    padding: 0 0 10px 0;
+                    padding: 0 0 5px 0;
                 }
             }
         }
@@ -4551,6 +4568,35 @@ body.woocommerce-order-received {
                         }
                     }
                 }
+            }
+        }
+    }
+}
+
+/** */
+body.post-type-archive-product, body.tax-product_cat {
+    .section.section-title {
+        padding-bottom: 0;
+        padding-top: 80px;
+        .title-inner, .breadcrumbs-container {
+            display: none;
+        }
+    }
+}
+
+body.single.single-product {
+    .section.section-title {
+        display: none;
+    }
+}
+
+/** */
+.woo-description {
+    &.product-desc-inner {
+        .viewmore-wrapper {
+            background-color: transparentize(#f7f7f7, 0.4);
+            &::before {
+                background-image: linear-gradient(to top, #f7f7f7 0%, transparentize(#f7f7f7, 0.7) 100%);
             }
         }
     }

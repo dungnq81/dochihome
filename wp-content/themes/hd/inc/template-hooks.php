@@ -266,7 +266,7 @@ function __footer_credit()
                     <div class="copyright-inner">
                         <p>
                             <span class="cr">&copy; <?= date('Y') ?>&nbsp;<?= get_bloginfo('name') ?>, All rights reserved.</span>
-                            <span class="hd">&nbsp;<?php echo sprintf('<a class="_blank fs-0" href="https://webhd.vn/thiet-ke-website/" title="%1$s">%1$s</a><span class="fs-0">&nbsp;%2$s&nbsp;</span><a class="_blank" href="https://webhd.vn/" title="%3$s">%3$s</a>', __('Thiết kế web', 'hd'), __('by', 'hd'), __('Webhd Agency', 'hd')) ?></span>
+                            <span class="hd">&nbsp;<?php echo sprintf('<a class="_blank" href="https://dochioffice.vn" title="%1$s">%1$s</a>', __('DOCHI OFFICE', 'hd')) ?></span>
                         </p>
                         <?php
                         $GPKD = get_theme_mod_ssl('GPKD_setting');
