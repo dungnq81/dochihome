@@ -55,7 +55,7 @@ if ( ! class_exists( 'Woocommerce_Plugin' ) ) {
 
                 global $wpdb;
 
-                if ( $query->is_main_query() && (is_shop() || is_product_taxonomy()) ) {
+                if ( $query->is_main_query() && ( @is_shop() || is_product_taxonomy() || is_product_tag() ) ) {
                     $featured_ids = wc_get_featured_product_ids();
                     $posts_clauses['join'] .= " LEFT JOIN $wpdb->postmeta istockstatus ON ($wpdb->posts.ID = istockstatus.post_id AND istockstatus.meta_key = '_stock_status' AND istockstatus.meta_value <> '') ";
                     $posts_clauses['orderby'] = " if($wpdb->posts.ID in (0".(implode(",", $featured_ids))."), 0, 1), istockstatus.meta_value ASC, " . $posts_clauses['orderby'];
