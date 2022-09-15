@@ -189,6 +189,7 @@ button[type="submit"], button[type="reset"], button[type="button"] {
 
 /** */
 figure.wp-caption, figure.caption {
+    max-width: 100% !important;
     img {
         display: inline-block;
     }
@@ -3644,6 +3645,29 @@ figure.wp-caption, figure.caption {
                     & > .title {
                         display: none;
                     }
+                }
+            }
+        }
+    }
+}
+
+/** */
+.woocommerce-tabs-panel {
+    table {
+        ul, ol {
+            margin: 0;
+            list-style: none;
+        }
+        tbody {
+            tr:nth-child(2n) {
+                background-color: inherit;
+            }
+            tr:not(:last-child) {
+                border-bottom: 1px solid #f2f2f2;
+            }
+            tr {
+                td:not(:last-child) {
+                    border-right: 1px solid #f2f2f2;
                 }
             }
         }
